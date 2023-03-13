@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+       
+<tiles-definitions>
+
+    <!-- ========== ========== ========== ========== ========== ========== ========== -->
+    <!-- layoutAdmin, layoutQna -->
+    <definition name="layoutAdmin" template="/WEB-INF/views/AdminScreen/layout-admin.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/AdminScreen/AdminContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    <definition name="layoutQna" template="/WEB-INF/views/QnaScreen/layout-qna.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/QnaScreen/QnaContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    
+    
+    <!-- ========== ========== ========== ========== ========== ========== ========== -->
+    <!-- layoutDetail -->
+    <definition name="layoutDetail" template="/WEB-INF/views/DetailScreen/layout-detail.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/DetailScreen/DetailContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    
+    
+    <!-- ========== ========== ========== ========== ========== ========== ========== -->
+    <!-- layoutLogin, layoutSignup -->
+    <definition name="layoutLogin" template="/WEB-INF/views/LoginScreen/layout-login.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/LoginScreen/LoginContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    <definition name="layoutSignup" template="/WEB-INF/views/SignupScreen/layout-signup.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/SignupScreen/SignupContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    
+    
+    <!-- ========== ========== ========== ========== ========== ========== ========== -->
+    <!-- layoutMain -->
+    <definition name="layoutMain" template="/WEB-INF/views/MainScreen/layout-main.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/MainScreen/MainContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    
+
+</tiles-definitions>
