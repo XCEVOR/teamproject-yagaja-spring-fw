@@ -13,7 +13,7 @@
     <a href="admin.do">admin.do</a><br>
     <a href="detail.do">detail.do</a><br>
     <a href="login.do">login.do</a><br>
-    <a href="main.do">admin.do</a><br>
+    <a href="main.do">main.do</a><br>
     <a href="qna.do">qna.do</a><br>
     <a href="signup.do">signup.do</a><br>
 
