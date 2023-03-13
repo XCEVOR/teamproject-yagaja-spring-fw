@@ -8,12 +8,40 @@
 </head>
 <body>
 
-    <h1>HEADER</h1>
+
+    <div>
+		<table style = "table-layout: auto; width: 80%; table-layout: fixed;" >
+		<colgroup> 
+			<col width="50%" /> 
+			<col width="15%" /> 
+			<col width="15%" />
+		</colgroup>
+            <tr>
+                <!-- <th>
+               <a href="main.do" class="logo">
+                        <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
+                    </a> 
+                </th>-->
+                <th>
+                    <input type="text" placeholder="검색">
+                </th>
+                <th><button>로그인</button></th>
+                <th><button>회원가입</button></th>
+
+            </tr>
+
+            
+        </table>
+    </div>
+
+    
+    
+    <br>
     
     <a href="admin.do">admin.do</a>
     <a href="detail.do">detail.do</a>
     <a href="login.do">login.do</a>
-    <a href="main.do">admin.do</a>
+    <a href="main.do">main.do</a>
     <a href="qna.do">qna.do</a>
     <a href="signup.do">signup.do</a>
 

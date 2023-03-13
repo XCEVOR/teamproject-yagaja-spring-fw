@@ -62,9 +62,9 @@
     <!-- layoutMain -->
     <definition name="layoutMain" template="/WEB-INF/views/MainScreen/layout-main.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+<!--         <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/> -->
         <put-attribute name="content" value="/WEB-INF/views/MainScreen/MainContent.jsp"/>
-        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+<!--         <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/> -->
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
     
