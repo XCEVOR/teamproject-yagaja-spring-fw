@@ -16,7 +16,7 @@
     <table style="width: 100%; height: 100%; border-color: gray;">
         <!-- header -->
         <tr align="center" style="background-color: black; color: white;">
-            <td colspan="3" style="height: 20%">
+            <td colspan="3" style="height: 100px">
                 <tiles:insertAttribute name="header"/>
         </tr>
         
@@ -25,12 +25,12 @@
             <td align="left" valign="top" style="background-color: rgb(204, 204, 204); width: 20%;">
                 <tiles:insertAttribute name="menu"/>
             </td>
-            <td align="center">
+            <td style="height: 90%; width: 80%; ">
                 <tiles:insertAttribute name="content"/>
             </td>
-            <td align="center" style="background-color: rgb(204, 204, 204); width: 15%;">
+            <%-- <td align="center" style="width: 15%;">
                 <tiles:insertAttribute name="empty"/>
-            </td>
+            </td> --%>
         </tr>
         
         <!-- footer -->
@@ -38,6 +38,7 @@
             <td colspan="3" style="height: 10%">
                 <tiles:insertAttribute name="footer"/>
         </tr>
+
     </table>
 
 
