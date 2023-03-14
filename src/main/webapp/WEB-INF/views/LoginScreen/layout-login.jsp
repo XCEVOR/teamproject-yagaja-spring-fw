@@ -9,11 +9,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style>
+
+html, body, #fullheight {
+
+height:100%;
+
+}
+
+
+</style>
 </head>
 <body>
 
 
-    <table style="width: 100%; height: 100%; border-color: gray;">
+    <div id="fullheight">
+    <table id="fullheight"  style="width: 100%; border-color: gray;">
         <!-- header -->
         <tr align="center" style="background-color: black; color: white;">
             <td colspan="3" style="height: 100px">
@@ -40,7 +52,7 @@
         </tr>
 
     </table>
-
+</div>
 
 </body>
 </html>

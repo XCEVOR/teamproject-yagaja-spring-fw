@@ -11,12 +11,24 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/mainpage.css" />
-<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<link rel="stylesheet" href="assets/css/noscript.css" />
+
+<style>
+
+html, body, #fullheight {
+
+height:100%;
+
+}
+
+
+</style>
 </head>
 <body>
 
 
-    <table style="width: 100%; height: 100%; border-color: gray;">
+    <div id="fullheight">
+    <table id="fullheight"  style="width: 100%; border-color: gray;">
         <!-- header -->
         <tr class="navbar" align="center" style="background-color: black; color: white;">
             <td colspan="3" style="height: 20%">
@@ -46,7 +58,7 @@
                 <tiles:insertAttribute name="footer"/>
         </tr>
     </table>
-
+</div>
 
 </body>
 </html>
