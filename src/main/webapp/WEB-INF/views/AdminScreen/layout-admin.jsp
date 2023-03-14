@@ -10,6 +10,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/mainpage.css" />
+<link rel="stylesheet" href="assets/css/noscript.css" />
+<link rel="stylesheet" href="assets/css/layout.css" />
 <style>
 
 html, body, #fullheight {
@@ -46,7 +50,7 @@ height:100%;
         </tr>
         
         <!-- footer -->
-        <tr align="center" style="background-color: black; color: white;">
+        <tr class="footer">
             <td colspan="3" style="height: 10%">
                 <tiles:insertAttribute name="footer"/>
         </tr>
