@@ -124,14 +124,7 @@ td {
 
 
 		</div>
-		<div id="snsBox">
-			<h2>sns</h2>
-		</div>
 
-		<div id="hashtagBox">
-			<h2>hash</h2>
-
-		</div>
 	</div>
 
 </body>

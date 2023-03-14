@@ -11,7 +11,8 @@
     <h1>MENU</h1>
     
     <a href="admin.do">admin.do</a><br>
-    <a href="detail.do">detail.do</a><br>
+    <a href="detail1.do">detail1.do</a><br>
+    <a href="detail2.do">detail2.do</a><br>
     <a href="login.do">login.do</a><br>
     <a href="main.do">main.do</a><br>
     <a href="qna.do">qna.do</a><br>

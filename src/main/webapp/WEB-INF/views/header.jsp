@@ -10,12 +10,12 @@
 
 
     <div>
-		<table style = "table-layout: auto; width: 80%; table-layout: fixed;" >
-		<colgroup> 
-			<col width="50%" /> 
-			<col width="15%" /> 
-			<col width="15%" />
-		</colgroup>
+        <table style = "table-layout: auto; width: 80%; table-layout: fixed;" >
+        <colgroup> 
+            <col width="50%" /> 
+            <col width="15%" /> 
+            <col width="15%" />
+        </colgroup>
             <tr>
                 <!-- <th>
                <a href="main.do" class="logo">
@@ -39,7 +39,8 @@
     <br>
     
     <a href="admin.do">admin.do</a>
-    <a href="detail.do">detail.do</a>
+    <a href="detail1.do">detail1.do</a>
+    <a href="detail2.do">detail2.do</a>
     <a href="login.do">login.do</a>
     <a href="main.do">main.do</a>
     <a href="qna.do">qna.do</a>

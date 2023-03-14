@@ -26,10 +26,16 @@ public class ScreenController {
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do
-    @GetMapping(value = "detail.do")
-    public String detail () {
+    @GetMapping(value = "detail1.do")
+    public String detail1 () {
         System.out.println("  @ ScreenController detail (): " + new Date());
-        return "layoutDetail";
+        return "layoutDetail1";
+    }
+    
+    @GetMapping(value = "detail2.do")
+    public String detail2 () {
+        System.out.println("  @ ScreenController detai2 (): " + new Date());
+        return "layoutDetail2";
     }
     
     
