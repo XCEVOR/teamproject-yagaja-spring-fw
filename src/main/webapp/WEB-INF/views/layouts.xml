@@ -78,5 +78,31 @@
     </definition>
     
     
+    
+    <definition name="layoutMy" template="/WEB-INF/views/MyScreen/layout-my.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/MyScreen/MyContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    <definition name="layoutUpdate" template="/WEB-INF/views/UpdateScreen/layout-update.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/UpdateScreen/UpdateContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    <definition name="layoutWrite" template="/WEB-INF/views/WriteScreen/layout-write.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/WriteScreen/WriteContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    
 
 </tiles-definitions>

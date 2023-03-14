@@ -9,7 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link >
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/mainpage.css" />
+<link rel="stylesheet" href="assets/css/noscript.css" />
+<link rel="stylesheet" href="assets/css/layout.css" />
 <style>
 
 html, body, #fullheight {
@@ -27,7 +30,7 @@ height:100%;
     <div id="fullheight">
     <table id="fullheight"  style="width: 100%; border-color: gray;">
         <!-- header -->
-        <tr align="center" style="background-color: black; color: white;">
+        <tr align="center">
             <td colspan="3" style="height: 100px">
                 <tiles:insertAttribute name="header"/>
         </tr>

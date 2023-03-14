@@ -33,7 +33,7 @@ height:100%;
     <div id="fullheight">
     <table id="fullheight"  style="width: 100%; border-color: gray;">
         <!-- header -->
-        <tr class="navbar" align="center" style="background-color: black; color: white;">
+        <tr align="center">
             <td colspan="3" style="height: 20%">
                 <tiles:insertAttribute name="header"/>
         </tr>
