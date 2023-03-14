@@ -8,7 +8,12 @@
 </head>
 <body>
 
-    <h1>DETAIL CONTENT</h1>
+    <h1>DETAIL CONTENT 해시태그</h1>
+    
+	<div id="hashtagBox">
+	    <h2>hash</h2>
+	
+	</div>
 
 </body>
 </html>

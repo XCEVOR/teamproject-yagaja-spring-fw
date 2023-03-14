@@ -27,12 +27,21 @@
     
     
     <!-- ========== ========== ========== ========== ========== ========== ========== -->
-    <!-- layoutDetail -->
-    <definition name="layoutDetail" template="/WEB-INF/views/DetailScreen/layout-detail.jsp">
+    <!-- layoutDetail1, layoutDetail2 -->
+    <definition name="layoutDetail1" template="/WEB-INF/views/DetailScreen1/layout-detail1.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
-        <put-attribute name="content" value="/WEB-INF/views/DetailScreen/DetailContent.jsp"/>
-        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="Content-L-1" value="/WEB-INF/views/DetailScreen1/DetailContent-L-1.jsp"/>
+        <put-attribute name="Content-L-2" value="/WEB-INF/views/DetailScreen1/DetailContent-L-2.jsp"/>
+        <put-attribute name="Content-R-1" value="/WEB-INF/views/DetailScreen1/DetailContent-R-1.jsp"/>
+        <put-attribute name="Content-R-2" value="/WEB-INF/views/DetailScreen1/DetailContent-R-2.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+
+    <definition name="layoutDetail2" template="/WEB-INF/views/DetailScreen2/layout-detail2.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="Content-1" value="/WEB-INF/views/DetailScreen2/DetailContent-1.jsp"/>
+        <put-attribute name="Content-2" value="/WEB-INF/views/DetailScreen2/DetailContent-2.jsp"/>
+        <put-attribute name="Content-3" value="/WEB-INF/views/DetailScreen2/DetailContent-3.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
     
