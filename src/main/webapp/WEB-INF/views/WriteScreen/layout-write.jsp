@@ -31,34 +31,26 @@ height:100%;
     <table id="fullheight"  style="width: 100%; border-color: gray;">
         <!-- header -->
         <tr align="center">
-            <td colspan="2" style="height: 20%">
+            <td colspan="3" style="height: 20%">
                 <tiles:insertAttribute name="header"/>
         </tr>
         
         <!-- main -->
         <tr>
-	        <td style="background-color: grey;">
-                <div  align="center" style="width: 100%; height: 600px;">
-				    <tiles:insertAttribute name="Content-1"/>
-                </div>
-	        </td>
-	        <td style="background-color: blue;">
-	            <div  align="center" style="width: 100%; height: 600px;">
-                    <tiles:insertAttribute name="Content-2"/>
-	            </div>
-	        </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="background-color: green;">
-                <div  align="center" style="width: 100%; height: 200px;">
-                    <tiles:insertAttribute name="Content-3"/>
-                </div>
+            <td align="left" valign="top" style="background-color: rgb(204, 204, 204); width: 20%;">
+                <tiles:insertAttribute name="menu"/>
+            </td>
+            <td align="center">
+                <tiles:insertAttribute name="content"/>
+            </td>
+            <td align="center" style="background-color: rgb(204, 204, 204); width: 15%;">
+                <tiles:insertAttribute name="empty"/>
             </td>
         </tr>
         
         <!-- footer -->
         <tr class="footer">
-            <td colspan="2" style="height: 10%">
+            <td colspan="3" style="height: 10%">
                 <tiles:insertAttribute name="footer"/>
         </tr>
     </table>
