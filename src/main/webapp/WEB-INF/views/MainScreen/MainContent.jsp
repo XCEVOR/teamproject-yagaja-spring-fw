@@ -372,22 +372,6 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     
-    <script type="text/javascript">
-        const container = documnet.getElementByClassName('container1');
-    
-        const ul = createElement('ul');
-    
-        const fruits = ['apple', 'banana', 'cherry']
-    
-        container.appendChild(ul);
-    
-        for(let i=0; i<3; ++i) {
-            const h1 = createElement('h1');
-            h1.innerHTML = `${i} fruit`;
-            const li = createElement('li');
-            li.innerHTML = `is ${fruits[i]}`;
-        }
-    </script>
 
         </body>
     </div>
