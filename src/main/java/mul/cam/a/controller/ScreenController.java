@@ -1,12 +1,26 @@
 package mul.cam.a.controller;
 
 import java.util.Date;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import mul.cam.a.dto.BbsDto;
+import mul.cam.a.dto.MemberDto;
+import mul.cam.a.service.BbsService;
+import mul.cam.a.service.MemberService;
 
 @Controller
 public class ScreenController {
+	
+	
+	@Autowired
+	MemberService mservice;
+	@Autowired
+	BbsService bservice;
 
     // ========== ========== ========== ========== ========== ========== ========== 
     // admin.do, qna.do
@@ -59,8 +73,15 @@ public class ScreenController {
     // ========== ========== ========== ========== ========== ========== ========== 
     // main.do
     @GetMapping(value = "main.do")
-    public String main () {
+    public String main (BbsDto dto, Model model) {
         System.out.println("  @ ScreenController main (): " + new Date());
+		
+		
+		dto = new BbsDto(0, null, null, null, null, null, 0, 0, 0);
+		
+		List<BbsDto> blist = bservice.myBbsTest(dto);
+		model.addAttribute("bbslist", blist);
+		
         return "layoutMain";
     }
     

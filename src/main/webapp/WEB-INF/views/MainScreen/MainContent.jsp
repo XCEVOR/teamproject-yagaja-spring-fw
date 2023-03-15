@@ -1,7 +1,17 @@
+<%@page import="mul.cam.a.dto.BbsDto"%>
+<%@page import="mul.cam.a.dto.MemberDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
+<%
+	List<MemberDto> list = (List<MemberDto>)request.getAttribute("list");
+    List<BbsDto> blist = (List<BbsDto>)request.getAttribute("bbslist");
+    System.out.println(blist.toString());
+%>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -11,6 +21,37 @@
 <body>
 
     <h1>MAIN CONTENT</h1>
+    <div id="main">
+    	<input type="text" id="testinput" placeholder="아이디 입력">
+    	<button type="button" onclick="myBtn()">분류</button>
+	    <div class="inner">
+		    <div class="container1"></div>
+		    	<section class="tiles">
+<%
+
+	for(int i = 0;i < blist.size(); i++)
+	{
+		BbsDto bdto = blist.get(i);
+		%>
+			<article class="style1">
+                <span class="image">
+                    <img src="images/mainpage/pic01.jpg" alt="" />
+                </span>
+                <a href="generic.html">
+                    <h2><%= bdto.getTitle() %></h2>
+                    <div class="content">
+                        <p><%= bdto.getContent() %></p>
+                    </div>
+                </a>
+            </article>
+		<%
+	}
+
+%>
+    </section>
+    </div>
+    </div>
+    
     <div>
         <body class="is-preload">
         <!-- Wrapper -->
@@ -125,5 +166,16 @@
 
         </body>
     </div>
+    
+<script type="text/javascript">
+	function myBtn() {
+		let mytest = document.getElementById('testinput').value;
+		
+		location.href = "mytest01.do?id=" + mytest;	
+	}
+	/* function replay() {
+		location.reload();
+	} */
+</script>
 </body>
 </html>
