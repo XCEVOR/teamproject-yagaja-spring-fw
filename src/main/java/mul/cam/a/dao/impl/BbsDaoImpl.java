@@ -13,13 +13,13 @@ import mul.cam.a.dto.BbsDto;
 @Repository
 public class BbsDaoImpl implements BbsDao {
 
-	
-	@Autowired
-	SqlSession session;
-	
-	String ns = "Bbs.";
+    
+    @Autowired
+    SqlSession session;
+    
+    String ns = "Bbs.";
 
-	
+    
     // ========== ========== ========== ========== ========== ========== ========== 
     // admin.do, qna.do
 
@@ -40,15 +40,26 @@ public class BbsDaoImpl implements BbsDao {
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // main.do
-	@Override
-    public List<BbsDto> mainBbsList(BbsDto dto) {
+    @Override
+    public List<BbsDto> mainBbsList (BbsDto dto) {
         System.out.println("   @  mainBbsList dto.getId():  " + dto.getId());
         return session.selectList(ns + "mainbbslist", dto);
     }
 
     @Override
-    public List<BbsDto> mainBbsList2(BbsDto dto) {
+    public List<BbsDto> mainBbsList2 (BbsDto dto) {
         System.out.println("   @ mainBbsList2 dto.getId():  " + dto.getId());
         return session.selectList(ns + "mainbbslist2", dto);
+    }
+    
+    @Override
+    public BbsDto getBbsTest (int seq) {     
+        return session.selectOne(ns + "getBbsTest", seq);
+    }
+    
+    @Override
+    public int updateBbs (BbsDto dto) {  
+        System.out.println("   @ updateBbs dto.getId():  " + dto.getId());
+        return session.update(ns + "updateBbs", dto);
     }
 }

@@ -17,8 +17,8 @@
     <a href="main.do">main.do</a><br>
     <a href="qna.do">qna.do</a><br>
     <a href="signup.do">signup.do</a><br>
-	<a href="my.do">my.do</a><br>
-    <a href="update.do">update.do</a><br>
+    <a href="my.do">my.do</a><br>
+    <a href="update.do?seq=7">update.do</a><br>
     <a href="write.do">write.do</a><br>
 
 </body>

@@ -29,4 +29,7 @@ public interface BbsService {
     // main.do
     List<BbsDto> mainBbsList(BbsDto dto);
     List<BbsDto> mainBbsList2(BbsDto dto);
+    
+    BbsDto getBbsTest(int seq);
+    boolean updateBbs(BbsDto dto);
 }

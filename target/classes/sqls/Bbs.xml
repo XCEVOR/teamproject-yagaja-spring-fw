@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
 <mapper namespace="Bbs">
 
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
@@ -25,16 +25,28 @@
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
     // main.do -->
     <select id="mainbbslist" parameterType="mul.cam.a.dto.BbsDto" resultType="mul.cam.a.dto.BbsDto">
-	    select * 
-	    from bbs 
-	    where 1=1
-	</select>
-	
-	<select id="mainbbslist2" parameterType="mul.cam.a.dto.BbsDto" resultType="mul.cam.a.dto.BbsDto">
-	    select * 
-	    from bbs 
-	    where id=#{id}
-	</select>
+        select * 
+        from bbs 
+        where 1=1
+    </select>
+    
+    <select id="mainbbslist2" parameterType="mul.cam.a.dto.BbsDto" resultType="mul.cam.a.dto.BbsDto">
+        select * 
+        from bbs 
+        where id=#{id}
+    </select>
+    
+    <select id="getBbsTest" parameterType="Integer" resultType="mul.cam.a.dto.BbsDto">
+        select seq, id, ref, step, depth, title, content, wdate, del, readcount
+        from bbs
+        where seq=#{seq}
+    </select>
+    
+    <update id="updateBbs" parameterType="mul.cam.a.dto.BbsDto">
+        update bbs
+        set title=#{title}, content=#{content}, wdate=now()
+        where seq=#{seq}
+    </update>
 
-	
+    
 </mapper>

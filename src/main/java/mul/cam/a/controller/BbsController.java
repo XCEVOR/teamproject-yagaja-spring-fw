@@ -14,12 +14,12 @@ import mul.cam.a.service.BbsService;
 @Controller
 public class BbsController {
 
-	
-	
-	@Autowired
-	BbsService service;
-	
-	
+    
+    
+    @Autowired
+    BbsService service;
+    
+    
     // ========== ========== ========== ========== ========== ========== ========== 
     // admin.do, qna.do
 
@@ -41,7 +41,7 @@ public class BbsController {
     // ========== ========== ========== ========== ========== ========== ========== 
     // main.do
  
-	
+    
     @GetMapping(value = "mainid.do")
     public String main (String id, Model model) {
         System.out.println("  @ ScreenController main (): " + new Date());
@@ -52,4 +52,23 @@ public class BbsController {
         
         return "layoutMain";
     }
+    
+    @GetMapping(value = "bbsupdateAf.do")
+    public String bbsupdateAf(BbsDto dto, Model model) {
+        System.out.println(dto.toString());
+        boolean isSucc = service.updateBbs(dto);
+        
+        String bbsupdate = "BBS_UPDATE_SUCCESS";
+        if(isSucc == false) {          
+            bbsupdate = "BBS_UP_FAIL";
+        }
+        model.addAttribute("bbsupdate", bbsupdate);
+        model.addAttribute("seq", dto.getSeq());
+        
+        List<BbsDto> blist = service.mainBbsList(dto);
+        model.addAttribute("bbslist", blist);
+        
+        return "layoutMain";
+    }
+    
 }

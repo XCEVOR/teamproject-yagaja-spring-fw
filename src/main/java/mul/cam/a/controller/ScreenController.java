@@ -33,16 +33,16 @@ public class ScreenController {
     @GetMapping(value = "adminMem.do")
     public String adminMem (Model model) {
         System.out.println("  @ ScreenController admin (): " + new Date());
-	  	//List<MemberDto> list = serive.allMember();
-	  	//model.addAttribute("list", list);
+        //List<MemberDto> list = serive.allMember();
+        //model.addAttribute("list", list);
         return "layoutAdmin_Mem";
     }
     
     @GetMapping(value = "adminQna.do")
     public String adminQna (Model model) {
         System.out.println("  @ ScreenController admin (): " + new Date());
-	  	//List<MemberDto> list = serive.allMember();
-	  	//model.addAttribute("list", list);
+        //List<MemberDto> list = serive.allMember();
+        //model.addAttribute("list", list);
         return "layoutAdmin_Qna";
     }   
     
@@ -97,6 +97,15 @@ public class ScreenController {
         return "layoutMain";
     }
     
+    @GetMapping(value = "update.do")
+    public String update (int seq, Model model) {
+        System.out.println("  @ ScreenController update (): " + new Date());
+        BbsDto dto = bbsservice.getBbsTest(seq);
+        model.addAttribute("dto", dto);
+        
+        return "layoutUpdate";
+    }
+    
     
     
     @GetMapping(value = "my.do")
@@ -105,11 +114,7 @@ public class ScreenController {
         return "layoutMy";
     }
     
-    @GetMapping(value = "update.do")
-    public String update () {
-        System.out.println("  @ ScreenController update (): " + new Date());
-        return "layoutUpdate";
-    }
+
     
     @GetMapping(value = "write.do")
     public String write () {
