@@ -3,25 +3,29 @@ package mul.cam.a.dto;
 import java.io.Serializable;
 
 public class BbsDto implements Serializable {
-	
-	
-     private int seq;
-     private String id;
-     private String title;
-     private String nickname;
-     private String content;
-     private String wdate;
-     private int del;
-     private int readcount;
-     private int likecount;
-     
-     public BbsDto() {
-		// TODO Auto-generated constructor stub
-	}
-     
-     
 
-	public BbsDto(int seq, String id, String title, String nickname, String content, String wdate, int del,
+    private int seq;
+    private String id;
+    private String title;
+    private String nickname;
+    private String content;
+    private String wdate;
+    private int del;
+    private int readcount;
+    private int likecount;
+    
+    public BbsDto() {
+        // TODO Auto-generated constructor stub
+	}
+    
+	public BbsDto(String id, String title, String content) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.content = content;
+    }
+
+    public BbsDto(int seq, String id, String title, String nickname, String content, String wdate, int del,
 			int readcount, int likecount) {
 		super();
 		this.seq = seq;
