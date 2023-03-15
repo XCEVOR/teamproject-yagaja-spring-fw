@@ -3,6 +3,7 @@ package mul.cam.a.controller;
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -15,6 +16,22 @@ public class ScreenController {
         System.out.println("  @ ScreenController admin (): " + new Date());
         return "layoutAdmin";
     }
+    
+    @GetMapping(value = "adminMem.do")
+    public String adminMem (Model model) {
+        System.out.println("  @ ScreenController admin (): " + new Date());
+	  	//List<MemberDto> list = serive.allMember();
+	  	//model.addAttribute("list", list);
+        return "layoutAdmin_Mem";
+    }
+    
+    @GetMapping(value = "adminQna.do")
+    public String adminQna (Model model) {
+        System.out.println("  @ ScreenController admin (): " + new Date());
+	  	//List<MemberDto> list = serive.allMember();
+	  	//model.addAttribute("list", list);
+        return "layoutAdmin_Qna";
+    }   
     
     @GetMapping(value = "qna.do")
     public String qna () {
