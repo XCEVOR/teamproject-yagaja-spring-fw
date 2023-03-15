@@ -5,12 +5,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="assets/css/main.css" />
-<link rel="stylesheet" href="assets/css/noscript.css" />
 </head>
-<body>
-
-    <h1>DETAIL CONTENT L 2 해시태그</h1>
+<body> 
+    <div class="card mb-4">
+         <div class="card-header">해시태그</div>
+         <div class="card-body">
+             <div class="row">
+                 <div class="col-sm-6">
+                     <ul class="list-unstyled mb-0">
+                         <li>
+                         	<a href="#!">#바다</a>
+                         	 <a href="#!">#힐링</a>
+                         	 <a href="#!">#보라카이</a>
+                         </li>
+                     </ul>
+                 </div>
+                 <div class="col-sm-6">
+                     <ul class="list-unstyled mb-0">
+                      <li>
+                         	<a href="#!">#Web Design</a>
+                         	 <a href="#!">#HTML</a>
+                         	 <a href="#!">#Freebies</a>
+                         </li>                         
+                     </ul>
+                 </div>
+             </div>
+         </div>
+     </div>
 
 </body>
 </html>
