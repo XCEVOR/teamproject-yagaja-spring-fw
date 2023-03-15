@@ -65,24 +65,4 @@ public class ScreenController {
     }
     
     
-    
-    @GetMapping(value = "my.do")
-    public String my () {
-        System.out.println("  @ ScreenController my (): " + new Date());
-        return "layoutMy";
-    }
-    
-    @GetMapping(value = "update.do")
-    public String update () {
-        System.out.println("  @ ScreenController update (): " + new Date());
-        return "layoutUpdate";
-    }
-    
-    @GetMapping(value = "write.do")
-    public String write () {
-        System.out.println("  @ ScreenController write (): " + new Date());
-        return "layoutWrite";
-    }
-    
-    
 }
