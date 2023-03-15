@@ -12,11 +12,11 @@ import mul.cam.a.service.BbsService;
 @Service
 public class BbsServiceImpl implements BbsService{
 
-	@Autowired
-	BbsDao dao;
-	
-	
-	
+    @Autowired
+    BbsDao dao;
+    
+    
+    
     // ========== ========== ========== ========== ========== ========== ========== 
     // admin.do, qna.do
 
@@ -45,6 +45,17 @@ public class BbsServiceImpl implements BbsService{
     @Override
     public List<BbsDto> mainBbsList2(BbsDto dto) {
         return dao.mainBbsList2(dto);
-    }  
+    }
+    
+    @Override
+    public BbsDto getBbsTest(int seq) {     
+        return dao.getBbsTest(seq);
+    }
+    
+    @Override
+    public boolean updateBbs(BbsDto dto) {
+        int n = dao.updateBbs(dto); 
+        return n > 0 ? true : false;
+    }
     
 }

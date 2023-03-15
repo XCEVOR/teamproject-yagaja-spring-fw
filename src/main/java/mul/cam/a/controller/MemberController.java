@@ -8,8 +8,8 @@ import mul.cam.a.service.MemberService;
 @Controller
 public class MemberController {
 
-	
-	
-	@Autowired
-	MemberService service;
+    
+    
+    @Autowired
+    MemberService service;
 }

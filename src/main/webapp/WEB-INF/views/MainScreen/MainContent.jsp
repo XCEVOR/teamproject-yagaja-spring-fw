@@ -22,36 +22,36 @@
 
     <h1>MAIN CONTENT (테스트)</h1>
     <div id="wrapper">
-	    <div id="main">
-	        <input type="text" id="testinput" value="" placeholder="아이디 입력 (테스트)">
-	        <button type="button" onclick="myBtn()">분류</button>
-	        <div class="inner">
-	            <div class="container1"></div>
+        <div id="main">
+            <input type="text" id="testinput" value="" placeholder="아이디 입력 (테스트)">
+            <button type="button" onclick="myBtn()">분류</button>
+            <div class="inner">
+                <div class="container1"></div>
                 <section class="tiles">
                 
-	<%
-	    for(int i = 0;i < blist.size(); i++)
-	    {
-	        BbsDto bdto = blist.get(i);
-	        %>
-	            <article class="style1">
-	                <span class="image">
-	                    <img src="images/mainpage/pic01.jpg" alt="" />
-	                </span>
-	                <a href="generic.html">
-	                    <h2><%= bdto.getTitle() %></h2>
-	                    <div class="content">
-	                        <p><%= bdto.getContent() %></p>
-	                    </div>
-	                </a>
-	            </article>
-	        <%
-	    }
-	%>
-	
+    <%
+        for(int i = 0;i < blist.size(); i++)
+        {
+            BbsDto bdto = blist.get(i);
+            %>
+                <article class="style1">
+                    <span class="image">
+                        <img src="images/mainpage/pic01.jpg" alt="" />
+                    </span>
+                    <a href="update.do?seq=<%= bdto.getSeq() %>">
+                        <h2><%= bdto.getTitle() %></h2>
+                        <div class="content">
+                            <p><%= bdto.getContent() %></p>
+                        </div>
+                    </a>
+                </article>
+            <%
+        }
+    %>
+    
                 </section>
-		    </div>
-	    </div>
+            </div>
+        </div>
     </div>
     
     
