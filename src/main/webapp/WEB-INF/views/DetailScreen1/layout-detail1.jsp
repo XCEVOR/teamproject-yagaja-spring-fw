@@ -9,26 +9,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="assets/css/main.css" />
-<link rel="stylesheet" href="assets/css/mainpage.css" />
-<link rel="stylesheet" href="assets/css/noscript.css" />
-<link rel="stylesheet" href="assets/css/layout.css" />
-<style>
-
-html, body, #fullheight {
-
-height:100%;
-
-}
-
-
-</style>
 </head>
 <body>
 
 
-   <div id="fullheight">
-    <table id="fullheight"  style="width: 100%; border-color: gray;">
+    <table style="width: 100%; height: 100%; border-color: gray;">
         <!-- header -->
         <tr align="center" style="background-color: black; color: white;">
             <td colspan="2" style="height: 20%">
@@ -39,10 +24,10 @@ height:100%;
         <tr>
 	        <td style="background-color: grey;">
 	            <div align="center">
-		            <div  align="center" style="background-color: red; width: 100%; height: 700px;">
+		            <div  align="center" style="background-color: pink; width: 100%; height: 700px;">
 		               <tiles:insertAttribute name="Content-L-1"/>
 		            </div>
-		            <div  align="center" style="background-color: blue; width: 100%; height: 100px;">
+		            <div  align="center" style="background-color: yellow; width: 100%; height: 100px;">
 		               <tiles:insertAttribute name="Content-L-2"/>
 		            </div>
 	            </div>
@@ -60,12 +45,12 @@ height:100%;
         </tr>
         
         <!-- footer -->
-        <tr class="footer">
+        <tr align="center" style="background-color: black; color: white;">
             <td colspan="2" style="height: 10%">
                 <tiles:insertAttribute name="footer"/>
         </tr>
     </table>
 
-</div>
+
 </body>
 </html>
