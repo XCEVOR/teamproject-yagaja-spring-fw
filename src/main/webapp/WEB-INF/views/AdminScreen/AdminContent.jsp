@@ -10,7 +10,8 @@
 </head>
 <body>
 
-    <h1>ADMIN CONTENT</h1>
-
+<h1>AdminMain</h1>
+<a href="adminMem.do">회원</a>
+<a href="adminQna.do">Qna</a>
 </body>
 </html>

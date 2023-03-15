@@ -16,6 +16,22 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
     
+    <definition name="layoutAdmin_Mem" template="/WEB-INF/views/AdminScreen_Member/layout-admin.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/AdminScreen_Member/AdminContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    <definition name="layoutAdmin_Qna" template="/WEB-INF/views/AdminScreen_Qna/layout-admin.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/AdminScreen_Qna/AdminContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>  
+      
     <definition name="layoutQna" template="/WEB-INF/views/QnaScreen/layout-qna.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
         <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
