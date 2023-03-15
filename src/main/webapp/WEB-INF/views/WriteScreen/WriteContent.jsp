@@ -22,7 +22,7 @@
     $( function() {
       $( "#datepicker" ).datepicker();
     } );
-    </script>
+    </script>  
   <title>Document</title>
   <style>
     .btn-file{
