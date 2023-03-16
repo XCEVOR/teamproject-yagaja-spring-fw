@@ -16,6 +16,7 @@
     <a href="login.do">login.do</a><br>
     <a href="main.do">main.do</a><br>
     <a href="qna.do">qna.do</a><br>
+    <a href="qnawr.do">qnawr.do</a><br>
     <a href="signup.do">signup.do</a><br>
     <a href="my.do">my.do</a><br>
     <a href="update.do?seq=7">update.do</a><br>
