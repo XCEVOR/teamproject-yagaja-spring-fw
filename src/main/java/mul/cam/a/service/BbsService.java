@@ -3,6 +3,7 @@ package mul.cam.a.service;
 import java.util.List;
 
 import mul.cam.a.dto.BbsDto;
+import mul.cam.a.dto.BbsParam;
 
 public interface BbsService {
 
@@ -29,6 +30,7 @@ public interface BbsService {
     // main.do
     List<BbsDto> mainBbsList(BbsDto dto);
     List<BbsDto> mainBbsList2(BbsDto dto);
+    List<BbsDto> bbslist(BbsParam bbs);	
     
     BbsDto getBbsTest(int seq);
     boolean updateBbs(BbsDto dto);

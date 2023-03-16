@@ -36,6 +36,30 @@
         where id=#{id}
     </select>
     
+    <select id="bbslist" parameterType="mul.cam.a.dto.BbsParam"
+	resultType="mul.cam.a.dto.BbsDto">
+	
+		select seq, id, ref, step, depth, title, content, wdate, del, readcount
+		from
+			(select row_number()over(order by ref desc, step asc) as rnum,
+				seq, id, ref, step, depth, title, content, wdate, del, readcount
+			 from bbs
+			 where 1=1 
+			 <if test="choice != null and choice != '' and search != null and search != '' ">
+			 	<if test="choice == 'title'">
+			 		and title like concat('%', #{search}, '%') and del=0
+			 	</if>
+			 	<if test="choice == 'content'">
+			 		and content like concat('%', #{search}, '%') and del=0
+			 	</if>
+			 	<if test="choice == 'writer'">
+			 		and id=#{search} and del=0
+			 	</if>
+			 </if>		 
+			 order by ref desc, step asc) a
+		where rnum between ${start} and ${end}
+	</select>
+    
     <select id="getBbsTest" parameterType="Integer" resultType="mul.cam.a.dto.BbsDto">
         select seq, id, ref, step, depth, title, content, wdate, del, readcount
         from bbs

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import mul.cam.a.dao.BbsDao;
 import mul.cam.a.dto.BbsDto;
+import mul.cam.a.dto.BbsParam;
 
 
 @Repository
@@ -51,6 +52,11 @@ public class BbsDaoImpl implements BbsDao {
         System.out.println("   @ mainBbsList2 dto.getId():  " + dto.getId());
         return session.selectList(ns + "mainbbslist2", dto);
     }
+    
+    @Override
+	public List<BbsDto> bbslist(BbsParam bbs) {		
+		return session.selectList(ns + "bbslist", bbs);
+	}
     
     @Override
     public BbsDto getBbsTest (int seq) {     

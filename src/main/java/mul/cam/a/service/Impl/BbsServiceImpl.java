@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import mul.cam.a.dao.BbsDao;
 import mul.cam.a.dto.BbsDto;
+import mul.cam.a.dto.BbsParam;
 import mul.cam.a.service.BbsService;
 
 @Service
@@ -46,6 +47,11 @@ public class BbsServiceImpl implements BbsService{
     public List<BbsDto> mainBbsList2(BbsDto dto) {
         return dao.mainBbsList2(dto);
     }
+    
+	@Override
+	public List<BbsDto> bbslist(BbsParam bbs) {		
+		return dao.bbslist(bbs);
+	}
     
     @Override
     public BbsDto getBbsTest(int seq) {     
