@@ -103,7 +103,7 @@ public class BbsController {
         List<BbsDto> blist = service.mainBbsList(dto);
         model.addAttribute("bbslist", blist);
         
-        return "layoutMain";
+        return "layoutMessage";
     }
     
 }

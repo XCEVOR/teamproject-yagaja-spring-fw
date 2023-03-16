@@ -125,6 +125,8 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
     
+    <definition name="layoutMessage" template="/WEB-INF/views/message.jsp" />
+    
     
 
 </tiles-definitions>
