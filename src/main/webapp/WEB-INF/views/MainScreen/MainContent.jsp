@@ -39,6 +39,8 @@
                         <img src="images/mainpage/pic01.jpg" alt="" />
                     </span>
                     <a href="update.do?seq=<%= bdto.getSeq() %>">
+                        <h6>Like test: <%= bdto.getLikecount() %></h6>
+                        <h6>Read test: <%= bdto.getReadcount() %></h6>
                         <h2><%= bdto.getTitle() %></h2>
                         <div class="content">
                             <p><%= bdto.getContent() %></p>
