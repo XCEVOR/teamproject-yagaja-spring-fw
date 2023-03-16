@@ -40,7 +40,13 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
     
-    
+    <definition name="layoutQnaWr" template="/WEB-INF/views/QnawrScreen/layout-qna.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/QnawrScreen/QnawrContent.jsp"/>
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>    
     
     <!-- ========== ========== ========== ========== ========== ========== ========== -->
     <!-- layoutDetail1, layoutDetail2 -->

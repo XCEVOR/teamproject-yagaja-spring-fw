@@ -52,7 +52,12 @@ public class ScreenController {
         return "layoutQna";
     }
     
-    
+    @GetMapping(value = "qnawr.do")
+    public String adminQnawr (Model model) {
+        System.out.println("  @ ScreenController qnawr (): " + new Date());
+
+        return "layoutQnaWr";
+    }
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do
