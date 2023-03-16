@@ -27,7 +27,7 @@
     <select id="mainbbslist" parameterType="mul.cam.a.dto.BbsDto" resultType="mul.cam.a.dto.BbsDto">
         select * 
         from bbs 
-        where 1=1
+        where 1=1 order by likecount desc
     </select>
     
     <select id="mainbbslist2" parameterType="mul.cam.a.dto.BbsDto" resultType="mul.cam.a.dto.BbsDto">
@@ -39,10 +39,10 @@
     <select id="bbslist" parameterType="mul.cam.a.dto.BbsParam"
 	resultType="mul.cam.a.dto.BbsDto">
 	
-		select seq, id, ref, step, depth, title, content, wdate, del, readcount
+		select seq, id, title, nickname, content, wdate, del, readcount, likecount
 		from
-			(select row_number()over(order by ref desc, step asc) as rnum,
-				seq, id, ref, step, depth, title, content, wdate, del, readcount
+			(select row_number()over(order by likecount desc) as rnum,
+				seq, id, title, nickname, content, wdate, del, readcount, likecount
 			 from bbs
 			 where 1=1 
 			 <if test="choice != null and choice != '' and search != null and search != '' ">
@@ -56,12 +56,12 @@
 			 		and id=#{search} and del=0
 			 	</if>
 			 </if>		 
-			 order by ref desc, step asc) a
+			 order by likecount desc) a
 		where rnum between ${start} and ${end}
 	</select>
     
     <select id="getBbsTest" parameterType="Integer" resultType="mul.cam.a.dto.BbsDto">
-        select seq, id, ref, step, depth, title, content, wdate, del, readcount
+        select seq, id, title, nickname, content, wdate, del, readcount, likecount
         from bbs
         where seq=#{seq}
     </select>
