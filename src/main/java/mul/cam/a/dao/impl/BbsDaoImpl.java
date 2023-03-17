@@ -58,6 +58,11 @@ public class BbsDaoImpl implements BbsDao {
 		return session.selectList(ns + "bbslist", bbs);
 	}
     
+	@Override
+    public int getAllBbs(BbsParam bbs) {        
+        return session.selectOne(ns + "getAllBbs", bbs);
+    }
+    
     @Override
     public BbsDto getBbsTest (int seq) {     
         return session.selectOne(ns + "getBbsTest", seq);

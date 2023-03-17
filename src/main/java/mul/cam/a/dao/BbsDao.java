@@ -32,6 +32,7 @@ public interface BbsDao {
     List<BbsDto> mainBbsList(BbsDto dto);
     List<BbsDto> mainBbsList2(BbsDto dto);
     List<BbsDto> bbslist(BbsParam bbs);	
+    int getAllBbs(BbsParam bbs);
     
     BbsDto getBbsTest(int seq);
     int updateBbs(BbsDto dto);

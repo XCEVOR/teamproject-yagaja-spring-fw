@@ -59,6 +59,24 @@
 			 order by likecount desc) a
 		where rnum between ${start} and ${end}
 	</select>
+	
+	    <!-- 글의 총수 -->
+	<select id="getAllBbs" parameterType="mul.cam.a.dto.BbsParam" resultType="java.lang.Integer">
+	    
+	    select ifnull(count(*), 0)
+	    from bbs
+	    <if test="choice != null and choice != '' and search != null and search != '' ">
+	        <if test="choice == 'title'">
+	            where title like concat('%', #{search}, '%') and del=0
+	        </if>
+	        <if test="choice == 'content'">
+	            where content like concat('%', #{search}, '%') and del=0
+	        </if>
+	        <if test="choice == 'writer'">
+	            where id=#{search} and del=0
+	        </if>
+	     </if>
+	</select>
     
     <select id="getBbsTest" parameterType="Integer" resultType="mul.cam.a.dto.BbsDto">
         select seq, id, title, nickname, content, wdate, del, readcount, likecount
