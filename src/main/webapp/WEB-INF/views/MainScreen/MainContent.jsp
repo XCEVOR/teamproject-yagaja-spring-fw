@@ -6,11 +6,17 @@
 <!DOCTYPE html>
 <html>
 
+
+
 <%
     List<MemberDto> list = (List<MemberDto>)request.getAttribute("list");
     List<BbsDto> blist = (List<BbsDto>)request.getAttribute("bbslist");
-
     // System.out.println(blist.toString());
+    int pageBbs = (Integer)request.getAttribute("pageBbs");
+	int pageNumber = (Integer)request.getAttribute("pageNumber");
+	String choice = (String)request.getAttribute("choice");
+	String search = (String)request.getAttribute("search");
+	
 %>
 
 <head>
@@ -18,44 +24,50 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/noscript.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
 
-    <h1>MAIN CONTENT (테스트)</h1>
+    <h1>MAIN CONTENT (테스트) loginid:xxx</h1>
     <div id="wrapper">
-        <div id="main">
-            <input type="text" id="testinput" value="" placeholder="아이디 입력 (테스트)">
-            <button type="button" onclick="myBtn()">분류</button>
-            <div class="inner">
-                <div class="container1"></div>
-                <section class="tiles">
+	    <div id="main">
+	        <input type="text" id="testinput" value="" placeholder="아이디 입력 (테스트)">
+	        <button type="button" onclick="myBtn()">분류</button>
+	        <div class="inner">
+	            <div class="container1"></div>
+                <section id="mysection" class="tiles">
                 
-    <%
-        for(int i = 0;i < blist.size(); i++)
-        {
-            BbsDto bdto = blist.get(i);
-            %>
-                <article class="style1">
-                    <span class="image">
-                        <img src="images/mainpage/pic01.jpg" alt="" />
-                    </span>
-                    <a href="update.do?seq=<%= bdto.getSeq() %>">
+	<%
+	    for(int i = 0;i < blist.size(); i++)
+	    {
+	        BbsDto bdto = blist.get(i);
+	        %>
+	            <article class="style1">
+	                <span class="image">
+	                    <img src="images/mainpage/pic01.jpg" alt="" />
+	                </span>
+	                <a href="update.do?seq=<%= bdto.getSeq() %>">
                         <h6>Like test: <%= bdto.getLikecount() %></h6>
                         <h6>Read test: <%= bdto.getReadcount() %></h6>
-                        <h2><%= bdto.getTitle() %></h2>
-                        <div class="content">
-                            <p><%= bdto.getContent() %></p>
-                        </div>
-                    </a>
-                </article>
-            <%
-        }
-    %>
-    
+	                    <h2><%= bdto.getTitle() %></h2>
+	                    <div class="content">
+	                        <p><%= bdto.getContent() %></p>
+	                    </div>
+	                </a>
+	            </article>
+	        <%
+	    }
+	%>
+	
                 </section>
-            </div>
-        </div>
+		    </div>
+	    </div>
     </div>
+    
+    
+    <!-- 0317 다른 페이지 불러오기. -->
+    <button type="button" id="nextBtn" onclick="nextPage()">NEXT</button>
+    
     
     
     <div>
@@ -160,12 +172,13 @@
  -->
             </div>
         
-<!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+        
+        
+        
+        
+        
+        
+
     
 <!-- 삭제 -->
 
@@ -182,6 +195,75 @@
     /* function replay() {
         location.reload();
     } */
+    
+    
+    // 0317 다른 페이지 불러오기.
+    function goPage( pageNumber ) {
+        let choice = document.getElementById('choice').value;
+        let search = document.getElementById('search').value;
+        
+        location.href = "main.do?choice=" + choice + "&search=" + search + "&pageNumber=" + pageNumber;  
+    }
+    
+    let totalPage = <%= pageBbs %>;
+    let loadedPage = -1;
+    console.log(totalPage);
+    function nextPage() {
+    	loadedPage += 1;
+    $(document).ready(function () {
+    	
+    	let param = { 	"choice": null, 
+						"search": null,
+						"pageNumber": loadedPage,
+						"start": "1",
+						"end": "10"};
+		$.ajax({
+			url: "mainnumpage.do",
+			type: "get",
+			data: param,
+			success: function (list) {
+				// alert(list);
+				console.log(list);
+				/* $("#mysection").html(""); */
+				$.each(list, function(index, item){
+					let str = "<article class='style1'>" 
+							+ "		<span class='image'>"
+							+ "			<img src='images/mainpage/pic01.jpg' alt='' />"
+							+ "		</span>"
+							+ "		<a href=''>"
+	                        + "			<h6>Like test:" + item.likecount + "</h6>"
+	                        + "			<h6>Read test:" + item.readcount + "</h6>"
+		                    + "			<h2>" + item.title + "</h2>"
+		                    + "			<div class='content'>"
+		                    + "				<p>" + item.content + "</p>"
+		                    + "			</div>"
+		                    + "		</a>"
+							+ "</article>";
+							
+					$("#mysection").append(str);
+				});
+				/* content.trigger("#mysection");
+				$('#mysection').page(); */
+			},
+			error: function (request, status, error) {
+				alert(request.responseText);
+			}
+		});
+	});
+    }
+    
+    
 </script>
+
+
+<!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    
+    
 </body>
 </html>
