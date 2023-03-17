@@ -13,10 +13,10 @@
     List<BbsDto> blist = (List<BbsDto>)request.getAttribute("bbslist");
     // System.out.println(blist.toString());
     int pageBbs = (Integer)request.getAttribute("pageBbs");
-	int pageNumber = (Integer)request.getAttribute("pageNumber");
-	String choice = (String)request.getAttribute("choice");
-	String search = (String)request.getAttribute("search");
-	
+    int pageNumber = (Integer)request.getAttribute("pageNumber");
+    String choice = (String)request.getAttribute("choice");
+    String search = (String)request.getAttribute("search");
+    
 %>
 
 <head>
@@ -30,44 +30,44 @@
 
     <h1>MAIN CONTENT (테스트) loginid:xxx</h1>
     <div id="wrapper">
-	    <div id="main">
-	        <input type="text" id="testinput" value="" placeholder="아이디 입력 (테스트)">
-	        <button type="button" onclick="myBtn()">분류</button>
-	        <div class="inner">
-	            <div class="container1"></div>
+        <div id="main">
+            <input type="text" id="testinput" value="" placeholder="아이디 입력 (테스트)">
+            <button type="button" onclick="myBtn()">분류</button>
+            <div class="inner">
+                <div class="container1"></div>
                 <section id="mysection" class="tiles">
                 
-	<%
-	    for(int i = 0;i < blist.size(); i++)
-	    {
-	        BbsDto bdto = blist.get(i);
-	        %>
-	            <article class="style1">
-	                <span class="image">
-	                    <img src="images/mainpage/pic01.jpg" alt="" />
-	                </span>
-	                <a href="update.do?seq=<%= bdto.getSeq() %>">
+    <%
+        for(int i = 0;i < blist.size(); i++)
+        {
+            BbsDto bdto = blist.get(i);
+            %>
+                <article class="style1">
+                    <span class="image">
+                        <img src="images/mainpage/pic01.jpg" alt="" />
+                    </span>
+                    <a href="update.do?seq=<%= bdto.getSeq() %>">
                         <h6>Like test: <%= bdto.getLikecount() %></h6>
                         <h6>Read test: <%= bdto.getReadcount() %></h6>
-	                    <h2><%= bdto.getTitle() %></h2>
-	                    <div class="content">
-	                        <p><%= bdto.getContent() %></p>
-	                    </div>
-	                </a>
-	            </article>
-	        <%
-	    }
-	%>
-	
+                        <h2><%= bdto.getTitle() %></h2>
+                        <div class="content">
+                            <p><%= bdto.getContent() %></p>
+                        </div>
+                    </a>
+                </article>
+            <%
+        }
+    %>
+    
                 </section>
-		    </div>
-	    </div>
+            </div>
+        </div>
     </div>
     
     
     <!-- 0317 다른 페이지 불러오기. -->
     <button type="button" id="nextBtn" onclick="nextPage()">NEXT</button>
-    
+    <div id="trigger"></div>
     
     
     <div>
@@ -209,49 +209,88 @@
     let loadedPage = -1;
     console.log(totalPage);
     function nextPage() {
-    	loadedPage += 1;
-    $(document).ready(function () {
-    	
-    	let param = { 	"choice": null, 
-						"search": null,
-						"pageNumber": loadedPage,
-						"start": "1",
-						"end": "10"};
-		$.ajax({
-			url: "mainnumpage.do",
-			type: "get",
-			data: param,
-			success: function (list) {
-				// alert(list);
-				console.log(list);
-				/* $("#mysection").html(""); */
-				$.each(list, function(index, item){
-					let str = "<article class='style1'>" 
-							+ "		<span class='image'>"
-							+ "			<img src='images/mainpage/pic01.jpg' alt='' />"
-							+ "		</span>"
-							+ "		<a href=''>"
-	                        + "			<h6>Like test:" + item.likecount + "</h6>"
-	                        + "			<h6>Read test:" + item.readcount + "</h6>"
-		                    + "			<h2>" + item.title + "</h2>"
-		                    + "			<div class='content'>"
-		                    + "				<p>" + item.content + "</p>"
-		                    + "			</div>"
-		                    + "		</a>"
-							+ "</article>";
-							
-					$("#mysection").append(str);
-				});
-				/* content.trigger("#mysection");
-				$('#mysection').page(); */
-			},
-			error: function (request, status, error) {
-				alert(request.responseText);
-			}
-		});
-	});
+        loadedPage += 1;
+        $(document).ready(function () {
+            
+            let param = {   "choice": null, 
+                            "search": null,
+                            "pageNumber": loadedPage,
+                            "start": "1",
+                            "end": "10"};
+            $.ajax({
+                url: "mainnumpage.do",
+                type: "get",
+                data: param,
+                success: function (list) {
+                    // alert(list);
+                    console.log(list);
+                    /* $("#mysection").html(""); */
+                    $.each(list, function(index, item){
+                        let str = "<article class='style1 myfade" + loadedPage + "'>" 
+                                + "     <span class='image'>"
+                                + "         <img src='images/mainpage/pic01.jpg' alt='' />"
+                                + "     </span>"
+                                + "     <a href=''>"
+                                + "         <h6>Like test:" + item.likecount + "</h6>"
+                                + "         <h6>Read test:" + item.readcount + "</h6>"
+                                + "         <h2>" + item.title + "</h2>"
+                                + "         <div class='content'>"
+                                + "             <p>" + item.content + "</p>"
+                                + "         </div>"
+                                + "     </a>"
+                                + "</article>";
+    
+                        let newTags = $(str).hide();
+                        $("#mysection").append(newTags);
+                    });
+                    /* content.trigger("#mysection");
+                    $('#mysection').page(); */
+                    
+                    $(".myfade" + loadedPage).delay(500).fadeIn(2000);
+                    // newTags.fadeIn(1000);
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+    
+    
+        });
     }
     
+
+        
+    
+    
+    var isVisible = false;
+
+    $(window).on('scroll',function() {
+        if (checkVisible($('#trigger'))&&!isVisible) {
+            // alert("Visible!!!");
+            isVisible=true;
+            setTimeout(nextPage, 1000);
+            
+            setTimeout(function() {
+                  isVisible = false;
+                }, 2000);
+        }
+    });
+
+    function checkVisible( elm, eval ) {
+        eval = eval || "object visible";
+        var viewportHeight = $(window).height(), // Viewport Height
+            scrolltop = $(window).scrollTop(), // Scroll Top
+            y = $(elm).offset().top,
+            elementHeight = $(elm).height();   
+        
+        if (eval == "object visible") return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
+        if (eval == "above") return ((y < (viewportHeight + scrolltop)));
+    }
+    
+    
+    
+    
+    history.scrollRestoration = "manual";  // 최상단으로 이동.
     
 </script>
 
