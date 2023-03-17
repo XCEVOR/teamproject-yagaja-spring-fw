@@ -25,6 +25,24 @@
     
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
     // login.do, signup.do -->
+<select id="login" parameterType="mul.cam.a.dto.MemberDto"
+	resultType="mul.cam.a.dto.MemberDto">
+	select id, pwd, phonenumber, nickname, email, auth, mbti, grade, gender
+	from member
+	where id=#{id} and pwd=#{pwd}
+</select>
+
+<insert id="addmember" parameterType="mul.cam.a.dto.MemberDto"  >
+	insert into member(id, phonenumber, email, nickname, pwd, auth, mbti, grade, gender)
+	values(#{id}, #{phonenumber}, #{email}, #{nickname}, #{pwd}, 1, #{mbti}, 0, #{gender})
+</insert>
+
+ <select id="idcheck" parameterType="String" resultType="Integer">
+	select count(*)
+	from member
+	where id=#{id}
+</select>
+
 
     
     

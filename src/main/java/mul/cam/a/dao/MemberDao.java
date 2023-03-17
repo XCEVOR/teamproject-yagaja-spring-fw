@@ -1,6 +1,10 @@
 package mul.cam.a.dao;
 
+import mul.cam.a.dto.MemberDto;
+
 public interface MemberDao {
+
+	
 
     
     // ========== ========== ========== ========== ========== ========== ========== 
@@ -17,8 +21,11 @@ public interface MemberDao {
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // login.do, signup.do
+	MemberDto login(MemberDto dto);
 
-    
+	int addMember(MemberDto dto);
+   
+	int idCheck(String id);
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
