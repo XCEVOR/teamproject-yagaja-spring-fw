@@ -9,6 +9,7 @@
 <%
     List<MemberDto> list = (List<MemberDto>)request.getAttribute("list");
     List<BbsDto> blist = (List<BbsDto>)request.getAttribute("bbslist");
+
     // System.out.println(blist.toString());
 %>
 

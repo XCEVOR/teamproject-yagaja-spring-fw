@@ -44,8 +44,11 @@
 </select>
 
 
-    
-    
+<!--     // ========== ========== ========== ========== ========== ========== ========== 
+    // mypage update -->    
+<update id="myupdate" parameterType="mul.cam.a.dto.MemberDto">
+	update member set nickname = #{nickname}, mbti = #{mbti} where id = #{id}
+</update>    
     
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
     // main.do -->

@@ -29,7 +29,7 @@ public class MemberDaoImpl implements MemberDao {
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
-    // login.do, signup.do
+    // login.do, signup.do, mypageUpdAf.do
 	@Override
 	public MemberDto login(MemberDto dto) {
 		MemberDto mem = session.selectOne(ns + "login", dto);
@@ -48,7 +48,11 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne(ns + "idcheck", id);
 	}
 
-    
+	@Override
+	public int myupdate(MemberDto dto) {
+		// TODO Auto-generated method stub
+		return session.update(ns+"myupdate", dto);
+	}
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
