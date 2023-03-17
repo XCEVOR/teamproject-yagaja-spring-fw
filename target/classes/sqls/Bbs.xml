@@ -71,6 +71,40 @@
         set title=#{title}, content=#{content}, wdate=now()
         where seq=#{seq}
     </update>
+    
+	
+	
+	<insert id="bbsTempwriteAf"  parameterType="mul.cam.a.dto.BbsDto">
+	insert into tempbbs(id,nickname,title,content,
+	hashtags,wdate,date,del,readcount,likecount,filename, newfilename)
+	values(#{id},#{nickname},#{title},#{content},#{hashtags},now(),#{date},0,0,0
+	#{filename},#{newfilename})	
+	</insert>
+	
+	<update id="bbsTempupdateAf"  parameterType="mul.cam.a.dto.BbsDto">
+	update tempbbs
+	set title=#{title}, hashtags=#{hashtags}, content=#{content},wdate=now()
+	,date=#{date},filename=#{filename},newfilename=#{newfilename}
+	
+	where seq=#{seq}
+		
+	</update>
+	
+	<select id="bbstTempList" resultType="mul.cam.a.dto.BbsDto">
+	select * from tempbbs;
+	
+	</select>
+	
+	<select id="bbstTempDto" parameterType="String" resultType="mul.cam.a.dto.BbsDto">
+	select * from tempbbs where date=#{date};
+
+	</select>
+	
+	<delete id="bbsTempdelete" parameterType="String">
+	delete from tempbbs where date=#{date}
+	</delete>
+
+
 
     
 </mapper>

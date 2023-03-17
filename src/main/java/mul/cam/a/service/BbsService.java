@@ -34,4 +34,12 @@ public interface BbsService {
     
     BbsDto getBbsTest(int seq);
     boolean updateBbs(BbsDto dto);
+    
+    
+    
+    boolean bbsTempwriteAf(BbsDto dto);
+    List<BbsDto>bbstTempList();
+    BbsDto bbstTempDto(String date);
+    boolean bbsTempupdateAf(BbsDto dto);
+    boolean bbsTempdelete(String date);
 }

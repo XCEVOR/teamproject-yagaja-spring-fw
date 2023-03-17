@@ -2,7 +2,7 @@ package mul.cam.a.dto;
 
 import java.io.Serializable;
 
-public class BbsImgDto implements Serializable{
+public class BbsPostDto implements Serializable{
 
 	private int seq;
 	private String id;

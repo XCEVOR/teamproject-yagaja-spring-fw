@@ -122,8 +122,14 @@ public class ScreenController {
 
     
     @GetMapping(value = "write.do")
-    public String write () {
+    public String write (Model model) {
         System.out.println("  @ ScreenController write (): " + new Date());
+        
+ 
+        model.addAttribute("bbstTempList",null);
+        model.addAttribute("bbstTempDto", null);
+        
+ 
         return "layoutWrite";
     }
     

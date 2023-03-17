@@ -1,5 +1,14 @@
+
+<%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.Array"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="mul.cam.a.dto.BbsDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,19 +18,15 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/noscript.css" />
 
-   <!-- 부트 -->
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- datepicker -->
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script>
     $( function() {
       $( "#datepicker" ).datepicker();
     } );
+    
     </script>  
   <title>Document</title>
   <style>
@@ -59,89 +64,351 @@
 </style>
 </head>
 
+<%
+// temp 공간의 bbs list
+List<BbsDto> list= (List<BbsDto>)request.getAttribute("bbsTempList");
+// 현재 bbs dto
+BbsDto dto = (BbsDto)request.getAttribute("bbsTempDto");
 
+System.out.println(list);
+System.out.println(dto);
+
+String title ="";
+String content = "";
+String date="";
+String hashtags="";
+int seq=0;
+boolean exist=false;
+if(dto != null){
+	exist=true;
+	title = dto.getTitle();
+	content =dto.getContent();
+	date=dto.getDate();
+	seq=dto.getSeq();
+	if(dto.getHashtags()!=null){
+		hashtags=dto.getHashtags();
+	};
+}
+
+List<String> dateList=new ArrayList();
+
+%>
+
+<!-- 값 넣어주기  -->
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#datepicker").val('<%=date%>');
+ 	$("#title").val('<%=title%>');
+	$("#content").val('<%=content%>');  
+	  
+});
+</script>
 
 <body>
-  
+
   
   <div style="width: 500px; justify-content: center; margin: auto; padding-top: 100px;">
     <h1>글 작성 페이지</h1>
-  <form method="post" action="#">
+    <form id="uploadFileForm">
+    
+    <input type="hidden" name="seq" id="seq" value="<%=seq%>">
+ 
     <div class="row gtr-uniform">
       <div class="col-6 col-12-xsmall">
-        <p id="dateId"><input id="datepicker" type="text" id="datepicker" placeholder="일정 등록"></p>
+        <p id="dateId"><input id="datepicker"  type="text" id="datepicker" placeholder="일정 등록"></p>
       </div>
       <div class="col-6 col-12-xsmall">
         <ul id="listBody">
           <h2>일정 list</h2>
+          <%
+         if(list!=null){
+         for(int i=0;i<list.size();i++){
+        	 BbsDto d=list.get(i);
+        	 dateList.add(d.getDate());
+        	 %>
+        	 <li><%=d.getDate()%><a href='bbsTempClick.do?date=<%=d.getDate()%>'
+					class='button primary small dateContent' 
+					style='font-size: 5px; margin-left:10px'>이동</a></li>
+                <% 
+         }
+         }
+          %>
           <!-- 일정 추가 -->
         </ul>
       </div>
 
       <div class="col-6 col-12">
-        <input type="text" name="demo-name" id="demo-name" value="" placeholder="글 제목"/>
+        <input type="text" name="title" id="title" value="" placeholder="글 제목"/>
       </div>
 
       <div class="col-6 col-12">
-       <textarea style="height: 200px;" placeholder="내용을 입력해주세요.."></textarea>
+       <textarea style="height: 200px;" name="content" id="content" placeholder="내용을 입력해주세요.."></textarea>
       </div>
 
       <div class="col-2 col-2">
         <input type="button" id="hashtagBtn" class="button primary small" style="font-size: 10px;" value="해시태그 추가">
         <span id="hashtagBody">
-          <input class="hashtagContent" type="text" name="demo-name" id="demo-name" value="" placeholder="#"/>
-        
+          <%
+         if(hashtags!=""){
+        	 String tags [] =hashtags.split(",");
+         	for(int i=0;i<tags.length;i++){
+        	 %>
+        <input class="hashtagContent" type="text" name="hashtag" id="demo-name" value="<%=tags[i]%>" placeholder="#"/>'
+                <% 
+         }
+         }
+          %>
+          
         </span>
         
       </div>
      
       <div class="col-6 col-12">
         <label class="btn btn-default btn-file">
-          사진 등록 <input type="file" style="display: none;">
+          사진 등록 <input type="file" name="fileload" id="file">
       </label>
+      <p id="fileCommnet"></p>
       </div>
-      
+       </form>
       
       <div class="col-12">
         <ul class="actions">
-          <li><input id="saveBtn" type="button" value="SAVE" class="primary" /></li>
+			
+          <li>
+          <div id="alterChange" style="display: none;"><input id="alterBtn" type="button" value="ALTER" class="primary" /></div>
+          <div id="saveChange" ><input id="saveBtn" type="button" value="SAVE" class="primary" /></div>
+          </li>
+          
           <li><input id="deleteBtn" type="button" value="DELETE" class="Default" /></li>
-          <li><input type="submit" value="최종 등록" class="primary" /></li>
+          <li><input id="saveAllBtn"type="button" value="최종 등록" class="primary" /></li>
         </ul>
       </div>
-
+         <input type="hidden" name="hashtags" id="hashtags" value="">
+     
     </div>
-  </form>
   </div>
+
 
 
 
   <!-- 날짜 선택 시 일정 list에 추가 -->
   <script>
+  // 일정 list 뿌리기
+
+  // dateList를 매핑하여 문자열로 변환
+   <%ObjectMapper objectMapper = new ObjectMapper();
+	 String jsonString = objectMapper.writeValueAsString(dateList);%>
+			
+	var dateList = <%=jsonString%>   
+	
+	var exist=<%=exist%>;
+	var c_date="<%=date%>";
+	if(exist){
+		$("#saveChange").css("display","none")
+		$("#alterChange").css("display","block");
+	}
 
      $( "#datepicker" ).datepicker({    
-         onSelect: function() {                         
+         onSelect: function() {
             date = $("#datepicker").val();
+            if(date!=c_date ){
+        		$("#saveChange").css("display","block")
+        		$("#alterChange").css("display","none");
+        	}
+           
+			if(dateList.indexOf(date)!=-1){
+				alert("날짜가 중복됐습니다.")
+				$("#datepicker").val("");
+			}else{
             li="<li>"+
-              date+"<a href='#'' class='button primary small dateContent' style='font-size: 5px; margin-left:10px'>변경</a></li>"
+              date+" <a href='bbsTempClick.do?date="+date
+              +"' class='button primary small dateContent' style='font-size: 5px; margin-left:10px'>이동</a></li>"
             $("#listBody").append(li);
-        }
-    });   
-
+        }}
+     
+    }); 
+  
+  	
+  
+  /* 해시태그 추가  */
     $("#hashtagBtn").click(function(){
-       hashtag='<input class="hashtagContent" type="text" name="demo-name" id="demo-name" value="" placeholder="#"/>'
+       hashtag='<input class="hashtagContent" type="text" name="hashtag" id="demo-name" value="" placeholder="#"/>'
       $("#hashtagBody").append(hashtag);
     });
 
+  
     $("#deleteBtn").click(function(){                           
       date = $("#datepicker").val();
-      console.log(date) // 해당되는 날짜 삭제
+      location.href="bbsTempdelete.do?date="+date;
 
+    });
+  
+
+
+/* 파일 텍스트  */
+    $("#file").change(function(){
+      image=$("#file").val();
+      if(image!=""){
+      $("#fileCommnet").text("정상적으로 사진이 등록됐습니다.." +image );
+      }
+  
     });
 
 
 
 
+/* SAVE 버튼 클릭시  -> 현재 페이지 저장 -> 현재 페이지번호의 세션이 저장 */
+
+$(document).ready(function(){
+	 $("#saveBtn").click(function(){
+	       // 해시태그 값 가져오기
+	       let hashtagList="";
+	       let hashtags=  $(".hashtagContent");
+	       
+	       for(let i=0;i<hashtags.length;i++){
+	        tag=hashtags.eq(i).val();
+	        if(tag!=""){
+	          hashtagList+=(tag+",")
+	          } 
+	        }
+	     
+	       // 해시태그 date값 설정
+	       $("#hashtags").val(hashtagList);
+		   $("#date").val($("#datepicker").val());
+	      //  날짜 값 가져오기
+	    	 date = $("#datepicker").val();
+
+	      //  글 제목 가져오기
+	    	 title = $("#title").val();
+
+	       // 글 내용 가져오기
+	    	 content = $("#content").val();
+	       	    
+
+	       // alert 등록 (필수 입력 항목 alert처리)
+	       if(date =="") {
+	        alert("날짜를 등록해주세요..");
+
+	       }else if(title=="" ){
+	        alert("제목을 입력해주세요..");
+	        
+	       }else if(content==""){
+	        alert("내용을 입력해주세요..");
+
+	       }else{
+	    
+	    	  console.log($("#file").val());
+	    	   
+	    	   $.ajax({
+	    		   url:"bbsTempwriteAf.do",
+	    		   type:"post",
+	    		   data: $("#uploadFileForm").serialize(),
+	    		   enctype:'multipart/form-data',
+	    		   processData:false,
+	    		   cache:false,
+	    		   success:function(){
+	    			   alert("s");
+	    		   },
+	    		   error:function(){
+	    			   alert("e");
+	    		   }
+	 
+	    		   
+	    	   });
+	 
+	    		  
+	    	   
+	    	   // 글 초기화 
+	    	    image=$("#file").val("");
+	    	
+	    	    date = $("#datepicker").val("");
+	 
+	    	    title = $("#title").val("");
+
+	    	    content = $("#content").val("");
+
+	       }
+	    });
+	    
+})
+   
+    $("#alterBtn").click(function(){
+        // 해시태그 값 가져오기
+        let hashtagList="";
+        let hashtags=  $(".hashtagContent");
+        for(let i=0;i<hashtags.length;i++){
+         tag=hashtags.eq(i).val();
+         if(tag!=""){
+           hashtagList+=(tag+",")
+           } 
+         }
+		
+        // 이미지 값 가져오기
+        image=$("#file").val();
+
+       //  날짜 값 가져오기
+     	 date = $("#datepicker").val();
+
+       //  글 제목 가져오기
+     	 title = $("#title").val();
+
+        // 글 내용 가져오기
+     	 content = $("#content").val();
+		
+        // alert 등록 (필수 입력 항목 alert처리)
+     	 if(date =="") {
+         alert("날짜를 등록해주세요..");
+
+        }else if(title=="" ){
+         alert("제목을 입력해주세요..");
+         
+        }else if(content==""){
+         alert("내용을 입력해주세요..");
+
+        }else{
+		
+     	   $.ajax({
+     		   url:"bbsTempupdateAf.do",
+     		   type:"post",
+     		   data: new FormData($("#uploadFileForm")[0]),
+     		   
+     		   enctype:'multipart/form-data',
+     		   processData:false,
+     		   cache:false,
+     		   success:function(){
+     			   alert("s");
+     		   },
+     		   error:function(){
+     			   alert("e");
+     		   }
+  
+     		   
+     	   });
+     	   
+     /* 	   // 글 초기화 
+     	    image=$("#file").val("");
+     	
+     	    date = $("#datepicker").val("");
+  
+     	    title = $("#title").val("");
+
+     	    content = $("#content").val(""); */
+ 			
+     	  
+  
+         
+        }
+     });
+    
+    
+    
+
+
   </script>
+
+     <!-- 부트 -->
+     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 </body>
 </html>
