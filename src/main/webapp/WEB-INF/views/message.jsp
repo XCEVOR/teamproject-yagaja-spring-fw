@@ -49,6 +49,29 @@ if(login != null && !login.equals("")){
 	}	
 }
 
+//내정보 수정
+String memberUpdate = (String)request.getAttribute("memupdate");
+if(memberUpdate != null && !memberUpdate.equals("")){
+	if(memberUpdate.equals("mem_update_success")){
+		String id = (String)request.getAttribute("id");
+		System.out.println(id);
+		%>
+		<script type="text/javascript">
+		alert("성공적으로 수정되었습니다");
+		//location.href = "my.do?id=abc";
+		location.href = "my.do?id=<%=id%>";
+		</script>
+		<%
+	}
+	else{		
+		%>
+		<script type="text/javascript">	
+		alert("다시 작성해 주십시오");		
+		location.href = "my.do?id="+id;
+		</script>
+		<%
+	}	
+}
 
 	String bbsupdate = (String)request.getAttribute("bbsupdate");
 	if(bbsupdate != null && !bbsupdate.equals("")){

@@ -20,12 +20,12 @@ public interface MemberService {
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
-    // login.do, signup.do
+    // login.do, signup.do, mypageUpdAf.do
 	MemberDto login(MemberDto dto);
 	boolean addMember(MemberDto dto);
 	boolean idCheck(String id);  
 
-    
+	boolean myupdate(MemberDto dto);
     
     
     // ========== ========== ========== ========== ========== ========== ========== 

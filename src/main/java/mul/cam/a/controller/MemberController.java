@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -73,6 +74,21 @@ public class MemberController {
 			return "NO";
 		}		
 		return "YES";	// id가 없음
-	} 	
+	}
+    
+    //내정보 수정
+	@PostMapping(value="mypageUpdAf.do")
+	public String mypageUpdAf(MemberDto dto, Model model) {
+		
+		boolean b = service.myupdate(dto);
+		String msg = "mem_update_fail";
+		if(b) {
+			msg = "mem_update_success";
+		}
+		model.addAttribute("memupdate", msg);
+		model.addAttribute("id", dto.getId());
+		
+		return "layoutMessage";
+	}
 }
 

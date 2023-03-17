@@ -20,14 +20,14 @@ public interface MemberDao {
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
-    // login.do, signup.do
+    // login.do, signup.do. mypageUpdAf.do
 	MemberDto login(MemberDto dto);
 
 	int addMember(MemberDto dto);
    
 	int idCheck(String id);
     
-    
+	int myupdate(MemberDto dto);
     // ========== ========== ========== ========== ========== ========== ========== 
     // main.do
     
