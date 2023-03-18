@@ -71,6 +71,72 @@
         set title=#{title}, content=#{content}, wdate=now()
         where seq=#{seq}
     </update>
+    
+    
+    
+<!-- ========== ========== ========== ========== ========== ========== ========== 
+    write.do -->
+	<!-- 임시 테이블 작성 -->
+	<insert id="bbsTempwriteAf"  parameterType="mul.cam.a.dto.BbsDto">
+	insert into tempbbs(id,nickname,title,content,
+	hashtags,wdate,date,del,readcount,likecount,filename, newfilename)
+	values(#{id},#{nickname},#{title},#{content},#{hashtags},now(),#{date},0,0,0,
+	#{filename},#{newfilename})	
+	</insert>
+	
+	
+	<!-- 임시 테이블 업데이트 -->
+	<update id="bbsTempupdateAf"  parameterType="mul.cam.a.dto.BbsDto">
+	update tempbbs
+	set title=#{title}, hashtags=#{hashtags}, content=#{content},wdate=now()
+	,date=#{date},filename=#{filename},newfilename=#{newfilename}
+	
+	where seq=#{seq}
+		
+	</update>
+	
+	<!-- 임시 테이블 전체 조회 -->
+	<select id="bbstTempList" resultType="mul.cam.a.dto.BbsDto">
+	select * from tempbbs order by date asc;
+	
+	</select>
+	
+	<!-- 지정 날짜에 해당하는 임시 테이블의 값을 조회 -->
+	<select id="bbstTempDto" parameterType="String" resultType="mul.cam.a.dto.BbsDto">
+	select * from tempbbs where date=#{date};
+
+	</select>
+	
+	<!-- 지정 날짜에 해당하는 임시 테이블의 값을 삭제 -->
+	<delete id="bbsTempdelete" parameterType="String">
+	delete from tempbbs where date=#{date}
+	</delete>
+	
+	<!-- 임시 테이블의 모든 값을 삭제 -->
+	<delete id="bbsTempAlldelete">
+	delete from tempbbs;
+	</delete>
+	
+    <!-- 임시 테이블의 첫 번째 데이터를 가져옴 -->
+    <select id="bbstempfirstGet" resultType="mul.cam.a.dto.BbsDto">
+    	select id,title,nickname,content,wdate,del,readcount,likecount from tempbbs where date=
+			(select ifnull(min(date),0)from tempbbs)
+    </select>
+	
+	<!-- 임시 테이블에 있는 값을 bbspost로 전부 이동 -->
+	<insert id="bbsTempsaveAf" >
+	INSERT INTO BBSPost (bbsseq, id, title, nickname, content, wdate, date, del, readcount, hashtags, likecount, filename, newfilename)
+	SELECT 
+	(select ifnull(max(seq),0) from bbs ), id, title, nickname, content, wdate, date, del, readcount, hashtags, likecount, filename, newfilename
+	FROM TempBBS;
+	</insert>
+	
+	
+	<!-- bbs 테이블에 대표 값을 추가 -->  
+	<insert id="bbswrite" parameterType="mul.cam.a.dto.BbsDto">
+		insert into bbs(id,title,nickname,content,wdate,del,readcount,likecount)
+		values(#{id},#{title},#{nickname},#{content},#{wdate},#{del},#{readcount},#{likecount})
+	</insert>
 
     
 </mapper>

@@ -36,4 +36,19 @@ public interface BbsDao {
     BbsDto getBbsTest(int seq);
     int updateBbs(BbsDto dto);
     
+    
+    
+    
+    // ========== ========== ========== ========== ========== ========== ========== 
+    // write.do
+    int bbsTempwriteAf(BbsDto dto);
+    List<BbsDto>bbstTempList();
+    BbsDto bbstTempDto(String date);
+    int bbsTempupdateAf(BbsDto dto);
+    int bbsTempdelete(String date);
+    int bbsTempAlldelete();
+    BbsDto bbstempfirstGet();
+    int bbsTempsaveAf();
+    int bbswrite(BbsDto dto);
+  
 }

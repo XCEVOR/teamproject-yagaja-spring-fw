@@ -64,4 +64,54 @@ public class BbsServiceImpl implements BbsService{
         return n > 0 ? true : false;
     }
     
+    
+
+    // ========== ========== ========== ========== ========== ========== ========== 
+    //write.do 
+    @Override
+	public boolean bbsTempwriteAf(BbsDto dto) {
+		// TODO Auto-generated method stub
+		return dao.bbsTempwriteAf(dto)>0;
+	}
+    @Override
+    public List<BbsDto> bbstTempList() {
+    	// TODO Auto-generated method stub
+    	return dao.bbstTempList();
+    }
+    
+    @Override
+    public BbsDto bbstTempDto(String date) {
+    	// TODO Auto-generated method stub
+    	return dao.bbstTempDto(date);
+    }
+    @Override
+    public boolean bbsTempupdateAf(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return dao.bbsTempupdateAf(dto)>0;
+    }
+    @Override
+    public boolean bbsTempdelete(String date) {
+    	// TODO Auto-generated method stub
+    	return dao.bbsTempdelete(date)>0;
+    }
+    @Override
+    public boolean bbsTempAlldelete() {
+    	// TODO Auto-generated method stub
+    	return dao.bbsTempAlldelete()>0;
+    }
+    @Override
+    public BbsDto bbstempfirstGet() {
+    	// TODO Auto-generated method stub
+    	return dao.bbstempfirstGet();
+    }
+    @Override
+    public boolean bbsTempsaveAf() {
+    	// TODO Auto-generated method stub
+    	return dao.bbsTempsaveAf()>0;
+    }
+    @Override
+    public boolean bbswrite(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return dao.bbswrite(dto)>0;
+    }
 }
