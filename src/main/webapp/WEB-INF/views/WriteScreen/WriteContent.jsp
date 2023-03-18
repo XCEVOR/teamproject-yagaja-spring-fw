@@ -1,4 +1,5 @@
 
+<%@page import="mul.cam.a.dto.MemberDto"%>
 <%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Array"%>
@@ -9,8 +10,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-/* 로그인 */
-
+	//세션에 저장된 로그인 값 가져오기
+	MemberDto login = (MemberDto)session.getAttribute("login");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -154,8 +155,8 @@ $(document).ready(function(){
     <form id="uploadFileForm">
     
     <input type="hidden" name="seq" id="seq" value="<%=seq%>">
-    <input type="hidden" name="id" value="<%="1234"%>">
-    <input type="hidden" name="nickname"  value="<%="홍길동"%>">
+    <input type="hidden" name="id" value="<%=login.getId()%>">
+    <input type="hidden" name="nickname"  value="<%=login.getNickname()%>">
  
     <div class="row gtr-uniform">
       <div class="col-6 col-12-xsmall">

@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -166,33 +167,25 @@ public class BbsController {
 		
 		System.out.println("BbsController bbsTempwriteAf" + new Date());
 		System.out.println("dto"+dto.toString());
+		 // filename 취득
+	    String filename = fileload.getOriginalFilename();
+	    dto.setFilename(filename);
+
+	    // upload 경로 설정
+	    // server에 파일 저장 -> 재시작 시 refresh되면서 파일 삭제됨
+	    String fupload = req.getServletContext().getRealPath("/upload");
+	    //String fupload = "c:\\temp";
+	    // 새 파일명 취득
+	    String newfilename = PdsUtil.getNewFileName(filename);
+	    dto.setNewfilename(newfilename);
 		
-		String filename = fileload.getOriginalFilename(); // 원본 파일명 체크
-
-		dto.setFilename(filename); // 원본 파일명을 setting
-
-		// upload의 경로 설정
-		// server
-		String path = req.getServletContext().getRealPath("/upload");
-
-		// 클라이언트 폴더 설정
-		// String fupload = "c:\\temp"
-
-		String filepath = path + "/" + filename;
-		File file = new File(filepath);
-		// 파일명을 충돌되지 않은 이름으로 변경
-		String newfilename = PdsUtil.getNewFileName(filename);
-
-		dto.setNewfilename(newfilename);
-
-
+	    // 서버에 실제 파일 생성 및 기입 (= 업로드)
+	    File file = new File(fupload + "/" + newfilename);
+		
 		try {
 			// 실제로 파일이 생성되어 기입되는 부분
-			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+			 FileUtils.writeByteArrayToFile(file, fileload.getBytes());
 			
-			bos.write(fileload.getBytes());
-			
-			bos.close();
 			// db에 저장
 			service.bbsTempwriteAf(dto);
 
