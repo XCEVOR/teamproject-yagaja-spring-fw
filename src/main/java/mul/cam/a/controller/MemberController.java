@@ -5,10 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -90,5 +92,15 @@ public class MemberController {
 		
 		return "layoutMessage";
 	}
+	
+	// log out
+	@GetMapping(value="logout.do")
+    public String logout(HttpSession session) {
+        // invalidate the session to remove all session attributes
+        session.invalidate();
+            
+        // redirect to the home page or any other page after logout
+        return "layoutLogin";
+    }
 }
 

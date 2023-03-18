@@ -1,7 +1,14 @@
+<%@page import="mul.cam.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
+<%
+	MemberDto login = (MemberDto)session.getAttribute("login");
+
+%>
+
 
 <%
 	String choice = (String)request.getAttribute("choice");
@@ -45,8 +52,24 @@
 						<button type="button" class="btn btn-primary" onclick="searchBtn()">검색</button>
 					</span>
 				</td>
-                <th><button>로그인</button></th>
-                <th><button>회원가입</button></th>
+                <th>
+	                <%
+						if(login == null) {
+						    %><button type="button" onclick="location.href='login.do'">로그인</button><%
+						} else {
+						    %><button type="button" onclick="location.href='logout.do'">로그아웃</button><%
+						}
+					%>
+                </th>
+                <th>
+                    <%
+                        if(login == null) {
+                            %><button type="button" onclick="location.href='signup.do'">회원가입</button><%
+                        } else {
+                            %><button type="button" onclick="location.href='my.do'">마이페이지</button><%
+                        }
+                    %>
+                </th>
 
             </tr>
 
@@ -57,7 +80,18 @@
     
     
     <br>
-    
+    <a><font color="red"><strong>
+	    <%
+	    if(login == null) {
+	        // handle the case when there is no login data in session
+	        // for example, redirect to the login page or display a message
+	        %>GUEST ..........<%
+	      } else {
+	        // continue with the login data
+	        %>LOGIN: <%= login.getId() %> / <%= login.getNickname() %> ..........<%
+	      }
+	    %>
+    </strong></a>
     <a href="admin.do">admin.do</a>
     <a href="detail1.do">detail1.do</a>
     <a href="detail2.do">detail2.do</a>
