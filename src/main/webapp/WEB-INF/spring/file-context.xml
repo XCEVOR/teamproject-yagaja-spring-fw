@@ -4,31 +4,26 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<!-- upload -->
-<!-- 	
+	<!-- upload 설정 -->
 	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="104857600"/>
-		<property name="maxInMemorySize" value="102400"/>
+	 class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600"/> <!-- 파일 크기 -->
+		<property name="maxInMemorySize" value="102400"/> <!-- 메모리 사용 -->
 		<property name="defaultEncoding" value="utf-8"/>
 		<property name="uploadTempDir" value="upload"/>
+		
+		
 	</bean>
--->
 	
-	
-	
-	<!-- download -->
-<!-- 	
-	<bean id="downloadView" class="mul.cam.a.util.DownloadView"></bean>
+	<!-- download 설정 -->
+	<bean id="downloadView" class="mul.cam.a.util.DownloadView"/>
 	
 	<bean id="downloadViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order">
 			<value>0</value>
-		</property>	
+		</property>
+		
 	</bean>
--->
-	
-	
 </beans>
 
 
