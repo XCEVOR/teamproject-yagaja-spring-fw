@@ -88,7 +88,7 @@
 	        %>GUEST ..........<%
 	      } else {
 	        // continue with the login data
-	        %>LOGIN NICKNAME: <%= login.getNickname() %> ..........<%
+	        %>LOGIN: <%= login.getId() %> / <%= login.getNickname() %> ..........<%
 	      }
 	    %>
     </strong></a>
