@@ -246,7 +246,7 @@
                     /* content.trigger("#mysection");
                     $('#mysection').page(); */
                     
-                    $(".myfade" + loadedPage).delay(500).fadeIn(2000);
+                    $(".myfade" + loadedPage).delay(200).fadeIn(2000);
                     // newTags.fadeIn(1000);
                 },
                 error: function (request, status, error) {
@@ -268,11 +268,11 @@
         if (checkVisible($('#trigger'))&&!isVisible) {
             // alert("Visible!!!");
             isVisible=true;
-            setTimeout(nextPage, 1000);
+            setTimeout(nextPage, 500);
             
             setTimeout(function() {
                   isVisible = false;
-                }, 2000);
+                }, 1000);
         }
     });
 
