@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mysql.cj.result.IntegerValueFactory;
+
 import mul.cam.a.dto.BbsDto;
 import mul.cam.a.dto.BbsParam;
 import mul.cam.a.service.BbsService;
@@ -158,7 +160,9 @@ public class BbsController {
     
     
 
-	
+    // ========== ========== ========== ========== ========== ========== ========== 
+    // write.do
+ 
 	
 	@PostMapping(value = "bbsTempwriteAf.do")
 	public String bbswriteAf(BbsDto dto, Model model,
@@ -301,6 +305,141 @@ public class BbsController {
 		return "redirect:/main.do";
 		
 	}
+	
+	
+	// ========== ========== ========== ========== ========== ========== ========== 
+    // update.do
+	
+	
+	@PostMapping(value = "bbsPostwriteAf.do")
+	public String bbsPostwriteAf(BbsDto dto, Model model,
+			@RequestParam(value = "fileload", required = false) 
+	  MultipartFile fileload, HttpServletRequest req) {
+		
+		System.out.println("BbsController bbsTempwriteAf" + new Date());
+		System.out.println("dto"+dto.toString());
+		 // filename 취득
+	    String filename = fileload.getOriginalFilename();
+	    dto.setFilename(filename);
+
+	    // upload 경로 설정
+	    // server에 파일 저장 -> 재시작 시 refresh되면서 파일 삭제됨
+	    String fupload = req.getServletContext().getRealPath("/upload");
+	    //String fupload = "c:\\temp";
+	    // 새 파일명 취득
+	    String newfilename = PdsUtil.getNewFileName(filename);
+	    dto.setNewfilename(newfilename);
+		
+	    // 서버에 실제 파일 생성 및 기입 (= 업로드)
+	    File file = new File(fupload + "/" + newfilename);
+		
+		try {
+			// 실제로 파일이 생성되어 기입되는 부분
+			 FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+			
+			// db에 저장
+			service.bbsPostwriteAf(dto);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "redirect:/bbsTempClick.do?date=" + 0;
+
+	}
+
+	
+	@ResponseBody
+	@PostMapping(value = "bbsPostupdateAf.do")
+	public String bbsPostupdateAf(BbsDto dto, Model model,
+		@RequestParam(value = "fileload", required = false)
+	MultipartFile fileload, HttpServletRequest req) {
+
+		System.out.println(" BbsController bbsPostupdateAf" + new Date());
+		
+		
+		String filename = fileload.getOriginalFilename(); // 원본 파일명 체크
+
+		dto.setFilename(filename); // 원본 파일명을 setting
+
+		// upload의 경로 설정
+		// server
+		String path = req.getServletContext().getRealPath("/upload");
+
+		// 클라이언트 폴더 설정
+		// String fupload = "c:\\temp"
+
+		String filepath = path + "/" + filename;
+		File file = new File(filepath);
+		// 파일명을 충돌되지 않은 이름으로 변경
+		String newfilename = PdsUtil.getNewFileName(filename);
+
+		dto.setNewfilename(newfilename);
+
+
+		try {
+			// 실제로 파일이 생성되어 기입되는 부분
+			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+			
+			bos.write(fileload.getBytes());
+			
+			bos.close();
+			// db에 저장
+			service.bbsPostupdateAf(dto);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		boolean isS = service.bbsTempupdateAf(dto);
+		String bbsPostupdateAf = "";
+		if (isS) {
+			bbsPostupdateAf = "BBS_ADD_OK";
+		} else {
+			bbsPostupdateAf = "BBS_ADD_NO";
+		}
+		model.addAttribute("bbsPostupdateAf", bbsPostupdateAf);
+
+		return "layoutMessage";
+	}
+
+	@GetMapping(value = "bbsPostClick.do")
+	public String bbsPostClick(BbsDto dto,Model model) {
+		
+	
+		List<BbsDto> bbsPostList = service.bbsPostList(dto.getBbsseq());
+		BbsDto bbsPostDto = service.bbsPostDto(dto);
+		
+		System.out.println("li"+bbsPostList);
+		System.out.println("d"+bbsPostDto);
+		
+		
+		model.addAttribute("bbsPostList", bbsPostList);
+		model.addAttribute("bbsPostDto", bbsPostDto);
+
+		return "layoutUpdate";
+
+	}
+
+	@GetMapping(value = "bbsPostdelete.do")
+	public String bbsPostdelete(BbsDto dto) {
+
+		boolean isS = service.bbsPostdelete(dto);
+		/*
+		 * String bbsTempdelete = ""; if (isS) { bbsTempdelete= "Temp_delete_OK"; } else
+		 * { bbsTempdelete = "Temp_delete_NO"; }
+		 * model.addAttribute("bbsTempdelete",bbsTempdelete);
+		 * 
+		 * return "layoutMessage";
+		 */
+		return "redirect:/bbsPostClick.do?date=" + 0;
+	}
+	
+	
+	
+	
     
     
     

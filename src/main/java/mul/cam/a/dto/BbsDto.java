@@ -18,6 +18,7 @@ public class BbsDto implements Serializable {
      private String filename;
      private String newfilename;
      private String date;
+     private int bbsseq;
      
      public BbsDto() {
 		// TODO Auto-generated constructor stub
@@ -28,7 +29,12 @@ public class BbsDto implements Serializable {
          this.title = title;
          this.content = content;
      }
-     
+     public BbsDto(int bbsseq, String date) {
+ 		super();
+ 		this.bbsseq=bbsseq;
+ 		this.date = date;
+ 	}
+ 	
     
 	public BbsDto(int seq, String id, String title, String nickname, String content, String wdate, int del,
 			int readcount, int likecount) {
@@ -137,6 +143,15 @@ public class BbsDto implements Serializable {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	
+	
+	
+	public int getBbsseq() {
+		return bbsseq;
+	}
+	public void setBbsseq(int bbsseq) {
+		this.bbsseq = bbsseq;
 	}
 	@Override
 	public String toString() {

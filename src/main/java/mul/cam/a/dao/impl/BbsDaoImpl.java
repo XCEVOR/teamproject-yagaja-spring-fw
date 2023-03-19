@@ -125,4 +125,33 @@ public class BbsDaoImpl implements BbsDao {
     	// TODO Auto-generated method stub
     	return session.insert(ns+"bbswrite", dto);
     }
+    
+    
+ // ========== ========== ========== ========== ========== ========== ========== 
+    //update.do
+    
+    @Override
+    public BbsDto bbsPostDto(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return session.selectOne(ns+"bbsPostDto", dto);
+    }@Override
+    public List<BbsDto> bbsPostList(int bbsseq) {
+    	// TODO Auto-generated method stub
+    	return session.selectList(ns+"bbsPostList",bbsseq);
+    }
+    @Override
+    public int bbsPostdelete(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return session.update(ns+"bbsPostdelete", dto);
+    }
+    @Override
+    public int bbsPostupdateAf(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return session.update(ns+"bbsPostupdateAf",dto);
+    }
+    @Override
+    public int bbsPostwriteAf(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return session.insert(ns+"bbsPostwriteAf", dto);
+    }
 }

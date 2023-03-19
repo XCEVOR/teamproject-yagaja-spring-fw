@@ -119,4 +119,35 @@ public class BbsServiceImpl implements BbsService{
     	// TODO Auto-generated method stub
     	return dao.bbswrite(dto)>0;
     }
+    
+    
+    
+    // ========== ========== ========== ========== ========== ========== ========== 
+    //update.do
+    @Override
+    public BbsDto bbsPostDto(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return dao.bbsPostDto(dto);
+    }
+    @Override
+    public List<BbsDto> bbsPostList(int bbsseq) {
+    	// TODO Auto-generated method stub
+    	return dao.bbsPostList(bbsseq);
+    }
+    @Override
+    public boolean bbsPostdelete(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return dao.bbsPostdelete(dto)>0;
+    }
+    @Override
+    public boolean bbsPostupdateAf(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return dao.bbsPostupdateAf(dto)>0;
+    }
+    @Override
+    public boolean bbsPostwriteAf(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return dao.bbsPostwriteAf(dto)>0;
+    }
+    
 }

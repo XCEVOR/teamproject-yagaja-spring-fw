@@ -106,7 +106,7 @@ public class ScreenController {
     @GetMapping(value = "main.do")
     public String main (BbsParam param, Model model) {
         System.out.println("  @ ScreenController main (): " + new Date());
-        // 글의 시작과 끝
+        // 湲��쓽 �떆�옉怨� �걹
         int pn = param.getPageNumber();  // 0 1 2 3 4
         int start = 1 + (pn * 8);  // 1  11
 //        int start = 1;  // 1  11
@@ -125,15 +125,15 @@ public class ScreenController {
         
         if(param.getChoice() == null || param.getChoice().equals("")
             || param.getSearch() == null || param.getSearch().equals("")) {
-            param.setChoice("검색");
+            param.setChoice("寃��깋");
             param.setSearch("");
         }
         
-        model.addAttribute("bbslist", list);    // 게시판 리스트
-        model.addAttribute("pageBbs", pageBbs); // 총 페이지수
-        model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
-        model.addAttribute("choice", param.getChoice());    // 검색 카테고리
-        model.addAttribute("search", param.getSearch());    // 검색어  
+        model.addAttribute("bbslist", list);    // 寃뚯떆�뙋 由ъ뒪�듃
+        model.addAttribute("pageBbs", pageBbs); // 珥� �럹�씠吏��닔
+        model.addAttribute("pageNumber", param.getPageNumber()); // �쁽�옱 �럹�씠吏�
+        model.addAttribute("choice", param.getChoice());    // 寃��깋 移댄뀒怨좊━
+        model.addAttribute("search", param.getSearch());    // 寃��깋�뼱  
         
         return "layoutMain";
     }
@@ -141,8 +141,20 @@ public class ScreenController {
     @GetMapping(value = "update.do")
     public String update (int seq, Model model) {
         System.out.println("  @ ScreenController update (): " + new Date());
-        BbsDto dto = bbsservice.getBbsTest(seq);
-        model.addAttribute("dto", dto);
+        
+        System.out.println("seq"+seq);
+        
+        // seq에 해당하는 list 저장
+        List<BbsDto> bbsPostList= bbsservice.bbsPostList(seq);
+        // list의 첫번째 dto에 해당하는 게시글 저장
+        System.out.println("bbsPostList"+bbsPostList);
+        BbsDto bbsPostDto = bbsservice.bbsPostDto(bbsPostList.get(0));
+        System.out.println("bbsPostDto"+bbsPostDto);
+        
+        
+        model.addAttribute("bbsPostList", bbsPostList);
+        model.addAttribute("bbsPostDto", bbsPostDto);
+        
         
         return "layoutUpdate";
     }

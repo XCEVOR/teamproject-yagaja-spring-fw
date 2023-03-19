@@ -157,5 +157,44 @@
 	</insert>
 	
 
+<!-- ========== ========== ========== ========== ========== ========== ========== 
+    update.do -->
+		
+	
+	<!-- bbspost 테이블 전체 조회 -->
+ 	<select id="bbsPostList" parameterType="Integer" resultType="mul.cam.a.dto.BbsDto">
+	select * from bbspost where bbsseq=#{bbsseq} order by date asc;
+	
+	</select>
+	
+	<!-- 지정 날짜에 해당하는 post 테이블의 값을 조회 -->
+	<select id="bbsPostDto" parameterType="mul.cam.a.dto.BbsDto" resultType="mul.cam.a.dto.BbsDto">
+	select * from bbspost  where bbsseq=#{bbsseq} and date=#{date};
+
+	</select>
+	
+	<!-- 지정 날짜에 해당하는 post 테이블의 값을 del 1로 변경 -->
+	<update id="bbsPostdelete"  parameterType="mul.cam.a.dto.BbsDto">
+	update bbspost set del=1  where bbsseq=#{bbsseq} and date=#{date}
+	</update>
+	
+	
+	<insert id="bbsPostwriteAf"  parameterType="mul.cam.a.dto.BbsDto">
+	insert into bbspost(id,nickname,title,content,
+	hashtags,wdate,date,del,readcount,likecount,filename, newfilename)
+	values(#{id},#{nickname},#{title},#{content},#{hashtags},now(),#{date},0,0,0,
+	#{filename},#{newfilename})	
+	</insert>
+	
+	
+	<!-- post 테이블 업데이트 -->
+	<update id="bbsPostupdateAf"  parameterType="mul.cam.a.dto.BbsDto">
+	update bbspost
+	set title=#{title}, hashtags=#{hashtags}, content=#{content},wdate=now()
+	,date=#{date},filename=#{filename},newfilename=#{newfilename}
+	
+	where seq=#{seq}
+		
+	</update>
     
 </mapper>
