@@ -137,7 +137,7 @@
 	
     <!-- 임시 테이블의 첫 번째 데이터를 가져옴 -->
     <select id="bbstempfirstGet" resultType="mul.cam.a.dto.BbsDto">
-    	select id,title,nickname,content,wdate,del,readcount,likecount from tempbbs where date=
+    	select id,title,nickname,content,wdate,del,readcount,likecount,hashtags,filename,newfilename from tempbbs where date=
 			(select ifnull(min(date),0)from tempbbs)
     </select>
 	
@@ -152,12 +152,11 @@
 	
 	<!-- bbs 테이블에 대표 값을 추가 -->  
 	<insert id="bbswrite" parameterType="mul.cam.a.dto.BbsDto">
-		insert into bbs(id,title,nickname,content,wdate,del,readcount,likecount)
-		values(#{id},#{title},#{nickname},#{content},#{wdate},#{del},#{readcount},#{likecount})
+		insert into bbs(id,title,nickname,content,wdate,del,readcount,likecount,hashtags,filename,newfilename)
+		values(#{id},#{title},#{nickname},#{content},#{wdate},#{del},#{readcount},#{likecount},#{hashtags},#{filename},#{newfilename})
 	</insert>
 	
-
-<!-- ========== ========== ========== ========== ========== ========== ========== 
+	 <!-- ========== ========== ========== ========== ========== ========== ========== 
     update.do -->
 		
 	
@@ -196,5 +195,7 @@
 	where seq=#{seq}
 		
 	</update>
+	
+
     
 </mapper>
