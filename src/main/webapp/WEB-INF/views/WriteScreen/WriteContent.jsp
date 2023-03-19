@@ -3,7 +3,7 @@
 <%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Array"%>
-<%-- <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%> --%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="mul.cam.a.dto.BbsDto"%>
 <%@page import="java.util.List"%>
@@ -431,7 +431,7 @@ $(document).ready(function(){
      	 content = $("#content").val();
         
      	// 파일 가져오기
-     	file=$("#file").val();   
+     	file=$("#fileCommnet").val();   
 		
         // alert 등록 (필수 입력 항목 alert처리)
      	 if(date =="") {

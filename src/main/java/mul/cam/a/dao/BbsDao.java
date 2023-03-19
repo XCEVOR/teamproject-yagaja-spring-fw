@@ -51,4 +51,15 @@ public interface BbsDao {
     int bbsTempsaveAf();
     int bbswrite(BbsDto dto);
     
+    
+    
+    // ========== ========== ========== ========== ========== ========== ========== 
+    // update.do
+    
+    List<BbsDto> bbsPostList(int bbsseq);
+    BbsDto bbsPostDto(BbsDto dto);
+    int bbsPostdelete(BbsDto dto);
+    int bbsPostupdateAf(BbsDto dto);
+    int bbsPostwriteAf(BbsDto dto);
+    
 }

@@ -49,4 +49,13 @@ public interface BbsService {
     BbsDto bbstempfirstGet();
     boolean bbsTempsaveAf();
     boolean bbswrite(BbsDto dto);
+    
+    // ========== ========== ========== ========== ========== ========== ========== 
+    // update.do
+    
+    List<BbsDto> bbsPostList(int bbsseq);
+    BbsDto bbsPostDto(BbsDto dto);
+    boolean bbsPostdelete(BbsDto dto);
+    boolean bbsPostwriteAf(BbsDto dto);
+    boolean bbsPostupdateAf(BbsDto dto);
 }
