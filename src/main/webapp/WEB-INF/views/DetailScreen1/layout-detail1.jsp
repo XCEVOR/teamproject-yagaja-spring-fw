@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="assets/css/mainpage.css" />
 <link rel="stylesheet" href="assets/css/noscript.css" />
 <link rel="stylesheet" href="assets/css/layout.css" />
+<link rel="stylesheet" href="assets/css/detail1slide.css" />
 <style>
 
 html, body, #fullheight {
@@ -37,11 +38,11 @@ height:100%;
         
         <!-- main -->
         <tr>
-	        <td style="background-color: grey;">
-	            <div  align="center" style="background-color: pink; width: 100%; height: 100%;">
-	               <tiles:insertAttribute name="Content"/>
-	            </div>
-	        </td>
+            <td style="background-color: grey;">
+                <div  align="center" style="background-color: pink; width: 100%; height: 100%;">
+                   <tiles:insertAttribute name="Content"/>
+                </div>
+            </td>
         </tr>
         
         <!-- footer -->

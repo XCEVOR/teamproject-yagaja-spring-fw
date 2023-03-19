@@ -17,7 +17,7 @@ public interface BbsDao {
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do
-
+    List<BbsDto> getAllBbsPost (int bbsseq);
     
     
     

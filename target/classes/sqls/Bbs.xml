@@ -12,7 +12,11 @@
     
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do -->
-
+    <select id="getAllBbsPost" parameterType="Integer" resultType="mul.cam.a.dto.BbsDto">
+        select * 
+        from bbspost 
+        where bbsseq=#{bbsseq} 
+    </select>
     
     
     

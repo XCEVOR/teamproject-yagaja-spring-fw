@@ -29,7 +29,11 @@ public class BbsDaoImpl implements BbsDao {
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do
-
+    @Override
+    public List<BbsDto> getAllBbsPost (int bbsseq) {
+        System.out.println("   @  getAllBbsPost (int bbsseq):  " + bbsseq);
+        return session.selectList(ns + "getAllBbsPost", bbsseq);
+    }
     
     
     
