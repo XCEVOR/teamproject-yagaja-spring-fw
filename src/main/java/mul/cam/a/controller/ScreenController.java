@@ -63,8 +63,11 @@ public class ScreenController {
     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do
     @GetMapping(value = "detail1.do")
-    public String detail1 () {
+    public String detail1 (int seq, Model model) {
         System.out.println("  @ ScreenController detail (): " + new Date());
+        int bbsseq = seq;
+        List<BbsDto> allBbsPostList = bbsservice.getAllBbsPost(bbsseq);
+        model.addAttribute("allBbsPostList", allBbsPostList);
         return "layoutDetail1";
     }
     

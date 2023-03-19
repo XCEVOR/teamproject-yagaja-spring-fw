@@ -52,10 +52,7 @@
     <!-- layoutDetail1, layoutDetail2 -->
     <definition name="layoutDetail1" template="/WEB-INF/views/DetailScreen1/layout-detail1.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-        <put-attribute name="Content-L-1" value="/WEB-INF/views/DetailScreen1/DetailContent-L-1.jsp"/>
-        <put-attribute name="Content-L-2" value="/WEB-INF/views/DetailScreen1/DetailContent-L-2.jsp"/>
-        <put-attribute name="Content-R-1" value="/WEB-INF/views/DetailScreen1/DetailContent-R-1.jsp"/>
-        <put-attribute name="Content-R-2" value="/WEB-INF/views/DetailScreen1/DetailContent-R-2.jsp"/>
+        <put-attribute name="Content" value="/WEB-INF/views/DetailScreen1/DetailContent.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
 

@@ -46,7 +46,7 @@
                     <span class="image">
                         <img src="upload/<%= bdto.getNewfilename() %>" alt="" />
                     </span>
-                    <a href="update.do?seq=<%= bdto.getSeq() %>">
+                    <a href="detail1.do?seq=<%= bdto.getSeq() %>">
                         <h6>Like test: <%= bdto.getLikecount() %></h6>
                         <h6>Read test: <%= bdto.getReadcount() %></h6>
                         <h2><%= bdto.getTitle() %></h2>
@@ -230,7 +230,7 @@
                                 + "     <span class='image'>"
                                 + "         <img src='upload/" + item.newfilename + "' alt='' />"
                                 + "     </span>"
-                                + "     <a href=''>"
+                                + "     <a href='detail1.do?seq=" + item.seq + "'>"
                                 + "         <h6>Like test:" + item.likecount + "</h6>"
                                 + "         <h6>Read test:" + item.readcount + "</h6>"
                                 + "         <h2>" + item.title + "</h2>"

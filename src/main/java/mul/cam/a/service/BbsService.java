@@ -16,7 +16,7 @@ public interface BbsService {
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do
-
+    List<BbsDto> getAllBbsPost (int bbsseq);
     
     
     

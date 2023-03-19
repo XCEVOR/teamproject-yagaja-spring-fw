@@ -26,7 +26,10 @@ public class BbsServiceImpl implements BbsService{
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do
-
+    @Override
+    public List<BbsDto> getAllBbsPost (int bbsseq) {
+        return dao.getAllBbsPost(bbsseq);
+    }
     
     
     

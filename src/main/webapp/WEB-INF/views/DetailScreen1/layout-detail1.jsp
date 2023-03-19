@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="assets/css/mainpage.css" />
 <link rel="stylesheet" href="assets/css/noscript.css" />
 <link rel="stylesheet" href="assets/css/layout.css" />
+<link rel="stylesheet" href="assets/css/detail1slide.css" />
 <style>
 
 html, body, #fullheight {
@@ -37,26 +38,11 @@ height:100%;
         
         <!-- main -->
         <tr>
-	        <td style="background-color: grey;">
-	            <div align="center">
-		            <div  align="center" style="background-color: pink; width: 100%; height: 900px;">
-		               <tiles:insertAttribute name="Content-L-1"/>
-		            </div>
-		            <div  align="center" style="background-color: yellow; width: 100%; height: 100px;">
-		               <tiles:insertAttribute name="Content-L-2"/>
-		            </div>
-	            </div>
-	        </td>
-	        <td style="background-color: lightgrey;">
-	            <div align="center">
-	                <div  align="center" style="background-color: #E0EBFF; width: 100%; height: 700px;">
-	                   <tiles:insertAttribute name="Content-R-1"/>
-	                </div>
-	                <div  align="center" style="background-color: #FF9DFF; width: 100%; height: 500px;">
-	                   <tiles:insertAttribute name="Content-R-2"/>
-	                </div>
-	            </div>
-	        </td>
+            <td style="background-color: grey;">
+                <div  align="center" style="background-color: pink; width: 100%; height: 100%;">
+                   <tiles:insertAttribute name="Content"/>
+                </div>
+            </td>
         </tr>
         
         <!-- footer -->

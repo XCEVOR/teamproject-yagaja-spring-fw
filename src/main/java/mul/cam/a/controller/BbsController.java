@@ -42,7 +42,16 @@ public class BbsController {
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
-    // detail.do
+    // detail.do ajax
+    @ResponseBody
+    @GetMapping(value = "ajaxDetail1.do")
+    public List<BbsDto> detail1 (int bbsseq, Model model) {  // Model 필요 없음.
+        System.out.println("  @ ScreenController detail (): " + new Date());
+        /* int bbsseq = seq; */
+        List<BbsDto> allBbsPostList = service.getAllBbsPost(bbsseq);
+        // model.addAttribute("allBbsPostList", allBbsPostList);
+        return allBbsPostList;
+    }
 
     
     
