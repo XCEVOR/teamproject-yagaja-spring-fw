@@ -115,7 +115,7 @@ public class ScreenController {
         param.setStart(start);
         param.setEnd(end);
         
-        List<BbsDto> list = bbsservice.bbslist(param);
+        List<BbsDto> list = bbsservice.bbsMainList(param);
         int len = bbsservice.getAllBbs(param);
         
         int pageBbs = len / 8;     // 25 / 10 -> 2

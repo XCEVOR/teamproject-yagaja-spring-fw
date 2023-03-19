@@ -81,7 +81,7 @@ public class BbsController {
 		param.setStart(start);
 		param.setEnd(end);
 		
-		List<BbsDto> list = service.bbslist(param);
+		List<BbsDto> list = service.bbsMainList(param);
 		int len = service.getAllBbs(param);
 	
 		int pageBbs = len / 10;		// 25 / 10 -> 2
@@ -116,7 +116,7 @@ public class BbsController {
 		param.setStart(start);
 		param.setEnd(end);
 		
-		List<BbsDto> list = service.bbslist(param);
+		List<BbsDto> list = service.bbsMainList(param);
 //		int len = service.getAllBbs(param);
 		
 //		int pageBbs = len / 10;		// 25 / 10 -> 2

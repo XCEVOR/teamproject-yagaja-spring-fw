@@ -44,7 +44,7 @@
             %>
                 <article class="style1">
                     <span class="image">
-                        <img src="images/mainpage/pic01.jpg" alt="" />
+                        <img src="upload/<%= bdto.getNewfilename() %>" alt="" />
                     </span>
                     <a href="update.do?seq=<%= bdto.getSeq() %>">
                         <h6>Like test: <%= bdto.getLikecount() %></h6>
@@ -228,7 +228,7 @@
                     $.each(list, function(index, item){
                         let str = "<article class='style1 myfade" + loadedPage + "'>" 
                                 + "     <span class='image'>"
-                                + "         <img src='images/mainpage/pic01.jpg' alt='' />"
+                                + "         <img src='upload/" + item.newfilename + "' alt='' />"
                                 + "     </span>"
                                 + "     <a href=''>"
                                 + "         <h6>Like test:" + item.likecount + "</h6>"
