@@ -30,7 +30,7 @@ public interface BbsService {
     // main.do
     List<BbsDto> mainBbsList(BbsDto dto);
     List<BbsDto> mainBbsList2(BbsDto dto);
-    List<BbsDto> bbslist(BbsParam bbs);
+    List<BbsDto> bbsMainList (BbsParam bbs);
     int getAllBbs(BbsParam bbs);
     
     BbsDto getBbsTest(int seq);

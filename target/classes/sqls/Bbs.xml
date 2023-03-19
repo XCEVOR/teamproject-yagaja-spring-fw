@@ -36,13 +36,13 @@
         where id=#{id}
     </select>
     
-    <select id="bbslist" parameterType="mul.cam.a.dto.BbsParam"
+    <select id="bbsMainList" parameterType="mul.cam.a.dto.BbsParam"
 	resultType="mul.cam.a.dto.BbsDto">
 	
-		select seq, id, title, nickname, content, wdate, del, readcount, likecount
+		select seq, id, title, nickname, content, wdate, del, readcount, likecount, hashtags, filename, newfilename
 		from
 			(select row_number()over(order by likecount desc) as rnum,
-				seq, id, title, nickname, content, wdate, del, readcount, likecount
+				seq, id, title, nickname, content, wdate, del, readcount, likecount, hashtags, filename, newfilename
 			 from bbs
 			 where 1=1 
 			 <if test="choice != null and choice != '' and search != null and search != '' ">
@@ -83,13 +83,13 @@
         from bbs
         where seq=#{seq}
     </select>
-    
+    <!-- 
     <update id="updateBbs" parameterType="mul.cam.a.dto.BbsDto">
         update bbs
         set title=#{title}, content=#{content}, wdate=now()
         where seq=#{seq}
     </update>
-    
+     -->
     
     
     <!-- ========== ========== ========== ========== ========== ========== ========== 

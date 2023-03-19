@@ -3,7 +3,7 @@
 <%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Array"%>
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%-- <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%> --%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="mul.cam.a.dto.BbsDto"%>
 <%@page import="java.util.List"%>

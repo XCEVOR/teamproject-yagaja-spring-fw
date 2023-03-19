@@ -49,8 +49,8 @@ public class BbsServiceImpl implements BbsService{
     }
     
 	@Override
-	public List<BbsDto> bbslist(BbsParam bbs) {		
-		return dao.bbslist(bbs);
+	public List<BbsDto> bbsMainList (BbsParam bbs) {		
+		return dao.bbsMainList(bbs);
 	}
 	
 	@Override
