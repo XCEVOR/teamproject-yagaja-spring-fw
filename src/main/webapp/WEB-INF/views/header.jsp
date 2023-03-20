@@ -119,15 +119,14 @@
 		let choice = document.getElementById('choice').value;
 		let search = document.getElementById('search').value;
 		
-		/* if(choice == ""){
+		if(choice == ""){
 			alert("카테고리를 선택해 주십시오");
 			return;
-		} */
-		/* 
+		}
 		if(search.trim() == ""){
 			alert("검색어를 선택해 주십시오");
 			return;
-		} */
+		}
 		
 		location.href = "mainsearch.do?choice=" + choice + "&search=" + search;
 	}

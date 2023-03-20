@@ -238,11 +238,13 @@ display: flex;
     let loadedPage = -1;
     console.log(totalPage);
     function nextPage() {
+    	let choice = document.getElementById('choice').value;
+        let search = document.getElementById('search').value;
         loadedPage += 1;
         $(document).ready(function () {
             
-            let param = {   "choice": null, 
-                            "search": null,
+            let param = {   "choice": choice, 
+                            "search": search,
                             "pageNumber": loadedPage,
                             "start": "1",
                             "end": "10"};
