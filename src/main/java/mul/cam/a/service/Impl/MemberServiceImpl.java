@@ -1,5 +1,7 @@
 package mul.cam.a.service.Impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +26,19 @@ public class MemberServiceImpl implements MemberService {
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
-    // detail.do
-
-    
+    // delete.do
+	@Override
+	public List<MemberDto> allMember() {
+		// TODO Auto-generated method stub
+		return dao.allMember();
+	}
+	
+	@Override
+	public boolean deleteMember(String id) {
+		// TODO Auto-generated method stub
+		int cnt = dao.deleteMember(id);
+		return cnt>0?true:false;
+	}
     
     
     // ========== ========== ========== ========== ========== ========== ========== 

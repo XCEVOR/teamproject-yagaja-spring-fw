@@ -1,6 +1,7 @@
 package mul.cam.a.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -146,6 +147,25 @@ public class MemberController {
 				 		return "layoutfindPwdAf";		
 				 	}
 	
-	
+		//멤버삭제
+		@RequestMapping(value="memberdelete.do", method = RequestMethod.POST)
+		@ResponseBody
+		public String delete(HttpServletRequest req) {
+			System.out.println("delete " + new Date());
+			String str[] = req.getParameterValues("valueArr");
+			String msg ="del_yes";
+			System.out.println(Arrays.toString(str));
+			for(int i = 0; i< str.length; i++) {
+				
+				boolean b = service.deleteMember(str[i]);
+				if(!b) {
+					msg ="del_no";
+					return msg;
+				}
+				msg ="del_yes";
+			}
+			
+			return msg;
+		}
 }
 

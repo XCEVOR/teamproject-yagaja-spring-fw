@@ -1,5 +1,7 @@
 package mul.cam.a.service;
 
+import java.util.List;
+
 import mul.cam.a.dto.MemberDto;
 
 public interface MemberService {
@@ -14,10 +16,11 @@ public interface MemberService {
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
-    // detail.do
+    // delete.do
 
-    
-    
+	List<MemberDto> allMember();
+	
+	boolean deleteMember(String id);
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // login.do, signup.do, mypageUpdAf.do

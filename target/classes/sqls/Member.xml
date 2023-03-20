@@ -18,9 +18,17 @@
     
     
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
-    // detail.do -->
-
+    // delte.do -->
     
+   
+	<select id="allMember" resultType="mul.cam.a.dto.MemberDto">
+		select *
+		from member
+	</select>
+	
+ 	<delete id="deleteMember" parameterType="String">
+		delete from member where id = #{id}
+	</delete>   
     
     
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
