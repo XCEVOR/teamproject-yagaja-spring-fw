@@ -46,7 +46,7 @@ height:100%;
         </tr>
         
 		<tr>
-            <td style="background-color: grey;">
+            <td>
                 <div  align="center" style="width: 100%; height: 20%;">
                    <tiles:insertAttribute name="Bottom"/>
                 </div>

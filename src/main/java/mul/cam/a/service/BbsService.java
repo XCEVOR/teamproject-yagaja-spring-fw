@@ -20,7 +20,7 @@ public interface BbsService {
     List<BbsDto> getAllBbsPost (int bbsseq);
     boolean commentWrite(BbsCommentDto bbs);
     List<BbsCommentDto> commentList(int seq);
-    
+    List<BbsDto> detailhashtag(String tag);
     
     
     // ========== ========== ========== ========== ========== ========== ========== 

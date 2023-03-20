@@ -42,7 +42,11 @@ public class BbsServiceImpl implements BbsService{
    	public List<BbsCommentDto> commentList(int seq) {
        	return dao.commentList(seq);
    	}
-    
+       @Override
+       public List<BbsDto> detailhashtag(String tag) {
+       	// TODO Auto-generated method stub
+       	return dao.detailhashtag(tag);
+       }
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
