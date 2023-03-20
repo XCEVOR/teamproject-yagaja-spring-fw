@@ -37,7 +37,7 @@
 					<div class="col-12">
 						<ul class="actions">
 							<li><input type="submit" value="로그인" class="primary" /></li>
-							<li><input type="submit" value="회원가입" class="primary" /></li>
+							<li><input type="button" value="회원가입" class="primary" onclick="location.href='signup.do'"/></li>
 
 						</ul>
 					</div>

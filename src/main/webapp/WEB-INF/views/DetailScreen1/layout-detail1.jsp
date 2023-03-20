@@ -29,7 +29,7 @@ height:100%;
 
 
    <div id="fullheight">
-    <table id="fullheight"  style="width: 100%; border-color: gray;">
+    <table id="fullheight"  style="width: 100%;">
         <!-- header -->
         <tr align="center">
             <td colspan="2" style="height: 20%">
@@ -38,9 +38,17 @@ height:100%;
         
         <!-- main -->
         <tr>
-            <td style="background-color: grey;">
-                <div  align="center" style="background-color: pink; width: 100%; height: 100%;">
+            <td>
+                <div  align="center" style="width: 100%; height: 100%;">
                    <tiles:insertAttribute name="Content"/>
+                </div>
+            </td>
+        </tr>
+        
+		<tr>
+            <td style="background-color: grey;">
+                <div  align="center" style="width: 100%; height: 20%;">
+                   <tiles:insertAttribute name="Bottom"/>
                 </div>
             </td>
         </tr>

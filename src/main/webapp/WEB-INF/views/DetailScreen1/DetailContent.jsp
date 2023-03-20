@@ -226,10 +226,13 @@
                         <tr>
                         
                             <td align="center" colspan="2"
-                                style="font-size: 16px; font-weight: bold;"></td>
+                                style="font-size: 16px; font-weight: bold;">
+                                <div id="detailTitle"></div>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2" height=300px style="background-color: white;">
+                            <div id="detailContent"></div>
                                 <pre
                                     style="font-size: 20px; font-family: 고딕, arial; background-color: white"><%= allBbsPostList.get(0).getContent() %></pre>
                             </td>
@@ -386,7 +389,7 @@ $(document).ready(function(){
                         //$("#ajaxSlidelist").append(slidtags);
                         
                     $.each(bbsPostList, function(index, item){
-                        slidtags += "<li><label class='labelList' for='slide0" + (index + 1) + "'></label></li>" ;
+                        slidtags += "<li><label class='labelList' for='slide0" + (index + 1) + "' onclick='slideIndex(" + index + ")'></label></li>" ;
                         //$("#ajaxSlidelist").append(slidtags);
                     });
                     
@@ -492,7 +495,32 @@ $(document).ready(function(){
 //button	}
 
 
+        function slideIndex (index) {
+        	
+//        	console.log(index);
+        	
+        	//console.log(testList[index]);
+        	/* let slideTest = document.getElementById("slideTest");
+        	slideTest.innerHTML = '<h1>testtestest</h1>';
+        	slideTest.innerHTML = '<h1>'</h1>'; */
+        	
+        	<%
+        		for(int i=0; i< allBbsPostList.size(); i++){
+        			%>
 
+        			if(index == <%=i%>){
+        				console.log("~~" + "<%=allBbsPostList.get(i).getTitle()%>");
+        				<%-- let slideTest = document.getElementById("slideTest");
+        				slideTest.innerHTML = '<h1><%=allBbsPostList.get(i).getTitle()%></h1>' --%>
+        				
+        				document.getElementById("detailTitle").innerHTML = '<h2><%=allBbsPostList.get(i).getTitle()%></h2>';
+        				document.getElementById("detailContent").innerHTML = '<h3><%=allBbsPostList.get(i).getContent()%></h3>';
+        			}
+        			<%
+        		}
+        	%>
+        	
+        }
 
 
 </script>
