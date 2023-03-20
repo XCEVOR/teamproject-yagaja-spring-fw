@@ -1,3 +1,4 @@
+<%@page import="mul.cam.a.dto.QnaDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,6 +9,8 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript">
+	//checkbox해결
+	//
 	// 선택 함수(삭제를 위한) 
 	$(function () {
 		let chkObj = document.getElementsByName("RowCheck");
@@ -43,9 +46,8 @@
 		}else{
 			let chk = confirm("정말 삭제하겠습니까?");
 			console.log(valueArr);
-			/* 멤버 삭제 구분 수정해야함 
  			$.ajax({
-				url:"delete.do",
+				url:"qnadelete.do",
 				type:"post",
 				traditional:true,
 				data:{ "valueArr" : valueArr},
@@ -61,7 +63,7 @@
 					alert('오류');
 				}
 			}); 
-			*/
+			
 		}
 	}
 </script>
@@ -69,62 +71,67 @@
 <body>
 <%
 	//멤버 리스트 받아오는 부분 qna로 바꿔야함
-	//List<MemberDto> list = (List<MemberDto>)request.getAttribute("list");
+	List<QnaDto> list = (List<QnaDto>)request.getAttribute("qnalist");
 %>
     <h1>QnA관리</h1>
     <a href="admin.do">어드민</a>
 	<a href="adminMem.do">회원</a>
     <div align="center">
     	<table border="1">
-		<col width = "70"><col width = "600"><col width = "100"><col width = "150">
+		<col width = "100"><col width = "100"><col width = "500"><col width = "50">
 		<thead>
 			<tr>
-				<th><input id="allCheck" name="allCheck" type="checkbox" /></th>
-				<th>아이디</th><th>이름</th><th>이메일</th><th>삭제</th>
+				<th>
+					<div>
+						<input id="allCheck" name="allCheck" type="checkbox" />
+						<label for="allCheck"></label>				
+					</div>
+				</th>
+				<th>별명</th><th>제목</th><th>대답</th>
 			</tr>			
 		</thead>
 		
 		<tbody>
 		<%
 		
-
-			//if(list == null || list.size() == 0){
+			if(list == null || list.size() == 0){
 		%>
 			<tr>
 				<td colspan="4">작성된 qna가 없습니다.</td>
 			</tr>
 			<%
 			
-				/*
+				
 					}else{
 						for(int i = 0; i<list.size(); i++)
 						{
 							//qna로 수정해야함
-							//MemberDto dto = list.get(i);*/
+							QnaDto dto = list.get(i);
 			%>
 						<tr>
-							<td>
-								<input name="RowCheck" type="checkbox" value="<!--%=dto.getId() %>-->"/>
+							<td style="text-align: center;">
+							<div>
+								<input id="RowCheck<%=i %>" name="RowCheck" type="checkbox" value="<%=dto.getSeq() %>" />
+								<label for="RowCheck<%=i %>"></label>
+							</div>
+								
 							</td>
 							<td>
-								<!--%=i+1 %>-->
+								<%=dto.getNickname() %>
 							</td>
 							<td>
-								<!--%=//dto.getId() %>-->
+								<%=dto.getTitle() %>
 							</td>
 							<td>
-								<!--%=//dto.getName() %>-->
-							</td>
-							<td>
-								<!--%=//dto.getEmail() %>-->
+								<%=dto.getAns() %>
 							</td>
 
 						</tr>
 					<%	
-					/*
+					
 				}
 			}
-		*/
+		
 		%>
 		</tbody>
 	</table>

@@ -1,5 +1,7 @@
 package mul.cam.a.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,9 +25,19 @@ public class MemberDaoImpl implements MemberDao {
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
-    // detail.do
-
-    
+    // delete.do
+	
+	@Override
+	public List<MemberDto> allMember() {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"allMember");
+	}
+	
+	@Override
+	public int deleteMember(String id) {
+		// TODO Auto-generated method stub
+		return session.delete(ns+"deleteMember", id);
+	}
     
     
     // ========== ========== ========== ========== ========== ========== ========== 

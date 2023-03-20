@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import mul.cam.a.dto.BbsDto;
 import mul.cam.a.dto.BbsParam;
+import mul.cam.a.dto.MemberDto;
 import mul.cam.a.dto.QnaDto;
 import mul.cam.a.service.BbsService;
 import mul.cam.a.service.MemberService;
@@ -37,16 +38,16 @@ public class ScreenController {
     @GetMapping(value = "adminMem.do")
     public String adminMem (Model model) {
         System.out.println("  @ ScreenController admin (): " + new Date());
-        //List<MemberDto> list = serive.allMember();
-        //model.addAttribute("list", list);
+        List<MemberDto> list = memservice.allMember();
+        model.addAttribute("list", list);
         return "layoutAdmin_Mem";
     }
     
     @GetMapping(value = "adminQna.do")
     public String adminQna (Model model) {
         System.out.println("  @ ScreenController admin (): " + new Date());
-        //List<MemberDto> list = serive.allMember();
-        //model.addAttribute("list", list);
+	  	List<QnaDto> list = qservice.qnalist();
+	  	model.addAttribute("qnalist", list);
         return "layoutAdmin_Qna";
     }   
     
