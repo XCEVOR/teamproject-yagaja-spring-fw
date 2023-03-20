@@ -117,7 +117,7 @@ public class BbsController {
     @GetMapping(value = "mainsearch.do")
 	public String mainsearch (BbsParam param, Model model) {
 		
-		// 湲��쓽 �떆�옉怨� �걹
+		// 글의 시작과 끝
 		int pn = param.getPageNumber();  // 0 1 2 3 4
 		int start = 1 + (pn * 10);	// 1  11
 		int end = (pn + 1) * 10;	// 10 20 
@@ -126,25 +126,25 @@ public class BbsController {
 		param.setEnd(end);
 		
 		List<BbsDto> list = service.bbsMainList(param);
-//		int len = service.getAllBbs(param);
+		int len = service.getAllBbs(param);
 		
-//		int pageBbs = len / 10;		// 25 / 10 -> 2
-//		if((len % 10) > 0) {
-//			pageBbs = pageBbs + 1;
-//		}
-		
-		if(param.getChoice() == null || param.getChoice().equals("")
-			|| param.getSearch() == null || param.getSearch().equals("")) {
-			param.setChoice("寃��깋");
-			param.setSearch("");
+		int pageBbs = len / 10;		// 25 / 10 -> 2
+		if((len % 10) > 0) {
+			pageBbs = pageBbs + 1;
 		}
-		
-		model.addAttribute("bbslist", list);	// 寃뚯떆�뙋 由ъ뒪�듃
-//		model.addAttribute("pageBbs", pageBbs);	// 珥� �럹�씠吏��닔
-		model.addAttribute("pageNumber", param.getPageNumber()); // �쁽�옱 �럹�씠吏�
-		model.addAttribute("choice", param.getChoice());	// 寃��깋 移댄뀒怨좊━
-		model.addAttribute("search", param.getSearch());	// 寃��깋�뼱	
-		
+
+		if(param.getChoice() == null || param.getChoice().equals("")
+				|| param.getSearch() == null || param.getSearch().equals("")) {
+				param.setChoice("검색");
+				param.setSearch("");
+			}
+			
+			model.addAttribute("bbslist", list);	// 게시판 리스트
+			model.addAttribute("pageBbs", pageBbs);	// 총 페이지수
+			model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
+			model.addAttribute("choice", param.getChoice());	// 검색 카테고리
+			model.addAttribute("search", param.getSearch());	// 검색어	
+
 		return "layoutMain";
 	}
     
