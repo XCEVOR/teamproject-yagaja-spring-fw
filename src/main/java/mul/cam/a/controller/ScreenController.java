@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import mul.cam.a.dto.BbsDto;
 import mul.cam.a.dto.BbsParam;
+import mul.cam.a.dto.QnaDto;
 import mul.cam.a.service.BbsService;
 import mul.cam.a.service.MemberService;
+import mul.cam.a.service.QnaService;
 
 
 
@@ -22,7 +24,8 @@ public class ScreenController {
     MemberService memservice;
     @Autowired
     BbsService bbsservice;
-
+	@Autowired
+	QnaService qservice;
     // ========== ========== ========== ========== ========== ========== ========== 
     // admin.do, qna.do
     @GetMapping(value = "admin.do")
@@ -48,9 +51,12 @@ public class ScreenController {
     }   
     
     @GetMapping(value = "qna.do")
-    public String qna () {
+    public String qna (Model model) {
         System.out.println("  @ ScreenController qna (): " + new Date());
+	  	List<QnaDto> list = qservice.qnalist();
+	  	model.addAttribute("qnalist", list);
         return "layoutQna";
+
     }
     
     @GetMapping(value = "qnawr.do")

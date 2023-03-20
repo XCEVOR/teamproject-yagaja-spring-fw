@@ -93,7 +93,49 @@ if(memberUpdate != null && !memberUpdate.equals("")){
 		}	
 	}
 
-
+	//Qna작성글
+	String qnawrite = (String)request.getAttribute("writemsg");
+	if(qnawrite != null && !qnawrite.equals("")){
+		if(qnawrite.equals("qna_write_yes")){
+			String id = (String)request.getAttribute("id");
+			System.out.println(id);
+			%>
+			<script type="text/javascript">
+			alert("Qna 작성했습니다.");
+			//location.href = "my.do?id=abc";
+			location.href = "qna.do";
+			</script>
+			<%
+		}
+		else{		
+			%>
+			<script type="text/javascript">	
+			alert("다시 작성해 주십시오");		
+			location.href = "qna.do";
+			</script>
+			<%
+		}	
+	}
+	
+	//Qna 답글
+	String qnaupdwrite = (String)request.getAttribute("qnaupdwrite");
+	if(qnaupdwrite != null && !qnaupdwrite.equals("")){
+		if(qnaupdwrite.equals("Qns_Answer_OK")){
+			%>
+			<script type="text/javascript">
+			alert("답글을 작성하었습니다.");
+			location.href = "qna.do";
+			</script>		
+			<% 
+		}else{
+			%>
+			<script type="text/javascript">
+			alert("실패.");
+			location.href = "qna.do";
+			</script>		
+		<% 
+		}
+	}
 %>
 
 </body>
