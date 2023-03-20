@@ -3,6 +3,7 @@
 <%@page import="mul.cam.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -203,12 +204,6 @@
                     <h3>게시글 내용</h3>
 
 
-
-
-
-
-
-
                     <table class="table table-striped table-sm">
                         <colgroup>
                             <col style="width: 150px" />
@@ -250,11 +245,13 @@
 
                     <h3>댓글작성</h3>
 				<form action="commentWriteAf.do" method="post">
+				
 				<input type="hidden" name="seq" value="<%=allBbsPostList.get(0).getBbsseq() %>">
-				<input type="hidden" name="id" value="<%=login.getId() %>">
 				
-				
-				<table>
+				<%if(login != null) {
+					 %>
+					<input type="hidden" name="id" value="<%=login.getId() %>">
+					<table>
          			<col width="100"><col width="500"><col width="100">
 
                        <tr>
@@ -262,46 +259,19 @@
                            <td><input type="text" name="content" size="50"></td>
                            <td colspan="2" align="center"><input type="submit"
                                value="작성완료"></td>
+                          
                        </tr>
-                   </table>	
+                  	 </table>	
+					<%
+					
+				} else {
+					
+				}
+				%>				  
+	
+				
+                   </form>
                     
-              <!--    <table>
-				<col width="1500px"><col width="150px">
-				<tr>
-					<td>comment</td>
-					<td style="padding-left: 30px">올리기</td>
-				</tr>
-				<tr>
-					<td>
-						<textarea rows="3" class="form-control" name="content"></textarea>
-					</td> 
-					<td style="padding-left: 30px">
-						<button type="submit" class="btn btn-primary btn-block p-4">완료</button>
-					</td>
-				</tr>
-				</table>	-->
-
-                    <h3>댓글리스트</h3>
-
-<!--                     <table border="1">
-                        <col width="50"> <col width="500"><col width="100">
-                        <tr>
-                            <th>번호</th>
-                            <th>아이디</th>
-                            <th>내용</th>
-                        </tr>
-
-                        <tr>
-                            <td>dto.seq</td>
-                            <td>dto.id</td>
-                            <td>dto.content</td>
-                        </tr>
-                        <tr>
-                            <td>dto.seq</td>
-                            <td>dto.id</td>
-                            <td>dto.content</td>
-                        </tr>
-                    </table> -->
                     
 <!--  댓글 리스트 : 일단 아이디, 내용 순으로 뽑아오기 ?  --> 
 <table class="table table-sm">
@@ -328,6 +298,8 @@ $(document).ready(function(){
 			// alert(JSON.stringify(list));
 			
 			$("#tbody").html("");
+			
+			
 			
 			$.each(list, function(index, item){	// item = bbscomment
 				let str = "<tr class='table-info'>" 						
@@ -438,8 +410,6 @@ $(document).ready(function(){
                     alert(request.responseText);
                 }
             });
-    
-            
 
         });
 //func    }

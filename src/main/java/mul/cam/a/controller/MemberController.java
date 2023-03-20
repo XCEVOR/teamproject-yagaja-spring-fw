@@ -120,7 +120,6 @@ public class MemberController {
 				MemberDto findId = service.findId(dto);	// 데이터 형태로 .  		
 		 		
 		 		System.out.println(findId);
-		 		System.out.println(findId.getId());
 		 		model.addAttribute("findId", findId);
 			
 		 		return "layoutfindIdAf";		
