@@ -28,6 +28,9 @@ public interface MemberDao {
 	int idCheck(String id);
     
 	int myupdate(MemberDto dto);
+	
+	MemberDto findId(MemberDto dto);
+	MemberDto findPwd(MemberDto dto);
     // ========== ========== ========== ========== ========== ========== ========== 
     // main.do
     

@@ -53,6 +53,18 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return session.update(ns+"myupdate", dto);
 	}
+	
+	@Override
+	public MemberDto findId(MemberDto dto) {
+		MemberDto findId = session.selectOne(ns + "findId", dto);
+		return findId;
+	}
+	
+	@Override
+	public MemberDto findPwd(MemberDto dto) {
+		MemberDto findPwd = session.selectOne(ns + "findPwd", dto);
+		return findPwd;
+	}
     
     
     // ========== ========== ========== ========== ========== ========== ========== 

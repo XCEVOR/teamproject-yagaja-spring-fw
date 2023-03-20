@@ -43,6 +43,22 @@
 	where id=#{id}
 </select>
 
+<!-- 아이디 찾기: 이름, 전화번호로 아이디 조회 -->	
+	<select id="findId" parameterType="mul.cam.a.dto.MemberDto"
+	resultType="mul.cam.a.dto.MemberDto">
+		select *
+		from member 
+		where nickname=#{nickname} and phonenumber=#{phonenumber}
+	</select>
+
+<!-- 비밀번호 찾기: 아이디, 전화번호로 비번 조회 -->	
+	<select id="findPwd" parameterType="mul.cam.a.dto.MemberDto"
+	resultType="mul.cam.a.dto.MemberDto">
+		select *
+		from member 
+		where id=#{id} and phonenumber=#{phonenumber}
+	</select>
+
 
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
     // mypage update -->    

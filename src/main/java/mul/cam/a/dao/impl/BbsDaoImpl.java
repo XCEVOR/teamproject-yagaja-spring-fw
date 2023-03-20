@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mul.cam.a.dao.BbsDao;
+import mul.cam.a.dto.BbsCommentDto;
 import mul.cam.a.dto.BbsDto;
 import mul.cam.a.dto.BbsParam;
 
@@ -34,6 +35,16 @@ public class BbsDaoImpl implements BbsDao {
         System.out.println("   @  getAllBbsPost (int bbsseq):  " + bbsseq);
         return session.selectList(ns + "getAllBbsPost", bbsseq);
     }
+    
+    @Override
+	public int commentWrite(BbsCommentDto bbs) {
+    	return session.insert(ns + "commentWrite", bbs);
+    }
+    
+	@Override
+	public List<BbsCommentDto> commentList(int seq) {
+		return session.selectList(ns + "commentList", seq);
+	}
     
     
     

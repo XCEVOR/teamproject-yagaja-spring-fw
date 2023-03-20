@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mysql.cj.result.IntegerValueFactory;
 
+import mul.cam.a.dto.BbsCommentDto;
 import mul.cam.a.dto.BbsDto;
 import mul.cam.a.dto.BbsParam;
 import mul.cam.a.service.BbsService;
@@ -52,6 +53,32 @@ public class BbsController {
         // model.addAttribute("allBbsPostList", allBbsPostList);
         return allBbsPostList;
     }
+    
+    // comment
+  	@PostMapping(value = "commentWriteAf.do")
+  	public String commentWriteAf(BbsCommentDto bbs) {
+  		boolean isS = service.commentWrite(bbs);
+  		System.out.println(bbs);
+  		if(isS) {
+  			System.out.println("댓글작성에 성공했습니다");
+  		}else {
+  			System.out.println("댓글작성에 실패했습니다");
+  		}
+  		
+  		return "redirect:/detail1.do?seq=" + bbs.getSeq();
+  	}
+  	
+  	// commentlist
+  	@ResponseBody
+ 	@GetMapping(value = "commentList.do")
+ 	public List<BbsCommentDto> commentList(int seq){
+  		System.out.println("commentList.do" + new Date());
+ 		List<BbsCommentDto> list = service.commentList(seq);
+ 		System.out.println(list);
+ 		return list;
+ 	}
+  	
+  	
 
     
     

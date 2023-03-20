@@ -18,6 +18,19 @@
         where bbsseq=#{bbsseq} 
     </select>
     
+        <insert id="commentWrite" parameterType="mul.cam.a.dto.BbsCommentDto">
+		insert into bbscomment(seq, id, content, wdate)
+		values(#{seq}, #{id}, #{content}, now())
+	</insert>
+    
+    <select id="commentList" parameterType="Integer" resultType="mul.cam.a.dto.BbsCommentDto">
+	select seq, id, content, wdate
+	from bbscomment
+	where seq=#{seq}
+	order by wdate desc
+</select>
+    
+    
     
     
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
