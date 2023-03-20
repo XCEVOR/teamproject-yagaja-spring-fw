@@ -53,6 +53,7 @@
     <definition name="layoutDetail1" template="/WEB-INF/views/DetailScreen1/layout-detail1.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
         <put-attribute name="Content" value="/WEB-INF/views/DetailScreen1/DetailContent.jsp"/>
+        <put-attribute name="Bottom" value="/WEB-INF/views/DetailScreen1/DetailBottom.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
 
