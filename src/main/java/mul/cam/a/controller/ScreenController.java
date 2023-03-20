@@ -1,7 +1,10 @@
 package mul.cam.a.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,6 +78,29 @@ public class ScreenController {
         int bbsseq = seq;
         List<BbsDto> allBbsPostList = bbsservice.getAllBbsPost(bbsseq);
         model.addAttribute("allBbsPostList", allBbsPostList);
+ 
+        // 유사 해시태그를 찾기 위한 함수 
+        // 해당 seq에 있는 게시물에 접근 -> 해당 해시태그 검사 -> 유사 시 uniqueHashtagsMap에 추가
+        // 겹치는 값을 없애기 위한 key값 사용 
+        Map<Integer, BbsDto> uniqueHashtagsMap = new HashMap<>();
+        for (int i = 0; i < allBbsPostList.size(); i++) {
+            BbsDto dto = allBbsPostList.get(i);
+            String tags[] = dto.getHashtags().split(",");
+            for (int j = 0; j < tags.length; j++) {
+                List<BbsDto> list = bbsservice.detailhashtag(tags[j]);
+                for (int k = 0; k < list.size(); k++) {
+                    BbsDto hashtag = list.get(k);
+                    int tseq = hashtag.getSeq();
+                    if (!uniqueHashtagsMap.containsKey(tseq)) {
+                        uniqueHashtagsMap.put(tseq, hashtag);
+                    }
+                }
+            }
+        }
+        List<BbsDto> uniqueHashtags = new ArrayList<>(uniqueHashtagsMap.values());
+        System.out.println("uniqueHashtags==="+uniqueHashtags);
+        
+        model.addAttribute("uniqueHashtags", uniqueHashtags);
         return "layoutDetail1";
     }
     

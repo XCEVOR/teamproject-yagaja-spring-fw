@@ -239,10 +239,8 @@
                         </tr>
                     </table>
 
-                    <a href="admin.do">수정</a>
+                    <a href="update.do?seq=<%=allBbsPostList.get(0).getBbsseq()%>">수정</a>
 
-                    <a href="admin.do">삭제</a>
-                    <a href="detail2.do">일정확인</a>
                 </ul>
             </div>
             <div class="bottom-right-Layout">

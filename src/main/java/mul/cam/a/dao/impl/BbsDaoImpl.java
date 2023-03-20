@@ -45,6 +45,12 @@ public class BbsDaoImpl implements BbsDao {
 	public List<BbsCommentDto> commentList(int seq) {
 		return session.selectList(ns + "commentList", seq);
 	}
+	
+	  @Override
+	    public List<BbsDto> detailhashtag(String tag) {
+	    	// TODO Auto-generated method stub
+	    	return session.selectList(ns+"detailhashtag",tag);
+	    }
     
     
     

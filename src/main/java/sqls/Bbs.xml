@@ -31,6 +31,14 @@
 </select>
     
     
+     <select id="detailhashtag" parameterType="String" resultType="mul.cam.a.dto.BbsDto">
+    select *  from bbs 
+	where seq in 
+	(select  bbsseq from bbspost where hashtags like concat("%",#{hashtags},"%")
+	group by bbsseq);
+    
+    </select>
+    
     
     
 <!--     // ========== ========== ========== ========== ========== ========== ========== 

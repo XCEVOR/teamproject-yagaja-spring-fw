@@ -21,7 +21,7 @@ public interface BbsDao {
     List<BbsDto> getAllBbsPost (int bbsseq);
     int commentWrite(BbsCommentDto bbs);
     List<BbsCommentDto> commentList(int seq);
-    
+    List<BbsDto> detailhashtag(String tag);
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // login.do, signup.do
@@ -65,5 +65,7 @@ public interface BbsDao {
     int bbsPostupdateAf(BbsDto dto);
     int bbsPostupdateAfnotImg(BbsDto dto);
     int bbsPostwriteAf(BbsDto dto);
+    
+   
     
 }
