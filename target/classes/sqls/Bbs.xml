@@ -117,6 +117,15 @@
 		
 	</update>
 	
+	<!-- 임시 테이블 업데이트 이미지 제외 -->
+	<update id="bbsTempupdateAfnotImg"  parameterType="mul.cam.a.dto.BbsDto">
+	update tempbbs
+	set title=#{title}, hashtags=#{hashtags}, content=#{content},wdate=now()
+	,date=#{date}
+	where seq=#{seq}
+		
+	</update>
+	
 	<!-- 임시 테이블 전체 조회 -->
 	<select id="bbstTempList" resultType="mul.cam.a.dto.BbsDto">
 	select * from tempbbs order by date asc;
@@ -200,6 +209,14 @@
 		
 	</update>
 	
+	<!-- post 테이블 업데이트 이미지 제외 -->
+	<update id="bbsPostupdateAfnotImg"  parameterType="mul.cam.a.dto.BbsDto">
+	update bbspost
+	set title=#{title}, hashtags=#{hashtags}, content=#{content},wdate=now()
+	,date=#{date}
+	where seq=#{seq}
+		
+	</update>
 
     
 </mapper>

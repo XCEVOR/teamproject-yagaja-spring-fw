@@ -222,7 +222,11 @@ public class BbsController {
 		
 		
 		String filename = fileload.getOriginalFilename(); // 원본 파일명 체크
-
+		System.out.println("filename===="+filename);
+		if(filename=="") {
+			service.bbsTempupdateAfnotImg(dto);
+		}else {
+		
 		dto.setFilename(filename); // 원본 파일명을 setting
 
 		// upload의 경로 설정
@@ -231,38 +235,25 @@ public class BbsController {
 
 		// 클라이언트 폴더 설정
 		// String fupload = "c:\\temp"
-
 		String filepath = path + "/" + filename;
 		File file = new File(filepath);
 		// 파일명을 충돌되지 않은 이름으로 변경
 		String newfilename = PdsUtil.getNewFileName(filename);
-
 		dto.setNewfilename(newfilename);
-
 
 		try {
 			// 실제로 파일이 생성되어 기입되는 부분
 			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
 			
 			bos.write(fileload.getBytes());
-			
+			service.bbsTempupdateAf(dto);			
 			bos.close();
 			// db에 저장
-			service.bbsTempupdateAf(dto);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
-		boolean isS = service.bbsTempupdateAf(dto);
-		String bbsTempupdateAf = "";
-		if (isS) {
-			bbsTempupdateAf = "BBS_ADD_OK";
-		} else {
-			bbsTempupdateAf = "BBS_ADD_NO";
-		}
-		model.addAttribute("bbsTempupdateAf", bbsTempupdateAf);
+		}}
 
 		return "layoutMessage";
 	}
@@ -369,7 +360,9 @@ public class BbsController {
 		
 		
 		String filename = fileload.getOriginalFilename(); // 원본 파일명 체크
-
+		if(filename=="") {
+			service.bbsPostupdateAfnotImg(dto);
+		}else {
 		dto.setFilename(filename); // 원본 파일명을 setting
 
 		// upload의 경로 설정
@@ -400,16 +393,9 @@ public class BbsController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}}
 
-		boolean isS = service.bbsTempupdateAf(dto);
-		String bbsPostupdateAf = "";
-		if (isS) {
-			bbsPostupdateAf = "BBS_ADD_OK";
-		} else {
-			bbsPostupdateAf = "BBS_ADD_NO";
-		}
-		model.addAttribute("bbsPostupdateAf", bbsPostupdateAf);
+		
 
 		return "layoutMessage";
 	}

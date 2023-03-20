@@ -175,6 +175,8 @@ public class ScreenController {
     @GetMapping(value = "write.do")
     public String write () {
         System.out.println("  @ ScreenController write (): " + new Date());
+        
+        bbsservice.bbsTempAlldelete();
         return "layoutWrite";
     }
     

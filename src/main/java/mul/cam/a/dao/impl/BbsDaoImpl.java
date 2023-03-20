@@ -129,6 +129,11 @@ public class BbsDaoImpl implements BbsDao {
     	// TODO Auto-generated method stub
     	return session.insert(ns+"bbswrite", dto);
     }
+    @Override
+    public int bbsTempupdateAfnotImg(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return session.update(ns+"bbsTempupdateAfnotImg", dto);
+    }
     
     
  // ========== ========== ========== ========== ========== ========== ========== 
@@ -157,5 +162,10 @@ public class BbsDaoImpl implements BbsDao {
     public int bbsPostwriteAf(BbsDto dto) {
     	// TODO Auto-generated method stub
     	return session.insert(ns+"bbsPostwriteAf", dto);
+    }
+    @Override
+    public int bbsPostupdateAfnotImg(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return session.update(ns+"bbsPostupdateAfnotImg", dto);
     }
 }

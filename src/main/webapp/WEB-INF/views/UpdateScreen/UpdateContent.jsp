@@ -420,8 +420,7 @@ $(document).ready(function(){
          }
         $("#hashtags").val(hashtagList);
 		$("#date").val($("#datepicker").val());
-        // 이미지 값 가져오기
-        image=$("#file").val();
+
 
        //  날짜 값 가져오기
      	 date = $("#datepicker").val();
@@ -433,7 +432,7 @@ $(document).ready(function(){
      	 content = $("#content").val();
         
      	// 파일 가져오기
-     	file=$("#fileCommnet").val();   
+     	filecomment=$("#fileCommnet").val();   
 		
         // alert 등록 (필수 입력 항목 alert처리)
      	 if(date =="") {
