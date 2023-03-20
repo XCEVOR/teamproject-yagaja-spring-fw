@@ -45,6 +45,7 @@ public interface BbsDao {
     List<BbsDto>bbstTempList();
     BbsDto bbstTempDto(String date);
     int bbsTempupdateAf(BbsDto dto);
+    int bbsTempupdateAfnotImg(BbsDto dto);
     int bbsTempdelete(String date);
     int bbsTempAlldelete();
     BbsDto bbstempfirstGet();
@@ -60,6 +61,7 @@ public interface BbsDao {
     BbsDto bbsPostDto(BbsDto dto);
     int bbsPostdelete(BbsDto dto);
     int bbsPostupdateAf(BbsDto dto);
+    int bbsPostupdateAfnotImg(BbsDto dto);
     int bbsPostwriteAf(BbsDto dto);
     
 }

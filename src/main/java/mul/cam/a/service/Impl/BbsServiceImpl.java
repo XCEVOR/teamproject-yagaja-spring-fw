@@ -123,6 +123,11 @@ public class BbsServiceImpl implements BbsService{
     	return dao.bbswrite(dto)>0;
     }
     
+    @Override
+    public boolean bbsTempupdateAfnotImg(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return dao.bbsTempupdateAfnotImg(dto)>0;
+    }
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
@@ -151,6 +156,11 @@ public class BbsServiceImpl implements BbsService{
     public boolean bbsPostwriteAf(BbsDto dto) {
     	// TODO Auto-generated method stub
     	return dao.bbsPostwriteAf(dto)>0;
+    }
+    @Override
+    public boolean bbsPostupdateAfnotImg(BbsDto dto) {
+    	// TODO Auto-generated method stub
+    	return dao.bbsPostupdateAfnotImg(dto)>0;
     }
     
 }

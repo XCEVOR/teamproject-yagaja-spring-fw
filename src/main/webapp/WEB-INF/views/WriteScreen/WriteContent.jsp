@@ -113,6 +113,7 @@ String content = "";
 String date="";
 String hashtags="";
 String comment="";
+String file="";
 int seq=0;
 boolean exist=false;
 if(dto != null){
@@ -121,7 +122,7 @@ if(dto != null){
 	content =dto.getContent();
 	date=dto.getDate();
 	seq=dto.getSeq();
-	
+	file="upload/"+dto.getFilename();
 	if(dto.getHashtags()!=null){
 		hashtags=dto.getHashtags();
 	};
@@ -142,7 +143,7 @@ $(document).ready(function(){
 	$("#datepicker").val('<%=date%>');
  	$("#title").val('<%=title%>');
 	$("#content").val('<%=content%>');
-	$("#fileCommnet").text('<%=comment%>');  
+	$("#fileCommnet").text('<%=comment%>'); 
 	  
 });
 </script>
@@ -327,6 +328,7 @@ $(document).ready(function(){
       if(image!=""){
       $("#fileCommnet").text("정상적으로 사진이 등록됐습니다.." +image );
       }
+      
   
     });
 
@@ -364,7 +366,7 @@ $(document).ready(function(){
 	       
 	       // 파일 가져오기
 	       	file=$("#file").val();   
-
+			
 	       // alert 등록 (필수 입력 항목 alert처리)
 	       if(date =="") {
 	        alert("날짜를 등록해주세요..");
@@ -418,8 +420,6 @@ $(document).ready(function(){
          }
         $("#hashtags").val(hashtagList);
 		$("#date").val($("#datepicker").val());
-        // 이미지 값 가져오기
-        image=$("#file").val();
 
        //  날짜 값 가져오기
      	 date = $("#datepicker").val();
@@ -431,7 +431,7 @@ $(document).ready(function(){
      	 content = $("#content").val();
         
      	// 파일 가져오기
-     	file=$("#fileCommnet").val();   
+     	fileCommnet=$("#fileCommnet").text(); 
 		
         // alert 등록 (필수 입력 항목 alert처리)
      	 if(date =="") {
@@ -443,7 +443,7 @@ $(document).ready(function(){
         }else if(content==""){
          alert("내용을 입력해주세요..");
 
-        }else if(file==""){
+        }else if(fileCommnet==""){
 	    	   alert("사진을 넣어주세요..");
 	       }else{
 		

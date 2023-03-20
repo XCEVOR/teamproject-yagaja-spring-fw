@@ -49,6 +49,7 @@ public interface BbsService {
     BbsDto bbstempfirstGet();
     boolean bbsTempsaveAf();
     boolean bbswrite(BbsDto dto);
+    boolean bbsTempupdateAfnotImg(BbsDto dto);
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // update.do
@@ -57,5 +58,6 @@ public interface BbsService {
     BbsDto bbsPostDto(BbsDto dto);
     boolean bbsPostdelete(BbsDto dto);
     boolean bbsPostwriteAf(BbsDto dto);
-    boolean bbsPostupdateAf(BbsDto dto);
+    boolean bbsPostupdateAf(BbsDto dto); 
+    boolean bbsPostupdateAfnotImg(BbsDto dto); 
 }

@@ -25,6 +25,12 @@
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/noscript.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<style type="text/css">
+
+#main{
+display: flex;
+}
+</style>
 </head>
 <body>
 
