@@ -240,6 +240,7 @@
                     </table>
 
                     <a href="update.do?seq=<%=allBbsPostList.get(0).getBbsseq()%>">수정</a>
+                    <i class="fa fa-thumbs-up" style="font-size:36px;color:grey" onclick="likecountUpdate()"></i>
 
                 </ul>
             </div>
@@ -494,32 +495,61 @@ $(document).ready(function(){
 
 
         function slideIndex (index) {
-        	
-//        	console.log(index);
-        	
-        	//console.log(testList[index]);
-        	/* let slideTest = document.getElementById("slideTest");
-        	slideTest.innerHTML = '<h1>testtestest</h1>';
-        	slideTest.innerHTML = '<h1>'</h1>'; */
-        	
         	<%
         		for(int i=0; i< allBbsPostList.size(); i++){
         			%>
-
-        			if(index == <%=i%>){
-        				console.log("~~" + "<%=allBbsPostList.get(i).getTitle()%>");
-        				<%-- let slideTest = document.getElementById("slideTest");
-        				slideTest.innerHTML = '<h1><%=allBbsPostList.get(i).getTitle()%></h1>' --%>
-        				
-        				document.getElementById("detailTitle").innerHTML = '<h2><%=allBbsPostList.get(i).getTitle()%></h2>';
-        				document.getElementById("detailContent").innerHTML = '<h3><%=allBbsPostList.get(i).getContent()%></h3>';
-        			}
+	        			if(index == <%=i%>){
+	        				console.log("~~" + "<%=allBbsPostList.get(i).getTitle()%>");
+	        				<%-- let slideTest = document.getElementById("slideTest");
+	        				slideTest.innerHTML = '<h1><%=allBbsPostList.get(i).getTitle()%></h1>' --%>
+	        				
+	        				document.getElementById("detailTitle").innerHTML = '<h2><%=allBbsPostList.get(i).getTitle()%></h2>';
+	        				document.getElementById("detailContent").innerHTML = '<h3><%=allBbsPostList.get(i).getContent()%></h3>';
+	        			}
         			<%
         		}
         	%>
-        	
         }
 
+        $(document).ready(function () {
+            $.ajax({
+                url: "ajaxReadcount.do",
+                type: "GET",
+                data: { "seq":bbsseq },
+                success: function (msg) {
+                    // alert(list);
+                    console.log(msg);
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+        });
+        
+        let isLike = false;
+        function likecountUpdate() {
+            console.log("isLike: " + isLike);
+            if (isLike == true) {
+                return;
+            }
+            else {
+                isLike = true;
+            }
+            $(document).ready(function () {
+                $.ajax({
+                    url: "ajaxLikecount.do",
+                    type: "GET",
+                    data: { "seq":bbsseq },
+                    success: function (msg) {
+                        // alert(list);
+                        console.log(msg);
+                    },
+                    error: function (request, status, error) {
+                        alert(request.responseText);
+                    }
+                });
+            });
+        }
 
 </script>
 

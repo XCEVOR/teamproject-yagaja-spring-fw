@@ -21,6 +21,8 @@ public interface BbsService {
     boolean commentWrite(BbsCommentDto bbs);
     List<BbsCommentDto> commentList(int seq);
     List<BbsDto> detailhashtag(String tag);
+    boolean readcount (int seq);
+    boolean likecount (int seq);
     
     
     // ========== ========== ========== ========== ========== ========== ========== 
