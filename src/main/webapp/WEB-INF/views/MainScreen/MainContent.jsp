@@ -34,44 +34,67 @@ display: flex;
 </head>
 <body>
 
-    <h1>MAIN CONTENT (테스트) loginid:xxx</h1>
-    <div id="wrapper">
-        <div id="main">
-            <input type="text" id="testinput" value="" placeholder="아이디 입력 (테스트)">
-            <button type="button" onclick="myBtn()">분류</button>
-            <div class="inner">
-                <div class="container1"></div>
-                <section id="mysection" class="tiles">
-                
-    <%
-        for(int i = 0;i < blist.size(); i++)
-        {
-            BbsDto bdto = blist.get(i);
-            %>
-                <article class="style1">
-                    <span class="image">
-                        <img src="upload/<%= bdto.getNewfilename() %>" alt="" />
-                    </span>
-                    <a href="detail1.do?seq=<%= bdto.getSeq() %>">
-                        <h6>Like test: <%= bdto.getLikecount() %></h6>
-                        <h6>Read test: <%= bdto.getReadcount() %></h6>
-                        <h2><%= bdto.getTitle() %></h2>
-                        <div class="content">
-                            <p><%= bdto.getContent() %></p>
-                        </div>
-                    </a>
-                </article>
-            <%
+	<div id="wrapper">
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="main.do" class="logo"> <span class="symbol"><img
+						src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+
+
+
+		<div id="main">
+			<input type="hidden" id="testinput" value=""
+				placeholder="아이디 입력 (테스트)">
+			<!-- <button type="button" onclick="myBtn()">분류</button> -->
+			<div class="inner">
+				<div class="container1"></div>
+				<section id="mysection" class="tiles">
+
+					<%
+					for (int i = 0; i < blist.size(); i++) {
+						BbsDto bdto = blist.get(i);
+					%>
+					<article class="style1">
+						<span class="image"> <img
+							src="upload/<%= bdto.getNewfilename() %>" alt="" />
+						</span> <a href="detail1.do?seq=<%= bdto.getSeq() %>">
+							<h6>
+								Like test:
+								<%= bdto.getLikecount() %></h6>
+							<h6>
+								Read test:
+								<%= bdto.getReadcount() %></h6>
+							<h2><%= bdto.getTitle() %></h2>
+							<div class="content">
+								<p><%= bdto.getContent() %></p>
+							</div>
+						</a>
+					</article>
+					<%
         }
     %>
-    
-                </section>
-            </div>
-        </div>
-    </div>
-    
-    
-    <!-- 0317 다른 페이지 불러오기. -->
+
+				</section>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 0317 다른 페이지 불러오기. -->
     <button type="button" id="nextBtn" onclick="nextPage()">NEXT</button>
     <div id="trigger"></div>
     
