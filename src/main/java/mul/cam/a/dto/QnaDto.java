@@ -10,10 +10,10 @@ public class QnaDto implements Serializable{
 	private String title;
 	private String content;
 	private String wdate;
-	private int ans; //0Àº ´ë´äÀü 1 ´ë´ä¿Ï·á
-	private int secret; //0 ºñ¹Ð±Ûx 1 ºñ¹Ð±Û
-	private int depth;  //´ä±ÛÀÌÁö¸¸ 1¹øÀÌ»ó x
-	private int step; //´ä±Û¿ë
+	private int ans; //0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ï¿½ï¿½Ï·ï¿½
+	private int secret; //0 ï¿½ï¿½Ð±ï¿½x 1 ï¿½ï¿½Ð±ï¿½
+	private int ref;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½Ì»ï¿½ x
+	private int step; //ï¿½ï¿½Û¿ï¿½
 	
 	
 	public QnaDto() {
@@ -22,7 +22,7 @@ public class QnaDto implements Serializable{
 
 
 	public QnaDto(int seq, String id, String nickname, String title, String content, String wdate, int ans, int secret,
-			int depth, int step) {
+			int ref, int step) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -32,7 +32,7 @@ public class QnaDto implements Serializable{
 		this.wdate = wdate;
 		this.ans = ans;
 		this.secret = secret;
-		this.depth = depth;
+		this.ref = ref;
 		this.step = step;
 	}
 
@@ -117,13 +117,13 @@ public class QnaDto implements Serializable{
 	}
 
 
-	public int getDepth() {
-		return depth;
+	public int getRef() {
+		return ref;
 	}
 
 
-	public void setDepth(int depth) {
-		this.depth = depth;
+	public void setRef(int ref) {
+		this.ref = ref;
 	}
 
 
@@ -140,7 +140,7 @@ public class QnaDto implements Serializable{
 	@Override
 	public String toString() {
 		return "QnaDto [seq=" + seq + ", id=" + id + ", nickname=" + nickname + ", title=" + title + ", content="
-				+ content + ", wdate=" + wdate + ", ans=" + ans + ", secret=" + secret + ", depth=" + depth + ", step="
+				+ content + ", wdate=" + wdate + ", ans=" + ans + ", secret=" + secret + ", ref=" + ref + ", step="
 				+ step + "]";
 	}
 	

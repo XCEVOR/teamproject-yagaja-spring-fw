@@ -2,8 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-	<mapper namespace="Qna">
+<mapper namespace="Qna">
+		<insert id="writeQna" parameterType="mul.cam.a.dto.QnaDto">
+		insert into qna( id, nickname, title, content, wdate, ans, secret, ref, step ) 
+		values ( #{id}, #{nickname}, #{title}, #{content}, now(), 0, #{secret}, (select ifnull(max(ref),0)+1 from Qna b) ,0);
+	</insert>
 	
-	</mapper>
+	<select id="qnalist" resultType="mul.cam.a.dto.QnaDto">
+		select seq, id, nickname, title, content, wdate, ans, secret, ref, step
+		from qna
+	</select>
+	
+	<delete id="deleteQna" parameterType="Integer">
+		delete from qna where seq = #{seq}
+	</delete>
+	
+	<update id="answerUpdate" parameterType="mul.cam.a.dto.QnaDto">
+		update qna set step=step+1
+		where ref=(select ref from (select ref from qna a where seq=#{seq}) A)
+			and step>(select step from (select step from qna b where seq=#{seq}) B)
+	</update>
+	
+	<insert id="answerInsert" parameterType="mul.cam.a.dto.QnaDto" >
+		 insert into qna (id, ref, step, nickname,title, content, wdate, ans, secret)
+		 values(#{id},(select ref from qna a where seq=#{seq}), (select step from qna b where seq=#{seq})+1,
+		 		 #{nickname}, #{title}, #{content}, now(), 0, (select secret from qna c where seq=#{seq}))
+	</insert>
+</mapper>
 	
 	
