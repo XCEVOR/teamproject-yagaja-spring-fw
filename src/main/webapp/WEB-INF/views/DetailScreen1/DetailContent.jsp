@@ -105,6 +105,7 @@
                 <!-- ########## 슬라이드 ########## ########## ########## ########## ########## ########## ########## ########## ##########  -->
 <button type="button" onclick="testButton()">testButton</button>
 <button type="button" onclick="labelButton()">labelButton</button>
+<button type="button" onclick="tagsButton()">tagsButton</button>
 
                     <div id="ajaxSlidelist" class="section">
                     
@@ -173,7 +174,8 @@
                     <div class="card mb-4">
                         <div class="card-header">해시태그</div>
                         <div class="card-body">
-                            <div class="row">
+                            <div id="scriptHashtags" class="row">
+<!-- 
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
                                         <li><a href="#!">#바다</a> <a href="#!">#힐링</a> <a
@@ -186,6 +188,7 @@
                                             href="#!">#Freebies</a></li>
                                     </ul>
                                 </div>
+-->
                             </div>
                         </div>
                     </div>
@@ -313,7 +316,9 @@
     
     
 <script type="text/javascript">
+	let seq00 = <%= allBbsPostList.get(0).getSeq() %>
     let bbsseq = <%= allBbsPostList.get(0).getBbsseq() %>
+    console.log("@ seq: " + seq00);
     console.log("@ bbsseq: " + bbsseq);
 //    function testButton() {
         $(document).ready(function () {
@@ -406,53 +411,64 @@
 
         });
 //func    }
-    
-    function labelButton () {
-        //let label_list = document.getElementByClassName("labelList");
-        //console.log(label_list[0].getAttribute("for"));
-        var label = document.querySelectorAll('label.labelList');
-        console.log(label);
-        var forValue = label[1].getAttribute('for');
-        console.log(forValue);
-    }
-    
-    const labelList = document.querySelectorAll('label.labelList');
+ 
+ 
+ 
 
-    labelList.addEventListener('click', function() {
-      const forValue = this.getAttribute('for');
-      console.log(forValue);
-    });
-    
-    $("label[class=labelList]").click(function () {
-        var result = $(this).attr("for");
-        console.log("aaaa");
-    })
-     
-    
-    
-document.addEventListener('DOMContentLoaded', function() {
-  // Get all label elements with class 'labelList'
-  var labels = document.querySelectorAll('label.labelList');
-  
-  // Add click event listener to each label element
-  labels.forEach(function(label) {
-    label.addEventListener('click', function() {
-      // Get the 'for' attribute value of the clicked label element
-      var forValue = this.getAttribute('for');
-      
-      // Log the for value to the console
-      console.log(forValue);
-    });
-  });
-});
+// Display tags    
+//	function tagsButton() {
+        $(document).ready(function () {
+            $.ajax({
+                url: "ajaxDetail1.do",
+                type: "GET",
+                data: { "bbsseq":bbsseq },
+                success: function (bbsPostList) {
+                    // alert(list);
+                    console.log(bbsPostList);
+                    /* $("#mysection").html(""); */
+                    
+                    let hashtag_tags = "";
+                    
+                    $.each(bbsPostList, function(index, item){
+                    	
+                    	let tags_str = item.hashtags;
+                    	let tag_ls = tags_str.split(',');
+                    	tag_ls.pop();
+                    	let tag_print = "";
+                    	$.each(tag_ls, function name(i, tagitem) {
+							tag_print += "#" + tagitem + " ";
+						});
+                    	
+                    	hashtag_tags += "<div class='col-sm-6'>" 
+                                    + "     <ul class='list-unstyled mb-0'>"
+                                    + "             <li>"
+                                    + "             <a>" + tag_print + "</a>"
+                                    + "             </li>"
+                                    + "     </ul>"
+                                    + "</div>";
+                                    
+                        //$("#ajaxSlidelist").append(slidtags);
+                    });
+                    
+                        $("#scriptHashtags").append(hashtag_tags).trigger("create");
+       
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
 
+        });
+//button	}
 
-    
 
 
 
 
 </script>
+
+
+
     
 </body>
 </html>
