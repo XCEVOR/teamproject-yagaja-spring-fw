@@ -43,6 +43,10 @@
 					</div>
 				</div>
 			</form>
+			
+			<a href="findId.do">Id찾기</a>
+			<a href="findPwd.do">PassWord찾기</a>
+			
 		</section>
 	</div>
 	

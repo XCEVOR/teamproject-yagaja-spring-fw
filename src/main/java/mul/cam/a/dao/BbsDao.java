@@ -2,6 +2,7 @@ package mul.cam.a.dao;
 
 import java.util.List;
 
+import mul.cam.a.dto.BbsCommentDto;
 import mul.cam.a.dto.BbsDto;
 import mul.cam.a.dto.BbsParam;
 
@@ -18,7 +19,8 @@ public interface BbsDao {
     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do
     List<BbsDto> getAllBbsPost (int bbsseq);
-    
+    int commentWrite(BbsCommentDto bbs);
+    List<BbsCommentDto> commentList(int seq);
     
     
     // ========== ========== ========== ========== ========== ========== ========== 

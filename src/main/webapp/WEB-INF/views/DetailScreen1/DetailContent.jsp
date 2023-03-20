@@ -244,30 +244,45 @@
             </div>
             <div class="bottom-right-Layout">
                 <ul>
-                <!-- ########## 댓글 ########## ########## ########## ########## ########## ########## ########## ########## ##########  -->
+                <!-- ##########댓글 ########## ########## ########## ########## ########## ########## ########## ########## ##########  -->
 
                     <h3>댓글작성</h3>
+				<form action="commentWriteAf.do" method="post">
+				<input type="hidden" name="seq" value="<%=allBbsPostList.get(0).getBbsseq() %>">
+				<input type="hidden" name="id" value="<%=login.getId() %>">
+				
+				
+				<table>
+         			<col width="100"><col width="500"><col width="100">
 
-                    <table>
-                        <col width="200">
-                        <col width="500">
-                        <col width="100">
-
-                        <tr>
-                            <th>댓글쓰기</th>
-                            <td><input type="text" name="content" size="50"></td>
-                            <td colspan="2" align="center"><input type="submit"
-                                value="작성완료"></td>
-                        </tr>
-
-                    </table>
+                       <tr>
+                           <th>comment</th>
+                           <td><input type="text" name="content" size="50"></td>
+                           <td colspan="2" align="center"><input type="submit"
+                               value="작성완료"></td>
+                       </tr>
+                   </table>	
+                    
+              <!--    <table>
+				<col width="1500px"><col width="150px">
+				<tr>
+					<td>comment</td>
+					<td style="padding-left: 30px">올리기</td>
+				</tr>
+				<tr>
+					<td>
+						<textarea rows="3" class="form-control" name="content"></textarea>
+					</td> 
+					<td style="padding-left: 30px">
+						<button type="submit" class="btn btn-primary btn-block p-4">완료</button>
+					</td>
+				</tr>
+				</table>	-->
 
                     <h3>댓글리스트</h3>
 
-                    <table border="1">
-                        <col width="50">
-                        <col width="500">
-                        <col width="100">
+<!--                     <table border="1">
+                        <col width="50"> <col width="500"><col width="100">
                         <tr>
                             <th>번호</th>
                             <th>아이디</th>
@@ -284,35 +299,50 @@
                             <td>dto.id</td>
                             <td>dto.content</td>
                         </tr>
+                    </table> -->
+                    
+<!--  댓글 리스트 : 일단 아이디, 내용 순으로 뽑아오기 ?  --> 
+<table class="table table-sm">
+<col width="70"><col width="400"><col width="200">
+<thead>
+<th>ID</th><th>Content</th><th>Date</th>
+</thead>
+<tr class="bg-primary" style="color: white;">
+<tbody id="tbody">
+</tr>
+</tbody>
+</table>
 
-                    </table>
+</div>
 
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		url:"./commentList.do",		
+		type:"get",					
+		data:{ "seq":<%=allBbsPostList.get(0).getBbsseq() %> },	
+		success:function(list){		
+			// alert('success');
+			// alert(JSON.stringify(list));
+			
+			$("#tbody").html("");
+			
+			$.each(list, function(index, item){	// item = bbscomment
+				let str = "<tr class='table-info'>" 						
+						+	"<td>" + item.id + "</td>"
+						+	"<td>" + item.content + "</td>"
+						+	"<td >" + item.wdate + "</td>"
+						+ "</tr>"						
+				$("#tbody").append(str);
+			});
+		},
+		error:function(){
+			alert('error');	
+		}		
+	});	
+});
 
-
-                    <!-- 댓글 검색 -->
-                    <table
-                        style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px">
-                        <tr>
-                            <td style="padding-left: 5px"><select class="custom-select"
-                                id="choice" name="choice">
-                                    <option selected>검색</option>
-                                    <option value="content">내용</option>
-                                    <option value="writer">아이디</option>
-                            </select></td>
-                            <td style="padding-left: 5px" class="align-middle"><input
-                                type="text" class="form-control" id="search" name="search"
-                                onkeyup="enterKeyEvent()" placeholder="검색어">
-                            <td style="padding-left: 5px"><span>
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="searchBtn()">검색</button>
-                            </span></td>
-                        </tr>
-                    </table>
-
-                </ul>
-            </div>
-        </div>
-    </div>
+</script>
     
     
 <script type="text/javascript">

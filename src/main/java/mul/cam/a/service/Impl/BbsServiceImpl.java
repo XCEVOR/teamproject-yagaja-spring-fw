@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mul.cam.a.dao.BbsDao;
+import mul.cam.a.dto.BbsCommentDto;
 import mul.cam.a.dto.BbsDto;
 import mul.cam.a.dto.BbsParam;
 import mul.cam.a.service.BbsService;
@@ -30,6 +31,17 @@ public class BbsServiceImpl implements BbsService{
     public List<BbsDto> getAllBbsPost (int bbsseq) {
         return dao.getAllBbsPost(bbsseq);
     }
+    
+    @Override
+   	public boolean commentWrite(BbsCommentDto bbs) {
+       	int n = dao.commentWrite(bbs);
+   		return n>0?true:false;
+   	}
+       
+       @Override
+   	public List<BbsCommentDto> commentList(int seq) {
+       	return dao.commentList(seq);
+   	}
     
     
     

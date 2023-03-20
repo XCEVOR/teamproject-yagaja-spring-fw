@@ -102,5 +102,50 @@ public class MemberController {
         // redirect to the home page or any other page after logout
         return "layoutLogin";
     }
+	
+	// 아이디찾기
+			@RequestMapping(value = "findId.do", method = RequestMethod.GET)
+			public String findId() {
+				System.out.println("MemberController findId " + new Date());
+				
+				return "layoutfindId";			
+			}	
+			
+			@RequestMapping(value="findIdAf.do",  method = RequestMethod.POST)
+		 	public String findIdAf(Model model, MemberDto dto ) {
+				
+				System.out.println("MemberController findIdAf " + new Date());
+		 		
+				MemberDto findId = service.findId(dto);	// 데이터 형태로 .  		
+		 		
+		 		System.out.println(findId);
+		 		System.out.println(findId.getId());
+		 		model.addAttribute("findId", findId);
+			
+		 		return "layoutfindIdAf";		
+		 	}
+			
+			// 비밀번호찾기
+					@RequestMapping(value = "findPwd.do", method = RequestMethod.GET)
+					public String findPwd() {
+						System.out.println("MemberController findPwd " + new Date());
+						
+						return "layoutfindPwd";			
+					}	
+					
+					@RequestMapping(value="findPwdAf.do",  method = RequestMethod.POST)
+				 	public String findPwdAf(Model model, MemberDto dto ) {
+						
+						System.out.println("MemberController findPwdAf " + new Date());
+				 		
+						MemberDto findPwd = service.findPwd(dto);	// 데이터 형태로 .  		
+				 		
+				 		System.out.println(findPwd);
+				 		model.addAttribute("findPwd", findPwd);
+					
+				 		return "layoutfindPwdAf";		
+				 	}
+	
+	
 }
 

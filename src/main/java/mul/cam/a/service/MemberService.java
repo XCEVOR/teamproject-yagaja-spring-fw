@@ -26,6 +26,8 @@ public interface MemberService {
 	boolean idCheck(String id);  
 
 	boolean myupdate(MemberDto dto);
+	MemberDto findId(MemberDto dto);
+	MemberDto findPwd(MemberDto dto);
     
     
     // ========== ========== ========== ========== ========== ========== ========== 

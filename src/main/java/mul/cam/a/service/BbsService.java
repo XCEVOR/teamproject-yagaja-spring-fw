@@ -2,6 +2,7 @@ package mul.cam.a.service;
 
 import java.util.List;
 
+import mul.cam.a.dto.BbsCommentDto;
 import mul.cam.a.dto.BbsDto;
 import mul.cam.a.dto.BbsParam;
 
@@ -17,6 +18,8 @@ public interface BbsService {
     // ========== ========== ========== ========== ========== ========== ========== 
     // detail.do
     List<BbsDto> getAllBbsPost (int bbsseq);
+    boolean commentWrite(BbsCommentDto bbs);
+    List<BbsCommentDto> commentList(int seq);
     
     
     

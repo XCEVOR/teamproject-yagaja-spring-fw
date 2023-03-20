@@ -56,6 +56,16 @@ public class MemberServiceImpl implements MemberService {
 		int cnt = dao.myupdate(dto);
 		return cnt>0?true:false;
 	}
+	
+	@Override
+	public MemberDto findId(MemberDto dto) {
+		return dao.findId(dto);
+	}
+	
+	@Override
+	public MemberDto findPwd(MemberDto dto) {
+		return dao.findPwd(dto);
+	}
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // main.do

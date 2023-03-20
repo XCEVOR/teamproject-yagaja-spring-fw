@@ -84,6 +84,43 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
     
+               <!-- layoutfindId -->
+    <definition name="layoutfindId" template="/WEB-INF/views/findIdScreen/layout-findId.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>  
+        <put-attribute name="content" value="/WEB-INF/views/findIdScreen/findId.jsp"/> 
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition> 
+    
+           <!-- layoutfindIdAf -->
+    <definition name="layoutfindIdAf" template="/WEB-INF/views/findIdAfScreen/layout-findIdAf.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>  
+        <put-attribute name="content" value="/WEB-INF/views/findIdAfScreen/findIdAf.jsp"/> 
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition> 
+    
+               <!-- layoutfindPwd -->
+    <definition name="layoutfindPwd" template="/WEB-INF/views/findPwdScreen/layout-findPwd.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>  
+        <put-attribute name="content" value="/WEB-INF/views/findPwdScreen/findPwd.jsp"/> 
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition> 
+    
+           <!-- layoutfindPwdAf -->
+    <definition name="layoutfindPwdAf" template="/WEB-INF/views/findPwdAfScreen/layout-findPwdAf.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>  
+        <put-attribute name="content" value="/WEB-INF/views/findPwdAfScreen/findPwdAf.jsp"/> 
+        <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition> 
+    
+    
     
     
     <!-- ========== ========== ========== ========== ========== ========== ========== -->
