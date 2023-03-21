@@ -18,11 +18,65 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/noscript.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
-<body>
+<body class="is-preload">
 
 
-    <div>
+
+
+
+	<div>
+		<body >
+			<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="inner">
+
+						<!-- Logo -->
+						<a href="main.do" class="logo"> <span class="symbol"><img
+								src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
+						</a>
+
+						<!-- Nav -->
+						<nav>
+							<ul>
+								<li><a href="#menu">Menu</a></li>
+							</ul>
+						</nav>
+					</div>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="detail1.do">detail1.do</a></li>
+						<li><a href="detail2.do">detail2.do</a></li>
+						<li><a href="login.do">login.do</a></li>
+						<li><a href="main.do">main.do</a></li>
+						<li><a href="qna.do">qna.do</a></li>
+						<li><a href="qnawr.do">qnawr.do</a></li>
+						<li><a href="signup.do">signup.do</a></li>
+						<li><a href="my.do">my.do</a></li>
+						<li><a href="update.do?seq=1">update.do?seq=1</a></li>
+						<li><a href="write.do">write.dos</a></li>
+						
+					
+					</ul>
+				</nav>
+			</div>
+
+
+
+
+
+
+	<div>
         <table style = "table-layout: auto; width: 80%; table-layout: fixed;" >
         <colgroup> 
             <col width="12%" />
@@ -78,32 +132,20 @@
     </div>
 
     
-    
-    <br>
-    <a><font color="red"><strong>
-	    <%
-	    if(login == null) {
-	        // handle the case when there is no login data in session
-	        // for example, redirect to the login page or display a message
-	        %>GUEST ..........<%
-	      } else {
-	        // continue with the login data
-	        %>LOGIN: <%= login.getId() %> / <%= login.getNickname() %> ..........<%
-	      }
-	    %>
-    </strong></a>
-    <a href="admin.do">admin.do</a>
-    <a href="detail1.do">detail1.do</a>
-    <a href="detail2.do">detail2.do</a>
-    <a href="login.do">login.do</a>
-    <a href="main.do">main.do</a>
-    <a href="qna.do">qna.do</a>
-    <a href="qnawr.do">qnawr.do</a>
-    <a href="signup.do">signup.do</a>
-	<a href="my.do">my.do</a>
-    <a href="update.do?seq=7">update.do</a>
-    <a href="write.do">write.do</a>
+  
+ 
 
+		</body>
+	</div>
+	
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
 
 <script type="text/javascript">
