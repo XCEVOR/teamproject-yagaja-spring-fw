@@ -123,17 +123,42 @@ select {
           <nav id="menu">
             <h2>Menu</h2>
             <ul>
-              <li><a href="detail1.do">detail1.do</a></li>
-              <li><a href="detail2.do">detail2.do</a></li>
-              <li><a href="login.do">login.do</a></li>
-              <li><a href="main.do">main.do</a></li>
+            
+				<%
+					if(login == null) {
+					    %>
+					    	<li><a href="main.do">메인</a></li>
+					    	<li><a href="login.do">로그인</a></li>
+					    	<li><a href="signup.do">회원가입</a></li>
+					    <%
+					} else {
+					    %>
+					    	<li><a href="main.do">메인</a></li>
+					    	<li><a href="qna.do">QnA</a></li>
+					    	<br>
+					    	<li><a href="write.do">글 쓰기</a></li>
+					    	<li><a href="qnawr.do">QnA 쓰기</a></li>
+					    	<br>
+					    	<li><a href="my.do">마이페이지</a></li>
+					    	<li><a href="logout.do">로그아웃</a></li>
+					    	<br>
+					    	<li><a href="admin.do">관리자</a></li>
+					    <%
+					}
+	            %>
+	           <!--  
+	            <a href="admin.do">admin.do</a><br>
+               <li><a href="detail1.do">detail1.do</a></li>
+               <li><a href="detail2.do">detail2.do</a></li>
+               <li><a href="login.do">login.do</a></li>
+               <li><a href="main.do">main.do</a></li>
               <li><a href="qna.do">qna.do</a></li>
               <li><a href="qnawr.do">qnawr.do</a></li>
               <li><a href="signup.do">signup.do</a></li>
               <li><a href="my.do">my.do</a></li>
               <li><a href="update.do?seq=1">update.do?seq=1</a></li>
-              <li><a href="write.do">write.dos</a></li>
-              
+               <li><a href="write.do">write.dos</a></li>
+               -->
             
             </ul>
           </nav>
