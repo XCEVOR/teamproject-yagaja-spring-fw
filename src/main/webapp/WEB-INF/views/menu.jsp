@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<!-- 
     <h1>MENU</h1>
     
     <a href="admin.do">admin.do</a><br>
@@ -21,6 +21,6 @@
     <a href="my.do">my.do</a><br>
     <a href="update.do?seq=7">update.do</a><br>
     <a href="write.do">write.do</a><br>
-
+ -->
 </body>
 </html>

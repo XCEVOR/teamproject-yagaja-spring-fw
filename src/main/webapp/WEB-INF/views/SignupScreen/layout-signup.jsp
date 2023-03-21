@@ -40,12 +40,12 @@ height:100%;
             <td align="left" valign="top" style="background-color: rgb(204, 204, 204); width: 20%;">
                 <tiles:insertAttribute name="menu"/>
             </td>
-            <td style="height: 90%; width: 80%; ">
+            <td align="center">
                 <tiles:insertAttribute name="content"/>
             </td>
-            <%-- <td align="center" style="width: 15%;">
+            <td align="center" style="background-color: rgb(204, 204, 204); width: 20%;">
                 <tiles:insertAttribute name="empty"/>
-            </td> --%>
+            </td>
         </tr>
          
         <!-- footer -->
