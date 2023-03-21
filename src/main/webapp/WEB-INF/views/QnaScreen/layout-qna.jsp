@@ -27,11 +27,11 @@ height:100%;
 <body>
 
 
-    <<div id="fullheight">
+    <div id="fullheight">
     <table id="fullheight"  style="width: 100%; border-color: gray;">
         <!-- header -->
         <tr align="center">
-            <td colspan="3" style="height: 20%">
+            <td colspan="3" style="height: 10%">
                 <tiles:insertAttribute name="header"/>
         </tr>
         

@@ -7,11 +7,24 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/noscript.css" />
+
+<style type="text/css">
+
+li{
+margin-top: 15px;
+}
+
+</style>
 </head>
+
+
 <body>
 
-<h1>AdminMain</h1>
-<a href="adminMem.do">회원</a>
-<a href="adminQna.do">Qna</a>
+<div style="margin-bottom: 100px;"><h1 >AdminMain</h1></div>
+<ul>
+<li> <a href="adminMem.do"><h2>회원 관리하기 </h2></a> </li>
+<li> <a href="adminQna.do"><h2>Qna 관리하기</h2></a> </li>
+</ul>
+
 </body>
 </html>
