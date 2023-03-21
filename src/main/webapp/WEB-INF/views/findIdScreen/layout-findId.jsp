@@ -27,7 +27,7 @@ height:100%;
 <body>
 
 
-    <<div id="fullheight">
+    <div id="fullheight">
     <table id="fullheight"  style="width: 100%; border-color: gray;">
         <!-- header -->
         <tr align="center">
