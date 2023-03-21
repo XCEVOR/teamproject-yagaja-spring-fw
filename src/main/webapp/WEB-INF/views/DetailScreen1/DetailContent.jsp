@@ -229,8 +229,8 @@ display: inline-block;
                             <td><%= allBbsPostList.get(0).getId() %></td>
                         </tr>
                         <tr>
-                            <th>작성일</th>
-                            <td><%= allBbsPostList.get(0).getWdate() %></td>
+                            <th>여행일</th>
+                            <td><%= allBbsPostList.get(0).getDate() %></td>
                         </tr>
                         
                         

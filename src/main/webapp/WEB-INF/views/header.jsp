@@ -131,8 +131,8 @@ select {
 					} else {
 					    %>
 					    	<li><a href="main.do">메인</a></li>
-					    	<li><a href="qna.do">QnA 작성</a></li>
 					    	<li><a href="write.do">게시판 작성</a></li>
+					    	<li><a href="qna.do">QnA 게시판</a></li>
 					    	<li><a href="my.do">마이 페이지</a></li>
 					    	<li><a href="logout.do">로그아웃</a></li>
 					    	<li><a href="admin.do">관리자</a></li>
