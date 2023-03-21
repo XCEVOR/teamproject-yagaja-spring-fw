@@ -36,6 +36,7 @@ select {
 	text-align: center;
 	-ms-text-align-last: center;
 	-moz-text-align-last: center;
+	
 }
 
 
@@ -62,14 +63,14 @@ select {
                   <span>
                     <table  style = "table-layout: auto; width: 80%; table-layout: fixed;" >
                     <colgroup> 
-                        <col width="12%" />
+                        <col width="15%" />
                         <col width="50%" /> 
                         <col width="15%" /> 
                         <col width="15%" />
                     </colgroup>
-                        <tr style="background-color: white;">
+                        <tr style="background-color: white; border: 1px  solid white;">
  
-                          <td style="padding-left: 10px;">
+                          <td>
                       <select class="custom-select" id="choice" name="choice">
                         <option selected>검색</option>
                         <option value="title">제목</option>
@@ -77,9 +78,9 @@ select {
                         <option value="writer">작성자</option>
                       </select>
                     </td>
-                    <td style="padding-left: 3px" class="align-middle">
+                    <td class="align-middle">
                       <%-- <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="검색어" value="<%= search %>"> --%>
-					<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" style="text-align: center;" placeholder="나의 여행 너의 여행 - 야가자">
+					<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="나의 여행 너의 여행 - 야가자">
                     </td>
                     <td style="padding-left: 3px">
                       <span>
