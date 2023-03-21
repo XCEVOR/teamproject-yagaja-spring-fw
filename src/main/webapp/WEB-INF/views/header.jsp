@@ -46,6 +46,10 @@ select {
 	
 }
 
+a {
+  text-decoration: none !important;
+}
+
 
 </style>
 </head>
@@ -63,9 +67,9 @@ select {
               
               <ul>
                   <!-- Logo -->
-                  <div style="padding: 30px;"">
-                  <a href="main.do" class="logo"> <span class="symbol"><img
-                      src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
+                  <div style="padding-left: 30px;">
+                  <a href="main.do"> <img
+                      src="images/yagaja.png" alt="" width="150px"/>
                   </a>
                   </div>
                   <span>
@@ -87,7 +91,8 @@ select {
                       </select>
                     </td>
                     <td class="align-middle">
-                    <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="너 어디가? - 야가자" value="<%= search %>">
+                    <input type="text" class="form-control" id="search" name="search" style="text-align:center;"
+                        onkeyup="enterKeyEvent()" placeholder="너 어디가? - 야가자" value="<%= search %>">
                     </td>
                     <td style="padding-left: 3px">
                       <span>
@@ -195,6 +200,20 @@ select {
 		
 		location.href = "mainsearch.do?choice=" + choice + "&search=" + search;
 	}
+	 
+	 
+	 
+	 $("body").on("mousewheel", function (e) {
+		  var wheel = e.originalEvent.wheelDelta;
+
+		  if (wheel > 0) {
+		    //스크롤 올릴때
+		    console.log("올리는 중");
+		  } else {
+		    //스크롤 내릴때
+		    console.log("내리는 중");
+		  }
+	  });
 	
 </script>
 
