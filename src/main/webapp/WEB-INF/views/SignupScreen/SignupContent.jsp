@@ -127,16 +127,20 @@ $(document).ready(function() {
 			url:"idcheck.do",
 			data:{ "id":$("#id").val() },
 			success:function(msg){				
-				if(msg == "YES"){
-					$("#idcheck").css("color", "#0000ff");
-					$("#idcheck").text("   사용할 수 있는 아이디입니다");
-			//		alert('사용할 수 있는 아이디입니다');
+				if(msg == "YES"){					
+					if($('#id').val()==''){ 
+						$("#idcheck").css("color", "#ff0000");
+						$("#idcheck").text("  아이디를 입력해주세요.");
+		               } else {
+		            	    $("#idcheck").css("color", "#0000ff");
+							$("#idcheck").text("   사용할 수 있는 아이디입니다");
+		               }					
 				}else{
 					$("#idcheck").css("color", "#ff0000");
 					$("#idcheck").text("   사용중인 아이디입니다");
 			//		alert('사용중인 아이디입니다');
 					$("#id").val("");
-				}
+				}	
 			},
 			error:function(){
 				alert('error');
