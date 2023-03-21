@@ -12,7 +12,7 @@ public class MemberDto  implements Serializable{
 	private String email;
 	private int auth; //����
 	private String mbti;
-	private String grade;
+	private int grade;
 	private String gender;
 	
 	public MemberDto() {
@@ -26,7 +26,7 @@ public class MemberDto  implements Serializable{
 	}
 
 	public MemberDto(String id, String pwd, String phonenumber, String nickname, String email, int auth, String mbti,
-			String grade, String gender) {
+			int grade, String gender) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -95,11 +95,11 @@ public class MemberDto  implements Serializable{
 		this.mbti = mbti;
 	}
 
-	public String getGrade() {
+	public int getGrade() {
 		return grade;
 	}
 
-	public void setGrade(String grade) {
+	public void setGrade(int grade) {
 		this.grade = grade;
 	}
 
