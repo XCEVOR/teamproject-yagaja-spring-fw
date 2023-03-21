@@ -12,6 +12,17 @@
 <%
 	//세션에 저장된 로그인 값 가져오기
 	MemberDto login = (MemberDto)session.getAttribute("login");
+	if(login == null){
+		System.out.println("확인");
+		//response.sendRedirect("naver.com");
+				%>
+			<script type="text/javascript">
+				alert('로그인해주세요');
+				location.href="login.do";
+			</script>
+		<% 
+		return;
+	}
 %>
 <!DOCTYPE html>
 <html lang="en">

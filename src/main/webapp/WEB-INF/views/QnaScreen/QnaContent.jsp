@@ -7,16 +7,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%
+	MemberDto login = (MemberDto)session.getAttribute("login");
+	List<QnaDto> list = (List<QnaDto>)request.getAttribute("qnalist");
+	if(login == null){
+		System.out.println("확인");
+		//response.sendRedirect("naver.com");
+				%>
+			<script type="text/javascript">
+				alert('로그인해주세요');
+				location.href="login.do";
+			</script>
+		<% 
+		return;
+	}
+%>
 <title>Insert title here</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/noscript.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 </head>
-<%
-	MemberDto login = (MemberDto)session.getAttribute("login");
-	List<QnaDto> list = (List<QnaDto>)request.getAttribute("qnalist");
-%>
 <body>
     <h1>QNA CONTENT</h1>
 	<br>
@@ -61,7 +72,7 @@
 				 	</div>
 				 	<div style="float: left;">
 				 	<%
-				 		if(dto.getSecret() == 1 && !dto.getId().equals(login.getId())){
+				 		if(dto.getSecret() == 1 && !dto.getId().equals(login.getId()) && login.getGrade() !=1){
 				 	%>
 				 		비밀글입니다.
 				 <%
@@ -69,6 +80,7 @@
 				 		%>
 				 		<%=dto.getTitle() %> <br>
 				 		<%=dto.getContent() %> <br>
+				 			<% if( login.getGrade() == 1){ %>
 				 		<details>
 							<summary>대답</summary>
 							<form action="answerAf.do" method="post">
@@ -86,6 +98,7 @@
 					 		<%-- <button type="button" onclick="show(<%=i %>)">대답</button> --%>				 		
 					 	</div>
 				 		<% 
+				 			}
 				 		}
 				 %>
 				 </div>
@@ -109,9 +122,11 @@
 		%>
 		</tbody>
 	</table>
-	<div align="center">
-		<a href="qnawr.do?id=<%=login.getId() %>">Q&A작성</a>
-	</div>
+		<div align="center">
+			<a href="qnawr.do?id=<%=login.getId() %>">Q&A작성</a>
+		</div>
+	}
+
 	</div>
 	
 <script type="text/javascript">

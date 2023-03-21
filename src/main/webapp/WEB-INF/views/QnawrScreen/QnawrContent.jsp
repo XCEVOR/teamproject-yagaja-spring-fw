@@ -7,6 +7,17 @@
 <%
 	MemberDto login = (MemberDto)session.getAttribute("login");
 	//MemberDto mydate = (MemberDto)request.getAttribute("user");
+		if(login == null){
+		System.out.println("확인");
+		//response.sendRedirect("naver.com");
+				%>
+			<script type="text/javascript">
+				alert('로그인해주세요');
+				location.href="login.do";
+			</script>
+		<% 
+		return;
+	}
 %>
 <meta charset="UTF-8">
 <title>Qna작성</title>
