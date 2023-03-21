@@ -104,9 +104,6 @@
             <div class="top-left-Layout">
                 <ul>
                 <!-- ########## 슬라이드 ########## ########## ########## ########## ########## ########## ########## ########## ##########  -->
-<button type="button" onclick="testButton()">testButton</button>
-<button type="button" onclick="labelButton()">labelButton</button>
-<button type="button" onclick="tagsButton()">tagsButton</button>
 
                     <div id="ajaxSlidelist" class="section">
                     

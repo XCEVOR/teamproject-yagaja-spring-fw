@@ -17,6 +17,9 @@
     .section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
     .section input[id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
     .section input[id="slide03"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-200%);}
+    .section input[id="slide04"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-300%);}
+    .section input[id="slide05"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-400%);}
+    .section input[id="slide06"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-500%);}
 
     /* input에 체크되면 텍스트 효과 */
     .section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
@@ -41,3 +44,10 @@
     .section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(1) > label {background:#999;}
     .section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(2) > label {background:#999;}
     .section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(3) > label {background:#999;}
+    .section input[id="slide04"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(4) > label {background:#999;}
+    .section input[id="slide05"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(5) > label {background:#999;}
+    .section input[id="slide06"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(6) > label {background:#999;}
+    
+    
+    
+    
