@@ -47,7 +47,7 @@ public class BbsController {
     @ResponseBody
     @GetMapping(value = "ajaxDetail1.do")
     public List<BbsDto> detail1 (int bbsseq, Model model) {  // Model 필요 없음.
-        System.out.println("  @ ScreenController detail (): " + new Date());
+        System.out.println("  @ ScreenControllerrr detail (): " + new Date());
         /* int bbsseq = seq; */
         List<BbsDto> allBbsPostList = service.getAllBbsPost(bbsseq);
         // model.addAttribute("allBbsPostList", allBbsPostList);
@@ -57,6 +57,9 @@ public class BbsController {
     // comment
   	@PostMapping(value = "commentWriteAf.do")
   	public String commentWriteAf(BbsCommentDto bbs) {
+
+  		
+  		
   		boolean isS = service.commentWrite(bbs);
   		System.out.println(bbs);
   		if(isS) {

@@ -20,7 +20,7 @@
 	<div
 		style="width: 500px; justify-content: center; margin: auto; padding-top: 100px;">
 		<section>
-<form method="post" class="form-signin" action="findIdAf.do" name="findform">
+<form method="post" class="form-signin" action="findIdAf.do" name="findId">
 		<div class="form-label-group">
 			<input type="text" id="nickname" name="nickname" placeholder="nickname"  class="form-control" />
 			<label for="nickname"></label>

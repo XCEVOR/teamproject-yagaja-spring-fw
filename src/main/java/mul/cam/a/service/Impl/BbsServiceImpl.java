@@ -35,7 +35,7 @@ public class BbsServiceImpl implements BbsService{
     @Override
    	public boolean commentWrite(BbsCommentDto bbs) {
        	int n = dao.commentWrite(bbs);
-   		return n>0?true:false;
+   		return n > 0 ? true : false;
    	}
        
        @Override
