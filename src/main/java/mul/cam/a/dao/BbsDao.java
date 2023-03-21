@@ -22,6 +22,8 @@ public interface BbsDao {
     int commentWrite(BbsCommentDto bbs);
     List<BbsCommentDto> commentList(int seq);
     List<BbsDto> detailhashtag(String tag);
+    int readcount (int seq);
+    int likecount (int seq);
     
     // ========== ========== ========== ========== ========== ========== ========== 
     // login.do, signup.do

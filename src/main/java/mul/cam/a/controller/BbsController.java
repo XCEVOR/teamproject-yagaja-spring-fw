@@ -78,7 +78,27 @@ public class BbsController {
  		return list;
  	}
   	
-  	
+    @ResponseBody
+    @GetMapping(value = "ajaxReadcount.do")
+    public String readcount (int seq) {
+        System.out.println("  @ BbsController readcount (): " + new Date());
+        boolean isSucc = service.readcount(seq);
+        if (isSucc == false) {
+            return "Fail";
+        }
+        return "ajaxReadcount Success";
+    }
+
+    @ResponseBody
+    @GetMapping(value = "ajaxLikecount.do")
+    public String likecount (int seq) {
+        System.out.println("  @ BbsController likecount (): " + new Date());
+        boolean isSucc = service.likecount(seq);
+        if (isSucc == false) {
+            return "Fail";
+        }
+        return "ajaxLikecount Success";
+    }
 
     
     

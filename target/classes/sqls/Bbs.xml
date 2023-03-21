@@ -24,21 +24,29 @@
 	</insert>
     
     <select id="commentList" parameterType="Integer" resultType="mul.cam.a.dto.BbsCommentDto">
-	select seq, id, content, wdate
-	from bbscomment
-	where seq=#{seq}
-	order by wdate desc
-</select>
+		select seq, id, content, wdate
+		from bbscomment
+		where seq=#{seq}
+		order by wdate desc
+	</select>
     
-    
-     <select id="detailhashtag" parameterType="String" resultType="mul.cam.a.dto.BbsDto">
-    select *  from bbs 
-	where seq in 
-	(select  bbsseq from bbspost where hashtags like concat("%",#{hashtags},"%")
-	group by bbsseq);
-    
+    <select id="detailhashtag" parameterType="String" resultType="mul.cam.a.dto.BbsDto">
+	    select *  from bbs 
+		where seq in 
+		(select  bbsseq from bbspost where hashtags like concat("%",#{hashtags},"%")
+		group by bbsseq);
     </select>
     
+    <update id="readcount" parameterType="Integer">
+        update bbs
+        set readcount=readcount+1
+        where seq=#{seq}
+    </update>
+    <update id="likecount" parameterType="Integer">
+        update bbs
+        set likecount=likecount+1
+        where seq=#{seq}
+    </update>
     
     
 <!--     // ========== ========== ========== ========== ========== ========== ========== 
