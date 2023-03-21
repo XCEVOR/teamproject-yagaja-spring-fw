@@ -44,8 +44,10 @@
 				</div>
 			</form>
 			
-			<a href="findId.do">Id찾기</a>
-			<a href="findPwd.do">PassWord찾기</a>
+			<a href="findId.do">Id 찾기</a>
+			<a style="margin-left: 20px" href="findPwd.do">PassWord 찾기</a>
+            <a style="margin-left: 20px" href="signup.do">회원가입</button>
+                       
 			
 		</section>
 	</div>

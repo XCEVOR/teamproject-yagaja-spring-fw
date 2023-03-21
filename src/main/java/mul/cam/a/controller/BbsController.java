@@ -132,7 +132,7 @@ public class BbsController {
     public List<BbsDto> mainnumpage (BbsParam param, Model model) {
     	System.out.println(param);
 		
-		// 湲��쓽 �떆�옉怨� �걹
+		
 		int pn = param.getPageNumber();  // 0 1 2 3 4
 		int start = 1 + (pn * 10);	// 1  11
 		int end = (pn + 1) * 10;	// 10 20 
@@ -154,11 +154,11 @@ public class BbsController {
 			param.setSearch("");
 		}
 		
-		model.addAttribute("bbslist", list);	// 寃뚯떆�뙋 由ъ뒪�듃
-		model.addAttribute("pageBbs", pageBbs);	// 珥� �럹�씠吏��닔
-		model.addAttribute("pageNumber", param.getPageNumber()); // �쁽�옱 �럹�씠吏�
-		model.addAttribute("choice", param.getChoice());	// 寃��깋 移댄뀒怨좊━
-		model.addAttribute("search", param.getSearch());	// 寃��깋�뼱	
+		model.addAttribute("bbslist", list);	
+		model.addAttribute("pageBbs", pageBbs);	
+		model.addAttribute("pageNumber", param.getPageNumber()); 
+		model.addAttribute("choice", param.getChoice());	
+		model.addAttribute("search", param.getSearch());	
 		
 		System.out.println(list.toString());
 		return list;

@@ -38,6 +38,7 @@ select {
 	-moz-text-align-last: center;
 }
 
+
 </style>
 </head>
 <body>
@@ -59,20 +60,16 @@ select {
                   </a>
 
                   <span>
-                    <table style = "table-layout: auto; width: 80%; table-layout: fixed;" >
+                    <table  style = "table-layout: auto; width: 80%; table-layout: fixed;" >
                     <colgroup> 
                         <col width="12%" />
                         <col width="50%" /> 
                         <col width="15%" /> 
                         <col width="15%" />
                     </colgroup>
-                        <tr>
-                            <!-- <th>
-                           <a href="main.do" class="logo">
-                                    <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
-                                </a> 
-                            </th>-->
-                          <td style="padding-left: 3px">
+                        <tr style="background-color: white;">
+ 
+                          <td style="padding-left: 10px;">
                       <select class="custom-select" id="choice" name="choice">
                         <option selected>검색</option>
                         <option value="title">제목</option>
@@ -80,11 +77,11 @@ select {
                         <option value="writer">작성자</option>
                       </select>
                     </td>
-                    <td style="padding-left: 5px" class="align-middle">
+                    <td style="padding-left: 3px" class="align-middle">
                       <%-- <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="검색어" value="<%= search %>"> --%>
 					<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" style="text-align: center;" placeholder="나의 여행 너의 여행 - 야가자">
                     </td>
-                    <td style="padding-left: 5px">
+                    <td style="padding-left: 3px">
                       <span>
 						<button type="button" class="btn btn-primary" onclick="searchBtn()">
 <i class="fa fa-search" aria-hidden="true"></i></button>
@@ -99,15 +96,7 @@ select {
                 }
               %>
                     </th>
-                    <th>
-                        <%
-                            if(login == null) {
-                                %><button type="button" onclick="location.href='signup.do'">회원가입</button><%
-                            } else {
-                                %><button type="button" onclick="location.href='my.do'">마이페이지</button><%
-                            }
-                        %>
-                    </th>
+                   
                            
             
                         </tr>
@@ -134,14 +123,10 @@ select {
 					} else {
 					    %>
 					    	<li><a href="main.do">메인</a></li>
-					    	<li><a href="qna.do">QnA</a></li>
-					    	<br>
-					    	<li><a href="write.do">글 쓰기</a></li>
-					    	<li><a href="qnawr.do">QnA 쓰기</a></li>
-					    	<br>
-					    	<li><a href="my.do">마이페이지</a></li>
+					    	<li><a href="qna.do">QnA 작성</a></li>
+					    	<li><a href="write.do">게시판 작성</a></li>
+					    	<li><a href="my.do">마이 페이지</a></li>
 					    	<li><a href="logout.do">로그아웃</a></li>
-					    	<br>
 					    	<li><a href="admin.do">관리자</a></li>
 					    <%
 					}
@@ -179,15 +164,7 @@ select {
 
 
 <script type="text/javascript">
-<%-- 
-	let search = "<%= search %>";
-	console.log("search = " + search);
-	if(search != ""){
-		let obj = document.getElementById("choice");
-		obj.value = "<%= choice %>";
-		obj.setAttribute("selected", "selected");
-	}
-	 --%>
+
 	
 	 function searchBtn() {
 			let choice = document.getElementById('choice').value;

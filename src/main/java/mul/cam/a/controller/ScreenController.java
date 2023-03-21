@@ -165,11 +165,11 @@ public class ScreenController {
             param.setSearch("");
         }
         
-        model.addAttribute("bbslist", list);    // 寃뚯떆�뙋 由ъ뒪�듃
-        model.addAttribute("pageBbs", pageBbs); // 珥� �럹�씠吏��닔
-        model.addAttribute("pageNumber", param.getPageNumber()); // �쁽�옱 �럹�씠吏�
-        model.addAttribute("choice", param.getChoice());    // 寃��깋 移댄뀒怨좊━
-        model.addAttribute("search", param.getSearch());    // 寃��깋�뼱  
+        model.addAttribute("bbslist", list);   
+        model.addAttribute("pageBbs", pageBbs);
+        model.addAttribute("pageNumber", param.getPageNumber()); 
+        model.addAttribute("choice", param.getChoice());   
+        model.addAttribute("search", param.getSearch());    
         
         return "layoutMain";
     }

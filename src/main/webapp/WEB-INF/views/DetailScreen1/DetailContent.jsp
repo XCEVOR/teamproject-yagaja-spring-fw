@@ -39,29 +39,29 @@
             flex-direction: column;
             flex-basis: 50%;
             border-right: 1px solid #ccc;
-            outline: 5px solid black;
+           
         }
         
         .right-Layout {
             display: flex;
             flex-direction: column;
             flex-basis: 50%;
-            outline: 5px solid black;
+           
         }
         
         .top-left-Layout {
             display: flex;
             flex-direction: row;
-            flex-basis: 80%;
-            border-bottom: 1px solid #ccc;
-            outline: 5px solid black;
+            flex-basis: 76%;
+           
+           
         }
         
         .bottom-left-Layout {
             display: flex;
             flex-direction: row;
-            flex-basis: 20%;
-            outline: 5px solid black;
+          
+           
         }
         
         .top-right-Layout {
@@ -69,27 +69,40 @@
             flex-direction: row;
             flex-basis: 30%;
             border-bottom: 1px solid #ccc;
-            outline: 5px solid black;
+            
         }
         
         .bottom-right-Layout {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex-basis: 70%;
-            outline: 5px solid black;
+           
         }
-        /* 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .fa-thumbs-up{
+    
+      	font-size:15px;
+        margin-left: 100px;
         }
-        
-        li {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-         */
-        }
+       .fa-thumbs-up:hover{
+       	color: #FFDEE9;
+       	
+       }
+
+.imgfile{
+
+    display:block;
+	width:100%;
+	height:700px;
+	padding: 20px;
+	object-fit: cover;
+} 
+ul{
+ list-style: none;
+}
+.slide-pagelist{
+margin:0px;
+padding: 0px;
+}
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -230,9 +243,9 @@
                             </td>
                         </tr>
                     </table>
-
-                    <a href="update.do?seq=<%=allBbsPostList.get(0).getBbsseq()%>">수정</a>
-                    <i class="fa fa-thumbs-up" style="font-size:36px;color:grey" onclick="likecountUpdate()"></i>
+						
+                    <span id="alterBtn" style="display: none"><a href="update.do?seq=<%=allBbsPostList.get(0).getBbsseq()%>">수정</a></span>
+                    <button class="fa fa-thumbs-up" onclick="likecountUpdate()"></i>
 
                 </ul>
             </div>
@@ -317,48 +330,53 @@ $(document).ready(function(){
     
     
 <script type="text/javascript">
+<%
+String id="";
+if(login!=null){
+	id=login.getId();
+}
+
+%>
+$(document).ready(function () {
+		if('<%=id%>'==<%=allBbsPostList.get(0).getId()%>){
+			$("#alterBtn").css("display","inline");
+		}
+	
+	
+	
+});
+
 	let seq00 = <%= allBbsPostList.get(0).getSeq() %>
     let bbsseq = <%= allBbsPostList.get(0).getBbsseq() %>
     console.log("@ seq: " + seq00);
     console.log("@ bbsseq: " + bbsseq);
-//    function testButton() {
         $(document).ready(function () {
             $.ajax({
                 url: "ajaxDetail1.do",
                 type: "GET",
                 data: { "bbsseq":bbsseq },
                 success: function (bbsPostList) {
-                    // alert(list);
                     console.log(bbsPostList);
-                    /* $("#mysection").html(""); */
                     
                     let slidtags = "";
                     
                     $.each(bbsPostList, function(index, item){
                         slidtags += "<input type='radio' name='slide' id='slide0" + (index + 1) + "'>" 
-                        //$("#ajaxSlidelist").append(slidtags);
                     });
                     
                         slidtags += "<div class='slidewrap'>   <ul class='slidelist'>   ";
-                        //$("#ajaxSlidelist").append(slidtags);
                     
                     $.each(bbsPostList, function(index, item){
                         slidtags += "<li class='slideitem'><a>" 
-                                    + "     <div class='textbox'>"
-                                    + "             <h3>첫번째 슬라이드</h3>"
-                                    + "             <p>첫번째 슬라이드 입니다.</p>"
-                                    + "     </div> <img src='upload/" + item.newfilename + "'>"
+                                    + "<img class='imgfile' src='upload/" + item.newfilename + "'>"
                                     + "</a></li>";
                                     
-                        //$("#ajaxSlidelist").append(slidtags);
                     });
                     
                         slidtags += "</ul>   <ul class='slide-pagelist'>";
-                        //$("#ajaxSlidelist").append(slidtags);
                         
                     $.each(bbsPostList, function(index, item){
                         slidtags += "<li><label class='labelList' for='slide0" + (index + 1) + "' onclick='slideIndex(" + index + ")'></label></li>" ;
-                        //$("#ajaxSlidelist").append(slidtags);
                     });
                     
                         slidtags += "</div>";
@@ -374,29 +392,23 @@ $(document).ready(function(){
                         
                         $.each(bbsPostList, function(index, item){
                             detailText += "<input type='radio' name='slide' id='slide0" + (index + 1) + "'>" 
-                            //$("#ajaxSlidelist").append(slidtags);
                         });
                         
                         detailText += "<div class='slidewrap'>   <ul class='slidelist'>   ";
-                            //$("#ajaxSlidelist").append(slidtags);
                         
                         $.each(bbsPostList, function(index, item){
                             detailText += "<li class='slideitem'><a>" 
                                         + "     <div class='textbox'>"
                                         + "             <h3>" + item.title + "</h3>"
-                                        + "             <p>첫번째 슬라이드 입니다.</p>"
-                                        + "     </div> <img src='upload/" + item.newfilename + "'>"
+                                        + "     </div> <img  src='upload/" + item.newfilename + "'>"
                                         + "</a></li>";
                                         
-                            //$("#ajaxSlidelist").append(slidtags);
                         });
                         
                         detailText += "</ul>   <ul class='slide-pagelist'>";
-                            //$("#ajaxSlidelist").append(slidtags);
                             
                         $.each(bbsPostList, function(index, item){
                             detailText += "<li><label class='labelList' for='slide0" + (index + 1) + "'></label></li>" ;
-                            //$("#ajaxSlidelist").append(slidtags);
                         });
                         
                         detailText += "</div>";
@@ -409,22 +421,17 @@ $(document).ready(function(){
             });
 
         });
-//func    }
- 
- 
- 
 
-// Display tags    
-//	function tagsButton() {
+        
         $(document).ready(function () {
             $.ajax({
                 url: "ajaxDetail1.do",
                 type: "GET",
                 data: { "bbsseq":bbsseq },
                 success: function (bbsPostList) {
-                    // alert(list);
+                
                     console.log(bbsPostList);
-                    /* $("#mysection").html(""); */
+                   
                     
                     let hashtag_tags = "";
                     
@@ -446,7 +453,7 @@ $(document).ready(function(){
                                     + "     </ul>"
                                     + "</div>";
                                     
-                        //$("#ajaxSlidelist").append(slidtags);
+                       
                     });
                     
                         $("#scriptHashtags").append(hashtag_tags).trigger("create");
@@ -458,7 +465,7 @@ $(document).ready(function(){
             });
 
         });
-//button	}
+
 
 
         function slideIndex (index) {
