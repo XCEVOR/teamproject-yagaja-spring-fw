@@ -10,10 +10,10 @@
 %>
 
 
-<%
+<%-- <%
 	String choice = (String)request.getAttribute("choice");
 	String search = (String)request.getAttribute("search");
-%>
+%> --%>
 
 <head>
 <meta charset="UTF-8">
@@ -24,13 +24,20 @@
 
 <style type="text/css">
 header{
-display: flex;
-
+	display: flex;
 }
 
 nav,.logo{
-display: inline;
+	display: inline;
 }
+
+select {
+	text-align-last: center;
+	text-align: center;
+	-ms-text-align-last: center;
+	-moz-text-align-last: center;
+}
+
 </style>
 </head>
 <body>
@@ -74,12 +81,14 @@ display: inline;
                       </select>
                     </td>
                     <td style="padding-left: 5px" class="align-middle">
-                      <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="검색어" value="<%= search %>">
+                      <%-- <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="검색어" value="<%= search %>"> --%>
+					<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" style="text-align: center;" placeholder="나의 여행 너의 여행 - 야가자">
                     </td>
                     <td style="padding-left: 5px">
                       <span>
-                        <button type="button" class="btn btn-primary" onclick="searchBtn()">검색</button>
-                      </span>
+						<button type="button" class="btn btn-primary" onclick="searchBtn()">
+<i class="fa fa-search" aria-hidden="true"></i></button>
+					</span>
                     </td>
                     <th>
                       <%
@@ -145,6 +154,7 @@ display: inline;
 
 
 <script type="text/javascript">
+<%-- 
 	let search = "<%= search %>";
 	console.log("search = " + search);
 	if(search != ""){
@@ -152,19 +162,20 @@ display: inline;
 		obj.value = "<%= choice %>";
 		obj.setAttribute("selected", "selected");
 	}
+	 --%>
 	
-	function searchBtn() {
-		let choice = document.getElementById('choice').value;
-		let search = document.getElementById('search').value;
-		
-		if(choice == ""){
-			alert("카테고리를 선택해 주십시오");
-			return;
-		}
-		if(search.trim() == ""){
-			alert("검색어를 선택해 주십시오");
-			return;
-		}
+	 function searchBtn() {
+			let choice = document.getElementById('choice').value;
+			let search = document.getElementById('search').value;
+			
+			if(choice == ""){
+				alert("카테고리를 선택해 주세요");
+				return;
+			}
+			if(search.trim() == ""){
+				alert("검색어를 입력해 주세요");
+				return;
+			}
 		
 		location.href = "mainsearch.do?choice=" + choice + "&search=" + search;
 	}
