@@ -21,124 +21,120 @@
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/noscript.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<style type="text/css">
+header{
+display: flex;
+
+}
+
+nav,.logo{
+display: inline;
+}
+</style>
 </head>
-<body class="is-preload">
+<body>
+  <body class="is-preload">
 
-
-
-
-
-	<div>
-		<body >
-			<!-- Wrapper -->
-			<div id="wrapper">
-
-				<!-- Header -->
-				<header id="header">
-					<div class="inner">
-
-						<!-- Logo -->
-						<a href="main.do" class="logo"> <span class="symbol"><img
-								src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
-						</a>
-
-						<!-- Nav -->
-						<nav>
-							<ul>
-								<li><a href="#menu">Menu</a></li>
-							</ul>
-						</nav>
-					</div>
-				</header>
-
-				<!-- Menu -->
-				<nav id="menu">
-					<h2>Menu</h2>
-					<ul>
-						<li><a href="detail1.do">detail1.do</a></li>
-						<li><a href="detail2.do">detail2.do</a></li>
-						<li><a href="login.do">login.do</a></li>
-						<li><a href="main.do">main.do</a></li>
-						<li><a href="qna.do">qna.do</a></li>
-						<li><a href="qnawr.do">qnawr.do</a></li>
-						<li><a href="signup.do">signup.do</a></li>
-						<li><a href="my.do">my.do</a></li>
-						<li><a href="update.do?seq=1">update.do?seq=1</a></li>
-						<li><a href="write.do">write.dos</a></li>
-						
-					
-					</ul>
-				</nav>
-			</div>
-
-
-
-
-
-
-	<div>
-        <table style = "table-layout: auto; width: 80%; table-layout: fixed;" >
-        <colgroup> 
-            <col width="12%" />
-            <col width="50%" /> 
-            <col width="15%" /> 
-            <col width="15%" />
-        </colgroup>
-            <tr>
-                <!-- <th>
-               <a href="main.do" class="logo">
-                        <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
-                    </a> 
-                </th>-->
-            	<td style="padding-left: 3px">
-					<select class="custom-select" id="choice" name="choice">
-						<option selected>검색</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="writer">작성자</option>
-					</select>
-				</td>
-				<td style="padding-left: 5px" class="align-middle">
-					<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="검색어" value="<%= search %>">
-				</td>
-				<td style="padding-left: 5px">
-					<span>
-						<button type="button" class="btn btn-primary" onclick="searchBtn()">검색</button>
-					</span>
-				</td>
-                <th>
-	                <%
-						if(login == null) {
-						    %><button type="button" onclick="location.href='login.do'">로그인</button><%
-						} else {
-						    %><button type="button" onclick="location.href='logout.do'">로그아웃</button><%
-						}
-					%>
-                </th>
-                <th>
-                    <%
-                        if(login == null) {
-                            %><button type="button" onclick="location.href='signup.do'">회원가입</button><%
-                        } else {
-                            %><button type="button" onclick="location.href='my.do'">마이페이지</button><%
-                        }
-                    %>
-                </th>
-
-            </tr>
-
-            
-        </table>
-    </div>
-
-    
+   
+        <!-- Wrapper -->
+        <div id="wrapper">
   
+          <!-- Header -->
+          <header id="header">
+            <!-- Nav -->
+            <nav>
+              
+              <ul>
+                  <!-- Logo -->
+                  <a href="main.do" class="logo"> <span class="symbol"><img
+                      src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
+                  </a>
+
+                  <span>
+                    <table style = "table-layout: auto; width: 80%; table-layout: fixed;" >
+                    <colgroup> 
+                        <col width="12%" />
+                        <col width="50%" /> 
+                        <col width="15%" /> 
+                        <col width="15%" />
+                    </colgroup>
+                        <tr>
+                            <!-- <th>
+                           <a href="main.do" class="logo">
+                                    <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
+                                </a> 
+                            </th>-->
+                          <td style="padding-left: 3px">
+                      <select class="custom-select" id="choice" name="choice">
+                        <option selected>검색</option>
+                        <option value="title">제목</option>
+                        <option value="content">내용</option>
+                        <option value="writer">작성자</option>
+                      </select>
+                    </td>
+                    <td style="padding-left: 5px" class="align-middle">
+                      <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="검색어" value="<%= search %>">
+                    </td>
+                    <td style="padding-left: 5px">
+                      <span>
+                        <button type="button" class="btn btn-primary" onclick="searchBtn()">검색</button>
+                      </span>
+                    </td>
+                    <th>
+                      <%
+                if(login == null) {
+                    %><button type="button" onclick="location.href='login.do'">로그인</button><%
+                } else {
+                    %><button type="button" onclick="location.href='logout.do'">로그아웃</button><%
+                }
+              %>
+                    </th>
+                    <th>
+                        <%
+                            if(login == null) {
+                                %><button type="button" onclick="location.href='signup.do'">회원가입</button><%
+                            } else {
+                                %><button type="button" onclick="location.href='my.do'">마이페이지</button><%
+                            }
+                        %>
+                    </th>
+                           
+            
+                        </tr>
+                    </table>
+                    </span>
+                  <li><a href="#menu">Menu</a></li>
+                </ul>
+              </nav>
+        
+        
+  
+          <!-- Menu -->
+          <nav id="menu">
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="detail1.do">detail1.do</a></li>
+              <li><a href="detail2.do">detail2.do</a></li>
+              <li><a href="login.do">login.do</a></li>
+              <li><a href="main.do">main.do</a></li>
+              <li><a href="qna.do">qna.do</a></li>
+              <li><a href="qnawr.do">qnawr.do</a></li>
+              <li><a href="signup.do">signup.do</a></li>
+              <li><a href="my.do">my.do</a></li>
+              <li><a href="update.do?seq=1">update.do?seq=1</a></li>
+              <li><a href="write.do">write.dos</a></li>
+              
+            
+            </ul>
+          </nav>
+
+    </header>
+      
+  </div>
+   
+ </body>
  
-
-		</body>
-	</div>
-	
-
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
