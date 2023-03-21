@@ -139,14 +139,15 @@ public class ScreenController {
 //        return "layoutMain";
 //    }
     
+    // 초기 화면 출력해 주는 컨트롤러.
     @GetMapping(value = "main.do")
     public String main (BbsParam param, Model model) {
         System.out.println("  @ ScreenController main (): " + new Date());
         // 湲��쓽 �떆�옉怨� �걹
         int pn = param.getPageNumber();  // 0 1 2 3 4
-        int start = 1 + (pn * 8);  // 1  11
+        int start = 1 + (pn * 10);  // 1  11   // => 8 pics
 //        int start = 1;  // 1  11
-        int end = (pn + 1) * 8;    // 10 20 
+        int end = (pn + 1) * 10;    // 10 20    // => 8 pics
         
         param.setStart(start);
         param.setEnd(end);
@@ -154,7 +155,7 @@ public class ScreenController {
         List<BbsDto> list = bbsservice.bbsMainList(param);
         int len = bbsservice.getAllBbs(param);
         
-        int pageBbs = len / 8;     // 25 / 10 -> 2
+        int pageBbs = len / 10;     // 25 / 10 -> 2   // => 8 pics
         if((len % 10) > 0) {
             pageBbs = pageBbs + 1;
         }

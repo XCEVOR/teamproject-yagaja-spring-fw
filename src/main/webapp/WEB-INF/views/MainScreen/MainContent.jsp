@@ -44,31 +44,31 @@ display: flex;
 			<div class="inner">
 				<div class="container1"></div>
 				<section id="mysection" class="tiles">
-
+<%-- 
 					<%
-					for (int i = 0; i < blist.size(); i++) {
-						BbsDto bdto = blist.get(i);
-					%>
-					<article class="style1">
-						<span class="image"> <img
-							src="upload/<%= bdto.getNewfilename() %>" alt="" />
-						</span> <a href="detail1.do?seq=<%= bdto.getSeq() %>">
-							<h6>
-								Like test:
-								<%= bdto.getLikecount() %></h6>
-							<h6>
-								Read test:
-								<%= bdto.getReadcount() %></h6>
-							<h2><%= bdto.getTitle() %></h2>
-							<div class="content">
-								<p><%= bdto.getContent() %></p>
-							</div>
-						</a>
-					</article>
-					<%
-        }
-    %>
-
+						for (int i = 0; i < blist.size(); i++) {
+							BbsDto bdto = blist.get(i);
+							%>
+								<article class="style<%= bdto.getSeq()%6+1 %>">
+									<span class="image"> <img
+										src="upload/<%= bdto.getNewfilename() %>" alt="" />
+									</span> <a href="detail1.do?seq=<%= bdto.getSeq() %>">
+										<h6>
+											Like test:
+											<%= bdto.getLikecount() %></h6>
+										<h6>
+											Read test:
+											<%= bdto.getReadcount() %></h6>
+										<h2><%= bdto.getTitle() %></h2>
+										<div class="content">
+											<p><%= bdto.getContent() %></p>
+										</div>
+									</a>
+								</article>
+							<%
+				        }
+				    %>
+ --%>
 				</section>
 			</div>
 		</div>
@@ -83,6 +83,8 @@ display: flex;
     
     
 <script type="text/javascript">
+
+
     window.document.getElementById('testinput').value = "";
     function myBtn() {
         let mytest = document.getElementById('testinput').value;
@@ -124,8 +126,8 @@ display: flex;
                     // alert(list);
                     console.log(list);
                     /* $("#mysection").html(""); */
-                    $.each(list, function(index, item){
-                        let str = "<article class='style1 myfade" + loadedPage + "'>" 
+                    $.each(list, function(index, item){  // slqs.mxl 수정함 indes+1 을 위해.
+                        let str = "<article class='style"+(item.seq%6+1)+" myfade" + loadedPage + "'>" 
                                 + "     <span class='image'>"
                                 + "         <img src='upload/" + item.newfilename + "' alt='' />"
                                 + "     </span>"
@@ -187,7 +189,9 @@ display: flex;
     }
     
     
-    
+    window.onload = function(){  // 함수들 모두 확인하고 마지막 실행.
+    	nextPage();
+    }
     
     history.scrollRestoration = "manual";  // 최상단으로 이동.
     
