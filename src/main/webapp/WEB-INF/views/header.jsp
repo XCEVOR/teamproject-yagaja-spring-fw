@@ -56,10 +56,11 @@ select {
               
               <ul>
                   <!-- Logo -->
+                  <div style="padding: 30px;"">
                   <a href="main.do" class="logo"> <span class="symbol"><img
                       src="images/logo.svg" alt="" /></span><span class="title">YAGAJA</span>
                   </a>
-
+                  </div>
                   <span>
                     <table  style = "table-layout: auto; width: 80%; table-layout: fixed;" >
                     <colgroup> 
@@ -80,7 +81,7 @@ select {
                     </td>
                     <td class="align-middle">
                       <%-- <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="검색어" value="<%= search %>"> --%>
-					<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="나의 여행 너의 여행 - 야가자">
+					<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="너 어디가? - 야가자">
                     </td>
                     <td style="padding-left: 3px">
                       <span>

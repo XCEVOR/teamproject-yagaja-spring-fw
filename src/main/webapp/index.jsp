@@ -8,7 +8,11 @@
 </head>
 <body>
 
-    <a href="main.do">main.do</a>
+    <!-- <a href="main.do">main.do</a> -->
+    
+<%
+    response.sendRedirect("main.do");
+%>
     
 </body>
 </html>
