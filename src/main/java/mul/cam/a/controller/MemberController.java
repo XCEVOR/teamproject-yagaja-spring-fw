@@ -81,11 +81,16 @@ public class MemberController {
     
     //내정보 수정
 	@PostMapping(value="mypageUpdAf.do")
-	public String mypageUpdAf(MemberDto dto, Model model) {
+	public String mypageUpdAf(MemberDto dto, Model model, HttpServletRequest req) {
+		
+		HttpSession session = req.getSession();
+		MemberDto login = (MemberDto)session.getAttribute("login");
 		
 		boolean b = service.myupdate(dto);
 		String msg = "mem_update_fail";
 		if(b) {
+			login.setNickname(dto.getNickname());
+			login.setMbti(dto.getMbti());
 			msg = "mem_update_success";
 		}
 		model.addAttribute("memupdate", msg);
