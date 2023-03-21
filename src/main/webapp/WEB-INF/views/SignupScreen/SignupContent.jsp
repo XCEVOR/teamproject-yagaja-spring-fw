@@ -15,7 +15,7 @@
   <section>
     <h2>회원가입</h2>
   
-    <form method="post" action="signupAf.do">
+    <form id="uploadFileForm">
       <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall">
           <input type="text" name="id" id="id" value="" placeholder="ID"/>
@@ -106,7 +106,7 @@
         
         <div class="col-12">
           <ul class="actions">
-            <li><input type="submit" value="회원가입" class="primary" /></li>
+            <li><input type="button" id="joinBtn" value="회원가입" class="primary" /></li>
             <li><input type="reset" value="다시 입력"/></li>
           </ul>
         </div>
@@ -130,14 +130,16 @@ $(document).ready(function() {
 				if(msg == "YES"){					
 					if($('#id').val()==''){ 
 						$("#idcheck").css("color", "#ff0000");
-						$("#idcheck").text("  아이디를 입력해주세요.");
-		               } else {
+						$("#idcheck").text(" 아이디를 입력해주세요.");
+		               }else if($('#id').val().length<5){
+		            	   $("#idcheck").text("아이디는 5~15자를 사용해주세요.");
+		               }else {
 		            	    $("#idcheck").css("color", "#0000ff");
-							$("#idcheck").text("   사용할 수 있는 아이디입니다");
+							$("#idcheck").text("사용할 수 있는 아이디입니다.");
 		               }					
 				}else{
 					$("#idcheck").css("color", "#ff0000");
-					$("#idcheck").text("   사용중인 아이디입니다");
+					$("#idcheck").text("사용중인 아이디입니다");
 			//		alert('사용중인 아이디입니다');
 					$("#id").val("");
 				}	
@@ -155,16 +157,51 @@ $(document).ready(function() {
 		$("#pwdChk").click(function(){
 		   if($("#pwd").val() != $("#pwd2").val()){
 			   $("#pwdcheck").css("color", "#ff0000");
-				$("#pwdcheck").text("	비밀번호가 일치하지 않습니다.");
+				$("#pwdcheck").text("비밀번호가 일치하지 않습니다.");
 	    	  	$("#pwd2").val('');
 	          	$("#pwd2").focus();		    	
-		    } else {
+		   }else if($("#pwd").val().length<8 ){
+			   $("#pwdcheck").text("비밀번호는 8~16자를 사용해주세요.");
+			   $("#pwd").val('');
+			   $("#pwd2").val('');
+		   }else {
 		    	   $("#pwdcheck").css("color", "#0000ff");
-					$("#pwdcheck").text("   비밀번호가 일치합니다.");		    	   
+					$("#pwdcheck").text("비밀번호가 일치합니다.");		    	   
 		       }
-		})  	   
-	});
+		});
 	
+		$("#joinBtn").click(function(){
+			
+			if( $("#pwdcheck").text()=="비밀번호가 일치합니다." 
+					&& $("#idcheck").text()=="사용할 수 있는 아이디입니다."){
+			
+			$.ajax({
+	 		   url:"signupAf.do",
+	 		   type:"post",
+	 		   data: new FormData($("#uploadFileForm")[0]),   	    		  
+	 		   processData:false,
+	 		   contentType:false,
+	 		   cache:false,
+	 		   success:function(){
+	 			   alert("성공적으로 글이 작성됐습니다.");
+	 			   location.href="main.do";
+	 		   },
+	 		   error:function(){
+	 			   alert("join error 발생");
+	 		   }
+		});
+		}else{
+			alert("id와 비밀번호를 체크해주세요");
+				
+			}	
+		
+			
+		});
+	
+});
+
+
+
 function val() {
     d = document.getElementById("mbti").value;
     console.log(d);
