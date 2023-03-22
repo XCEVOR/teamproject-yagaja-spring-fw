@@ -10,10 +10,17 @@
 %>
 
 
-<%-- <%
-	String choice = (String)request.getAttribute("choice");
-	String search = (String)request.getAttribute("search");
-%> --%>
+<%
+    String choice = (String)request.getAttribute("choice");
+    String search = (String)request.getAttribute("search");
+    
+    if(choice == null || choice.equals("")
+            || search == null || search.equals("")) {
+        choice = "검색";
+            search = "";
+        }
+%>
+
 
 <head>
 <meta charset="UTF-8">
@@ -80,13 +87,12 @@ select {
                       </select>
                     </td>
                     <td class="align-middle">
-                      <%-- <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="검색어" value="<%= search %>"> --%>
-					<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="너 어디가? - 야가자">
+                    <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="너 어디가? - 야가자" value="<%= search %>">
                     </td>
                     <td style="padding-left: 3px">
                       <span>
 						<button type="button" class="btn btn-primary" onclick="searchBtn()">
-<i class="fa fa-search" aria-hidden="true"></i></button>
+                        <i class="fa fa-search" aria-hidden="true"></i></button>
 					</span>
                     </td>
                     <th>
@@ -166,7 +172,13 @@ select {
 
 
 <script type="text/javascript">
-
+	let search = "<%= search %>";
+	console.log("search = " + search);
+	if(search != ""){
+	    let obj = document.getElementById("choice");
+	    obj.value = "<%= choice %>";
+	    obj.setAttribute("selected", "selected");
+	}
 	
 	 function searchBtn() {
 			let choice = document.getElementById('choice').value;

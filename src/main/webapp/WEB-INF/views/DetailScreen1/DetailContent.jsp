@@ -349,7 +349,7 @@ if(login!=null){
 
 %>
 $(document).ready(function () {
-		if('<%=id%>'==<%=allBbsPostList.get(0).getId()%>){
+		if('<%=id%>'=="<%=allBbsPostList.get(0).getId()%>"){
 			$("#alterBtn").css("display","inline");
 		}
 	
