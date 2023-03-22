@@ -30,7 +30,7 @@
 
 
 					<div class="col-6 col-12">
-						<input type="text" name="pwd" id="pwd" value=""
+						<input type="Password" name="pwd" id="pwd" value=""
 							placeholder="Password" />
 					</div>
 
