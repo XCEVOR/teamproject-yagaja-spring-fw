@@ -81,7 +81,7 @@
         .fa-thumbs-up{
     
       	font-size:15px;
-        margin-left: 100px;
+        margin-left: 0px;
         }
        .fa-thumbs-up:hover{
        	color: #FFDEE9;
@@ -211,17 +211,17 @@ display: inline-block;
             </div>
         </div>
         <div class="right-Layout">
-            <div class="top-right-Layout">
+            <div class="top-Layout">
                 <ul>
                 <!-- ########## 게시글 ########## ########## ########## ########## ########## ########## ########## ########## ##########  -->
 
-                    <h3>게시글 내용</h3>
+                    <h3 style="margin: 10px 0 10px 0;">게시글 내용</h3>
 
 
                     <table class="table table-striped table-sm">
                         <colgroup>
                             <col style="width: 150px" />
-                            <col style="width: 500px" />
+                            <col style="width: 700px" />
                         </colgroup>
 
                         <tr>
@@ -232,20 +232,27 @@ display: inline-block;
                             <th>작성일</th>
                             <td><%= allBbsPostList.get(0).getWdate() %></td>
                         </tr>
+                        
+                        
                         <tr>
                         
                             <td align="center" colspan="2"
                                 style="font-size: 16px; font-weight: bold;">
-                                <div id="detailTitle"></div>
+                                <div id="detailTitle"></div>  <!--function slideIndex (index) 로 불러오기 위해 생성. -->
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" height=300px style="background-color: white;">
-                            <div id="detailContent"></div>
+                            <td colspan="2" height=200px style="background-color: white;">
+                            <div id="detailContent"></div>  <!--function slideIndex (index) 로 불러오기 위해 생성. -->
+                            <%-- 
                                 <pre
-                                    style="font-size: 20px; font-family: 고딕, arial; background-color: white"><%= allBbsPostList.get(0).getContent() %></pre>
+                                    style="font-size: 20px; font-family: 고딕, arial; background-color: white"><%= allBbsPostList.get(0).getContent() %>
+                                </pre>
+                            --%>
                             </td>
                         </tr>
+                        
+                        
                     </table>
 						
                     <span id="alterBtn" style="display: none"><a href="update.do?seq=<%=allBbsPostList.get(0).getBbsseq()%>">수정</a></span>
@@ -257,7 +264,7 @@ display: inline-block;
                 <ul>
                 <!-- ##########댓글 ########## ########## ########## ########## ########## ########## ########## ########## ##########  -->
 
-                    <h3>댓글작성</h3>
+                    <h3 style="margin: 0 0 10px 0;">댓글작성</h3>
 				<form action="commentWriteAf.do" method="post">
 				
 				<input type="hidden" name="seq" value="<%=allBbsPostList.get(0).getBbsseq() %>">
@@ -470,7 +477,11 @@ $(document).ready(function () {
 
         });
 
-
+        
+        $(document).ready(function () {
+            document.getElementById("detailTitle").innerHTML = '<h2><%=allBbsPostList.get(0).getTitle()%></h2>';
+            document.getElementById("detailContent").innerHTML = '<h3><%=allBbsPostList.get(0).getContent()%></h3>';
+        });
 
         function slideIndex (index) {
         	<%
@@ -528,6 +539,9 @@ $(document).ready(function () {
                 });
             });
         }
+        
+        
+
 
 </script>
 
