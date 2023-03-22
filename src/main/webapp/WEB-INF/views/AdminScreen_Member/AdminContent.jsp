@@ -72,8 +72,13 @@
 		<col width = "70"><col width = "150"><col width = "100"><col width = "150">
 		<thead>
 			<tr>
-				<th><input id="allCheck" name="allCheck" type="checkbox" /></th>
-				<th>아이디</th><th>이름</th><th>이메일</th><th>삭제</th>
+				<th>
+					<div>
+					<input id="allCheck" name="allCheck" type="checkbox" />
+					<label for="allCheck"></label>
+					</div>
+				</th>
+				<th>아이디</th><th>이름</th><th>이메일</th>
 			</tr>			
 		</thead>
 		
@@ -100,9 +105,6 @@
 									<input id="RowCheck<%=i %>" name="RowCheck" type="checkbox" value="<%=dto.getId() %>" />
 									<label for="RowCheck<%=i %>"></label>
 								</div>
-							</td>
-							<td>
-								<%=i+1 %>
 							</td>
 							<td>
 								<%=dto.getId() %>
