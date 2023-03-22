@@ -134,8 +134,8 @@ public class BbsController {
 		
 		
 		int pn = param.getPageNumber();  // 0 1 2 3 4
-		int start = 1 + (pn * 10);	// 1  11
-		int end = (pn + 1) * 10;	// 10 20 
+		int start = 1 + (pn * 6);	// 1  11  // 시연을 위해 6개로 고정.
+		int end = (pn + 1) * 6;	// 10 20   // 시연을 위해 6개로 고정.
 		
 		param.setStart(start);
 		param.setEnd(end);
@@ -143,7 +143,7 @@ public class BbsController {
 		List<BbsDto> list = service.bbsMainList(param);
 		int len = service.getAllBbs(param);
 	
-		int pageBbs = len / 10;		// 25 / 10 -> 2
+		int pageBbs = len / 6;		// 25 / 10 -> 2  // 시연을 위해 6개로 고정.
 		if((len % 10) > 0) {
 			pageBbs = pageBbs + 1;
 		}
@@ -169,8 +169,8 @@ public class BbsController {
 		
 		// 글의 시작과 끝
 		int pn = param.getPageNumber();  // 0 1 2 3 4
-		int start = 1 + (pn * 10);	// 1  11
-		int end = (pn + 1) * 10;	// 10 20 
+		int start = 1 + (pn * 6);	// 1  11  // 시연을 위해 6개로 고정.
+		int end = (pn + 1) * 6;	// 10 20   // 시연을 위해 6개로 고정.
 		
 		param.setStart(start);
 		param.setEnd(end);
@@ -178,7 +178,7 @@ public class BbsController {
 		List<BbsDto> list = service.bbsMainList(param);
 		int len = service.getAllBbs(param);
 		
-		int pageBbs = len / 10;		// 25 / 10 -> 2
+		int pageBbs = len / 6;		// 25 / 10 -> 2  // 시연을 위해 6개로 고정.
 		if((len % 10) > 0) {
 			pageBbs = pageBbs + 1;
 		}
