@@ -58,7 +58,7 @@
 		<input type="submit" value="수정">
 		</form>
 		<br><br>
-		<h2>작성글</h2>
+		<!-- <h2>작성글</h2> -->
 		<table>
 		<!-- 작성글 가져오기 bbslist에서 가져오기 -->
 		</table>

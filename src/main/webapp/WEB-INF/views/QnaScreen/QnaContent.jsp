@@ -125,7 +125,7 @@
 		<div align="center">
 			<a href="qnawr.do?id=<%=login.getId() %>">Q&A작성</a>
 		</div>
-	}
+	
 
 	</div>
 	

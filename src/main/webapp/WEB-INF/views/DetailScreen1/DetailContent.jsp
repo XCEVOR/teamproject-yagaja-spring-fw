@@ -234,7 +234,7 @@ a {
                         </tr>
                         <tr>
                             <th>여행일</th>
-                            <td><%= allBbsPostList.get(0).getDate() %></td>
+                            <td id="detailDate"></td>
                         </tr>
                         
                         
@@ -483,6 +483,7 @@ $(document).ready(function () {
 
         
         $(document).ready(function () {
+        	document.getElementById("detailDate").innerHTML = '<a6><%=allBbsPostList.get(0).getDate()%></a6>';
             document.getElementById("detailTitle").innerHTML = '<h2><%=allBbsPostList.get(0).getTitle()%></h2>';
             document.getElementById("detailContent").innerHTML = '<h3><%=allBbsPostList.get(0).getContent()%></h3>';
         });
@@ -496,6 +497,7 @@ $(document).ready(function () {
 	        				<%-- let slideTest = document.getElementById("slideTest");
 	        				slideTest.innerHTML = '<h1><%=allBbsPostList.get(i).getTitle()%></h1>' --%>
 	        				
+	        				document.getElementById("detailDate").innerHTML = '<a6><%=allBbsPostList.get(i).getDate()%></a6>';
 	        				document.getElementById("detailTitle").innerHTML = '<h2><%=allBbsPostList.get(i).getTitle()%></h2>';
 	        				document.getElementById("detailContent").innerHTML = '<h3><%=allBbsPostList.get(i).getContent()%></h3>';
 	        			}
