@@ -43,7 +43,7 @@ height:100%;
             <td align="center">
                 <tiles:insertAttribute name="content"/>
             </td>
-            <td align="center" style="background-color: rgb(204, 204, 204); width: 15%;">
+            <td align="center" style="background-color: rgb(204, 204, 204); width: 20%;">
                 <tiles:insertAttribute name="empty"/>
             </td>
         </tr>

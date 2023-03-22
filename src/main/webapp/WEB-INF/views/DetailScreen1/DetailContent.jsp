@@ -103,6 +103,10 @@ ul{
 margin:0px;
 padding: 0px;
 }
+div#ajaxSlidelist {
+display: inline-block;
+}
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -114,7 +118,7 @@ padding: 0px;
 <body>
     <div class="container-Layout">
         <div class="left-Layout">
-            <div class="top-left-Layout">
+            <div class="top-Layout">
                 <ul>
                 <!-- ########## 슬라이드 ########## ########## ########## ########## ########## ########## ########## ########## ##########  -->
 
