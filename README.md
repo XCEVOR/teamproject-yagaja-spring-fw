@@ -20,7 +20,7 @@
 
 ## 🔧 기술 스택
 - Front-end : HTML, CSS, JS, AJAX, jQuery
-- Back-end : Java, Spring
+- Back-end : Java, Spring, JSP
 - DB : MySQL
 - Server : Apache
 
